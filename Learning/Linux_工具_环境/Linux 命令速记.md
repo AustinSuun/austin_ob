@@ -1,10 +1,10 @@
 ---
-alias: "document"
-last-reviewed: 2021-08-17
-thoughts:
-  rating: 8
-  reviewable: false
+日期: 2025-04-25
+作者:
+  - Austin
+tags:
 ---
+
 
 | 命令                   | 效果       | 案例                          |
 | -------------------- | -------- | --------------------------- |
