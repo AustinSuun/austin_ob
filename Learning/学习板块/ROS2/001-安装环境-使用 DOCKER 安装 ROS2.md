@@ -59,7 +59,7 @@ ps：拉取镜像超时，打开 代理 tun 模式 再拉取
 现在来跑一个最基本的容器：
 
 ```bash
-docker run -it --rm ros:jazzy-ros-base
+docker run -it --rm ros2:jazzy-full-2025-04-01
 
 ```
 
@@ -81,7 +81,7 @@ ros2 --help
 ```bash
 docker run -it --rm \\
   -v /home/zhengma/dev_ws:/root/dev_ws \\
-  ros:jazzy-ros-base
+  ros2:jazzy-full-2025-04-01
 ```
 
 容器内就能看到 `/root/dev_ws`，等于把你的项目文件挂进去了。
