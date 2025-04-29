@@ -1,8 +1,11 @@
 [
-  "dataview",
   "easy-typing-obsidian",
   "obsidian-git",
   "obsidian-image-auto-upload-plugin",
-  "obsidian-advanced-slides",
-  "obsidian-quiet-outline"
+  "obsidian-latex-suite",
+  "obsidian-style-settings",
+  "obsidian-quiet-outline",
+  "obsidian-kanban",
+  "editing-toolbar",
+  "dataview"
 ]

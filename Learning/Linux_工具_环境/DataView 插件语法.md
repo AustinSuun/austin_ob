@@ -4,6 +4,7 @@
   - Austin
 tags:
   - DataView
+  - obsidan插件
 ---
 # 最简单的 DataView
 
