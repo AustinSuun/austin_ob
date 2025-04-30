@@ -16,5 +16,7 @@
   "blue-topaz-theme@@memos-scroll": false,
   "blue-topaz-theme@@hider-memos-modern-banner": false,
   "blue-topaz-theme@@quiet-outline-optimize": true,
-  "blue-topaz-theme@@simple-p-kanban": false
+  "blue-topaz-theme@@simple-p-kanban": false,
+  "blue-topaz-theme@@accent-strong@@light": "#09D6DE",
+  "blue-topaz-theme@@accent-strong@@dark": "#09D6DE"
 }
