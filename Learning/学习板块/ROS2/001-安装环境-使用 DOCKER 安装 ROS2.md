@@ -22,6 +22,11 @@ sudo systemctl enable --now docker
 sudo usermod -aG docker $USER
 ```
 
+|命令|作用|
+|---|---|
+|`sudo systemctl enable --now docker`|启用并启动 Docker 服务|
+|`sudo usermod -aG docker $USER`|让当前用户可以不用 sudo 使用 Docker|
+
 然后 **退出重新登录** 或者直接重启（让 docker 权限生效）。
 
 ps:如果安装时失败，可以更新一下软件仓库 `sudo pacman -Syy`
