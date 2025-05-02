@@ -1,9 +1,9 @@
 {
 	"nodes":[
-		{"id":"a225753226cdf4ce","type":"file","file":"人杰地灵，东箭南金/Linux_工具_环境.md","x":-820,"y":-264,"width":401,"height":792,"color":"6"},
-		{"id":"c7f9d545ce3ceb6b","x":-375,"y":-264,"width":400,"height":792,"color":"1","type":"file","file":"人杰地灵，东箭南金/学术板块.md"},
-		{"id":"e03532453c07d982","x":77,"y":-264,"width":400,"height":792,"color":"#5290f4","type":"file","file":"人杰地灵，东箭南金/学习板块.md"},
-		{"id":"de280432d1406a5c","type":"text","text":"# **人杰地灵，东箭南金**","x":-295,"y":-391,"width":240,"height":50,"color":"5"}
+		{"id":"a225753226cdf4ce","type":"file","file":"人杰地灵，东箭南金/Linux_工具_环境.md","x":-865,"y":-264,"width":530,"height":792,"color":"6"},
+		{"id":"e03532453c07d982","type":"file","file":"人杰地灵，东箭南金/学习板块.md","x":77,"y":-264,"width":488,"height":792,"color":"#5290f4"},
+		{"id":"c7f9d545ce3ceb6b","type":"file","file":"人杰地灵，东箭南金/学术板块.md","x":-335,"y":-264,"width":412,"height":792,"color":"1"},
+		{"id":"de280432d1406a5c","type":"text","text":"# **人杰地灵，东箭南金**","x":-340,"y":-389,"width":422,"height":50,"color":"5"}
 	],
 	"edges":[
 		{"id":"546c2c9c73951ae4","fromNode":"de280432d1406a5c","fromSide":"bottom","toNode":"a225753226cdf4ce","toSide":"top"},
