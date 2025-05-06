@@ -11,7 +11,6 @@ tags:
 Docker 就像个“**虚拟环境管理器**”，每个“容器”就是一个可以运行的迷你系统，里边可以装 ROS、Python、网页服务器，啥都行。你可以随时启动、停止、删掉，和你的主系统完全分开。
 
 ---
-
 ## ✅ 第一步：安装 Docker（Arch）
 
 打开终端，输：
@@ -31,20 +30,11 @@ sudo usermod -aG docker $USER
 
 ps:如果安装时失败，可以更新一下软件仓库 `sudo pacman -Syy`
 
-（**可选）安装 lazydocker-终端可视化工具**
-
-```jsx
-yay —S lazydocke
-```
-
 ---
-
 ## ✅ 第二步：拉 ROS 2 Jazzy 镜像
 
 jazzy 是最新的长期支持版本
-
 镜像来源，使用指定的 tag 拉取，下载 jazzy-full，最新的长期支持版的完整包
-
 [https://hub.docker.com/r/althack/ros2/tags?name=ja](https://hub.docker.com/r/althack/ros2/tags?name=ja)
 
 ```bash
@@ -52,9 +42,7 @@ docker pull althack/ros2:jazzy-full-2025-04-01
 ```
 
 这个镜像就是：**官方发布的 ROS 2 Jazzy 环境**，干净稳定，适合开发。
-
 ps：拉取镜像超时，打开 代理 tun 模式 再拉取
-
 下载完 运行 `docker images` 查看镜像
 
 ---
@@ -65,14 +53,12 @@ ps：拉取镜像超时，打开 代理 tun 模式 再拉取
 
 ```bash
 docker run -it --rm ros2:jazzy-full-2025-04-01
-
 ```
 
 你会看到进了一个终端，提示符是 `root@xxxxx`，然后你可以试试：
 
 ```bash
 ros2 --help
-
 ```
 
 说明你已经在容器里跑 ROS 2 了！
@@ -190,8 +176,10 @@ docker run -it --rm \\
   --env QT_X11_NO_MITSHM=1 \\
   --env QT_QPA_PLATFORM=xcb \\
   --volume /tmp/.X11-unix:/tmp/.X11-unix \\
+  --name ros2_container \\
+  -v $(pwd):/root/ros2_ws
   althack/ros2:jazzy-full-2025-04-01 \\
-  bash -c "ros2 run turtlesim turtlesim_node"
+  # bash -c "ros2 run turtlesim turtlesim_node"
 ```
 
 ---
@@ -210,7 +198,7 @@ docker run -it --rm \\
     
  ```bash
 	chmod +x run_turtlesim.sh
-  
+ 
   ```
 
 3. **运行！**
@@ -227,6 +215,7 @@ docker run -it --rm \\
 - 授权容器访问图形界面
 - 启动 ROS 2 容器
 - 使用软件渲染解决 OpenGL 问题
+- 挂载当前文件夹到镜像
 - 启动小乌龟节点显示窗口
 
 ---
@@ -235,13 +224,20 @@ docker run -it --rm \\
 
 # 开多终端的方法
 
-例如，如果你的容器名字叫做 `my_container`，那么命令会是这样的：
+例如，如果你的容器名字叫做 `ros2_container`，那么命令会是这样的：
 
 ```bash
-docker exec -it my_container bash
+docker exec -it ros2_container bash
 ```
 
-这将在 `my_container` 容器中打开一个新的 bash 终端，允许你在其中执行命令和操作。
+这将在 `ros2_container` 容器中打开一个新的 bash 终端，允许你在其中执行命令和操作。
 
 
 
+# VS code 中写代码
+安装插件-dev-RemoteContainer
+
+用脚本打开镜像容器，挂载文件夹到镜像中（脚本中已经设置）
+
+点击 VS 左下角蓝色连接按钮，选择附加到容器打开|attach  这个选项，选择容器
+会打开一个新的窗口，在里面可以访问挂载的文件夹 $ros2\_ws$, 修改的代码可以直接同步到本地文件夹

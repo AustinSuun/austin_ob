@@ -18,5 +18,9 @@
   "blue-topaz-theme@@quiet-outline-optimize": true,
   "blue-topaz-theme@@simple-p-kanban": false,
   "blue-topaz-theme@@accent-strong@@light": "#09D6DE",
-  "blue-topaz-theme@@accent-strong@@dark": "#09D6DE"
+  "blue-topaz-theme@@accent-strong@@dark": "#09D6DE",
+  "Blue-Topaz-Codebox-Highlight@@code-box-style-option": "codebox-default-style",
+  "Blue-Topaz-Codebox-Highlight@@background-code@@light": "#E2E1E4",
+  "Blue-Topaz-Codebox-Highlight@@background-code@@dark": "#000000",
+  "Blue-Topaz-Codebox-Highlight@@muted-code-activeline-bg": true
 }
