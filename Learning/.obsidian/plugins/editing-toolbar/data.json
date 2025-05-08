@@ -1,7 +1,7 @@
 {
   "lastVersion": "3.1.13",
-  "aestheticStyle": "default",
-  "positionStyle": "top",
+  "aestheticStyle": "glass",
+  "positionStyle": "fixed",
   "menuCommands": [
     {
       "id": "editing-toolbar:editor-undo",
@@ -303,7 +303,7 @@
   "cMenuNumRows": 12,
   "cMenuWidth": 610,
   "cMenuFontColor": "#2DC26B",
-  "cMenuBackgroundColor": "#d3f8b6",
+  "cMenuBackgroundColor": "#fff88f",
   "autohide": false,
   "custom_bg1": "#FFB78B8C",
   "custom_bg2": "#CDF4698C",
@@ -320,7 +320,9 @@
   "verticalPosition": 0,
   "formatBrushes": {},
   "customCommands": [],
-  "viewTypeSettings": {},
+  "viewTypeSettings": {
+    "quiet-outline": false
+  },
   "toolbarBackgroundColor": "rgba(var(--background-secondary-rgb), 0.7)",
   "toolbarIconColor": "var(--text-normal)",
   "toolbarIconSize": 18

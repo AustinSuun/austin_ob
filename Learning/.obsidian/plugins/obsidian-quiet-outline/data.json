@@ -21,5 +21,7 @@
   "locate_by_cursor": false,
   "show_popover_key": "ctrlKey",
   "remember_state": true,
-  "export_format": "{title}"
+  "keep_search_input": false,
+  "export_format": "{title}",
+  "lang_direction_decide_by": "system"
 }
