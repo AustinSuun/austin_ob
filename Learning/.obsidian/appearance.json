@@ -4,5 +4,10 @@
   "textFontFamily": "",
   "accentColor": "",
   "baseFontSize": 20,
-  "theme": "system"
+  "theme": "system",
+  "monospaceFontFamily": "",
+  "enabledCssSnippets": [
+    "souce_fonts"
+  ],
+  "nativeMenus": false
 }

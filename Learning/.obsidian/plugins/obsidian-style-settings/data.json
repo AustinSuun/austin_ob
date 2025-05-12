@@ -22,5 +22,7 @@
   "Blue-Topaz-Codebox-Highlight@@code-box-style-option": "codebox-default-style",
   "Blue-Topaz-Codebox-Highlight@@background-code@@light": "#E2E1E4",
   "Blue-Topaz-Codebox-Highlight@@background-code@@dark": "#000000",
-  "Blue-Topaz-Codebox-Highlight@@muted-code-activeline-bg": true
+  "Blue-Topaz-Codebox-Highlight@@muted-code-activeline-bg": true,
+  "blue-topaz-theme@@font-family-change-to-default": false,
+  "blue-topaz-theme@@font-family-folder-file-title": "‘思源黑体 CN’,Arlrdbd, 'Source Han Sans', 'Noto Sans CJK', 'Source Sans Pro', 'Segoe UI Emoji', sans-serif"
 }

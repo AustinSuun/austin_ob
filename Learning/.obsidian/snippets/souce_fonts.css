@@ -1,0 +1,40 @@
+/* === Obsidian 字体设置：全部使用思源黑体 === */
+
+/* 全局界面字体（设置、菜单、侧栏等） */
+body {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+}
+
+/* 编辑器左侧资源管理器字体 */
+.workspace-leaf-content .nav-file-title,
+.workspace-leaf-content .nav-folder-title {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+}
+
+/* 编辑器 CodeMirror 正文字体（markdown 编辑区） */
+.cm-s-obsidian .cm-line {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+}
+
+/* 编辑器折叠标记、列表符号等小元素 */
+.cm-s-obsidian .HyperMD-list-line,
+.cm-s-obsidian .cm-formatting,
+.cm-s-obsidian .cm-header {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+}
+
+/* 预览模式（阅读视图）正文字体 */
+.markdown-preview-view,
+.markdown-preview-section {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+}
+
+/* 页眉（# 一级标题）等元素字体（统一用思源黑体） */
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6 {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+}
