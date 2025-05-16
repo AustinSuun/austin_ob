@@ -24,5 +24,6 @@
   "Blue-Topaz-Codebox-Highlight@@background-code@@dark": "#000000",
   "Blue-Topaz-Codebox-Highlight@@muted-code-activeline-bg": true,
   "blue-topaz-theme@@font-family-change-to-default": false,
-  "blue-topaz-theme@@font-family-folder-file-title": "‘思源黑体 CN’,Arlrdbd, 'Source Han Sans', 'Noto Sans CJK', 'Source Sans Pro', 'Segoe UI Emoji', sans-serif"
+  "blue-topaz-theme@@font-family-folder-file-title": "‘思源黑体 CN’,Arlrdbd, 'Source Han Sans', 'Noto Sans CJK', 'Source Sans Pro', 'Segoe UI Emoji', sans-serif",
+  "blue-topaz-theme@@outline-style": "logseq-outline-style"
 }

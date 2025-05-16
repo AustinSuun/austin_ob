@@ -722,7 +722,10 @@ button[class^=editingToolbarCommandsubItem]::after {
   transition: all 0.5s linear;
   -webkit-transition: all 0.5s linear;
 }
-
+#editingToolbarModalBar.top.centered {
+  max-width: var(--file-line-width) ;
+  align-self: center;
+}
 
 #editingToolbarModalBar.top.autohide:hover {
   opacity: 1;
@@ -748,10 +751,7 @@ button[class^=editingToolbarCommandsubItem]::after {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-
-
+ 
 }
 
 #editingToolbarModalBar ~.canvas-controls{
@@ -1165,9 +1165,10 @@ body.auto-hide-header .workspace-tab-header-container + .workspace-tab-container
   width: 100%;
 }
 .callout-icon-container {
-
+  display: flex;
   width: 24px;
   height: 24px;
+  align-items: center;
 }
 
 .callout-icon-container svg {
