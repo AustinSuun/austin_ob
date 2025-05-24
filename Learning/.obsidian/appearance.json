@@ -1,7 +1,7 @@
 {
   "cssTheme": "Blue Topaz",
-  "interfaceFontFamily": "",
-  "textFontFamily": "",
+  "interfaceFontFamily": "思源黑体 CN",
+  "textFontFamily": "思源黑体 CN",
   "accentColor": "",
   "baseFontSize": 20,
   "theme": "system",

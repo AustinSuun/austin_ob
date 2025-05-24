@@ -15,7 +15,7 @@
   "blue-topaz-theme@@layout-style-options": "layout-style-options-default",
   "blue-topaz-theme@@memos-scroll": false,
   "blue-topaz-theme@@hider-memos-modern-banner": false,
-  "blue-topaz-theme@@quiet-outline-optimize": true,
+  "blue-topaz-theme@@quiet-outline-optimize": false,
   "blue-topaz-theme@@simple-p-kanban": false,
   "blue-topaz-theme@@accent-strong@@light": "#09D6DE",
   "blue-topaz-theme@@accent-strong@@dark": "#09D6DE",
@@ -25,5 +25,7 @@
   "Blue-Topaz-Codebox-Highlight@@muted-code-activeline-bg": true,
   "blue-topaz-theme@@font-family-change-to-default": false,
   "blue-topaz-theme@@font-family-folder-file-title": "‘思源黑体 CN’,Arlrdbd, 'Source Han Sans', 'Noto Sans CJK', 'Source Sans Pro', 'Segoe UI Emoji', sans-serif",
-  "blue-topaz-theme@@outline-style": "logseq-outline-style"
+  "blue-topaz-theme@@outline-style": "logseq-outline-style",
+  "blue-topaz-theme@@font-monospace-theme": "'FiraCode Nerd Font Mono','JetBrains Mono', Consolas, Monaco, '等距更纱黑体 SC', 'Source Han Mono', 'Microsoft Yahei Mono', 'Segoe UI Emoji', 'Microsoft YaHei', 'Source Code Pro', monospace",
+  "blue-topaz-theme@@font-family-inline-code": "'FiraCode Nerd Font Mono','JetBrains Mono',var(--font-monospace-override), var(--font-monospace-theme)"
 }
