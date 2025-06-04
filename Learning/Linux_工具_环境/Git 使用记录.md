@@ -40,8 +40,10 @@ Hi 用户名! You've successfully authenticated, but GitHub does not provide she
 ## 设置本地仓库连接到远程
 也可以下载仓库的时候使用 ssh 下载，会自动连接到 ssh 连接
 如果使用 https 下载会自动连接到 https
-```shell
-git remote set-url origin git@github.com:用户名/仓库名.git
+```
+git remote add origin git@github.com:AustinSuun/bio.git
+git branch -M main
+git push -u origin main
 ```
 
 
