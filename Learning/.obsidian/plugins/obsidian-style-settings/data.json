@@ -24,8 +24,19 @@
   "Blue-Topaz-Codebox-Highlight@@background-code@@dark": "#000000",
   "Blue-Topaz-Codebox-Highlight@@muted-code-activeline-bg": true,
   "blue-topaz-theme@@font-family-change-to-default": false,
-  "blue-topaz-theme@@font-family-folder-file-title": "‘思源黑体 CN’,Arlrdbd, 'Source Han Sans', 'Noto Sans CJK', 'Source Sans Pro', 'Segoe UI Emoji', sans-serif",
+  "blue-topaz-theme@@font-family-folder-file-title": "'思源黑体 CN',Arlrdbd, 'Source Han Sans', 'Noto Sans CJK', 'Source Sans Pro', 'Segoe UI Emoji', sans-serif",
   "blue-topaz-theme@@outline-style": "logseq-outline-style",
   "blue-topaz-theme@@font-monospace-theme": "'FiraCode Nerd Font Mono','JetBrains Mono', Consolas, Monaco, '等距更纱黑体 SC', 'Source Han Mono', 'Microsoft Yahei Mono', 'Segoe UI Emoji', 'Microsoft YaHei', 'Source Code Pro', monospace",
-  "blue-topaz-theme@@font-family-inline-code": "'FiraCode Nerd Font Mono','JetBrains Mono',var(--font-monospace-override), var(--font-monospace-theme)"
+  "blue-topaz-theme@@font-family-inline-code": "'FiraCode Nerd Font Mono','JetBrains Mono',var(--font-monospace-override), var(--font-monospace-theme)",
+  "shiba-theme-settings@@folder-style-change-options-colorful": "shiba-color-folder-background",
+  "shiba-theme-settings@@folder-style-change-options-colors-palette": "folder-colorful-one",
+  "shiba-theme-settings@@shib-colorful-folders-radius": 2,
+  "shiba-theme-settings@@shib-colorful-folders-opacity": 1,
+  "shiba-theme-settings@@shib-hide-scrollbars": false,
+  "shiba-theme-settings@@shiba-colors-theme-light": "stone-light",
+  "shiba-theme-settings@@shiba-colors-theme-dark": "pure-dark",
+  "blue-topaz-theme@@font-text-theme": "'思源黑体 CN',Bookerly,'Inter', 'Segoe UI','霞鹜文楷 GB', 'LXGW WenKai', 'Segoe UI Emoji',var(--font-interface)",
+  "blue-topaz-theme@@font-family-tag": "'思源黑体 CN',Bookerly, 'Microsoft YaHei', STzhongsong, STSong, 'Segoe UI Emoji', Serif",
+  "blue-topaz-theme@@font-family-strong": "'思源黑体 CN',Bookerly,'Inter', 'Segoe UI', 'LXGW WenKai Screen', 'LXGW WenKai Screen R', '霞鹜文楷 GB', 'LXGW WenKai', 'Segoe UI Emoji', var(--font-interface)",
+  "blue-topaz-theme@@rainbow-checklist": false
 }
