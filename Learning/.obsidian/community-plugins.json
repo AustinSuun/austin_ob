@@ -6,5 +6,7 @@
   "obsidian-image-auto-upload-plugin",
   "obsidian-latex-suite",
   "obsidian-quiet-outline",
-  "obsidian-style-settings"
+  "obsidian-style-settings",
+  "templater-obsidian",
+  "obsidian-tikzjax"
 ]

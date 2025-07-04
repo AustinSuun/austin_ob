@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "23587e2584e34c8e",
+        "id": "6abb2cfdaeb08d4d",
         "type": "tabs",
         "children": [
           {
-            "id": "004e3824f6024b49",
+            "id": "99837bda7e12fa1d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "学习板块/强化学习/014-基于模型的策略优化-MBPO.md",
+                "file": "学习板块/算法设计与分析/201-递归与分治策略.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "014-基于模型的策略优化-MBPO"
+              "title": "201-递归与分治策略"
             }
           }
         ]
@@ -173,48 +173,49 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "templater-obsidian:Templater": false
     }
   },
-  "active": "004e3824f6024b49",
+  "active": "99837bda7e12fa1d",
   "lastOpenFiles": [
-    "学习板块/强化学习/013-模仿学习.md",
-    "学习板块/强化学习/014-基于模型的策略优化-MBPO.md",
-    "学习板块/强化学习/012-SAC算法.md",
-    "学习板块/强化学习/006-1-无模型控制方法.md",
-    "学习板块/强化学习/001-简介.md",
-    "学习板块/强化学习/000-强化学习 目录.md",
-    "学习板块/强化学习/011-模型预测控制-MPC.md",
-    "学习板块/强化学习/009-深度强化学习价值方法.md",
-    "学习板块/强化学习/010-0深度强化学习策略方法.md",
-    "学习板块/强化学习/010-1补充-TROP近似求解.md",
-    "学习板块/强化学习/010-2补充-TROP求解过程.md",
-    "学术板块/生物信息/progGAE 代码.md",
-    "学术板块/3D点云/000-发展历程.md",
-    "学术板块/3D点云/001-发展方向-多模态与机器人（ULIP、具身智能）.md",
-    "学习板块/Python 常用模块/Pandas/pandas 使用记录.md",
-    "学术板块/000-学术板块目录.md",
-    "学术板块/3D点云",
-    "学术板块/生物信息/3- 数据处理.md",
-    "学习板块/强化学习/004-动态规划.md",
-    "学术板块/生物信息/2-了解数据.md",
-    "学习板块/Python 常用模块/Pandas/001-打开文件.md",
-    "学术板块/生物信息/1-研究步骤.md",
-    "学术板块/生物信息/0-论文记录.md",
-    "Linux_工具_环境/Git 使用记录.md",
+    "学术板块/杂项/计算机领域CCF推荐期刊A-B-C类全目录.md",
+    "学习板块/算法设计与分析/201-递归与分治策略.md",
+    "学术板块/杂项",
+    "学术板块/未命名.md",
+    "().md",
+    "学习板块/算法设计与分析/101-算法概论.md",
     "Linux_工具_环境/LaTex 语法.md",
-    "学习板块/强化学习/008-参数化的值函数和策略.md",
-    "学习板块/强化学习/007-基于规划的强化学习.md",
+    "Linux_工具_环境/MarkDown 语法速记.md",
+    "学习板块/算法设计与分析/002-初识算法.md",
+    "学习板块/算法设计与分析/001-算法设计与分析课程简介.md",
+    "学习板块/Python 常用模块/小模块/importlib.md",
+    "AAA模板.md",
+    "学术板块/3D点云/003-学习路线规划.md",
+    "学习板块/算法设计与分析",
+    "学术板块/3D点云/004-pointnet.md",
+    "学术板块/3D点云/001-发展方向-多模态与机器人（ULIP、具身智能）.md",
+    "Linux_工具_环境/Tikz.md",
+    "学习板块/Python 常用模块/小模块/provider.md",
+    "学习板块/Python 常用模块/小模块/shutil.md",
+    "学习板块/Python 常用模块/小模块/pathlib.md",
+    "学习板块/Python 常用模块/小模块/logger.md",
+    "学习板块/Python 常用模块/内置功能/pickle功能.md",
+    "未命名 1.md",
+    "学习板块/Python 常用模块/未命名.md",
+    "学习板块/Python 常用模块/内置功能",
+    "学习板块/Python 常用模块/warnings",
+    "学习板块/Python 常用模块/小模块",
+    "学术板块/3D点云/000-发展历程.md",
+    "学术板块/生物信息/3- 数据处理.md",
+    "Linux_工具_环境/000-Linux_工具_环境 目录.md",
+    "Linux_工具_环境/Git 使用记录.md",
+    "学术板块/3D点云",
     "人杰地灵，东箭南金/人杰地灵，东箭南金.canvas",
     "Linux_工具_环境/可用",
     "Linux_工具_环境/搁置",
     "Excalidraw",
     "学习板块/Python 常用模块/Pandas",
-    "学习板块/Python 常用模块",
-    "img",
-    "学术板块/生物信息",
-    "学习板块/ROS2",
-    "学习板块/强化学习/未命名",
     "ROS2/未命名.canvas"
   ]
 }
