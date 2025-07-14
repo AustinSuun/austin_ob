@@ -4,9 +4,10 @@
   "obsidian-excalidraw-plugin",
   "obsidian-git",
   "obsidian-image-auto-upload-plugin",
-  "obsidian-latex-suite",
   "obsidian-quiet-outline",
   "obsidian-style-settings",
   "templater-obsidian",
-  "obsidian-tikzjax"
+  "obsidian-tikzjax",
+  "obsidian-latex-suite",
+  "dataview"
 ]
