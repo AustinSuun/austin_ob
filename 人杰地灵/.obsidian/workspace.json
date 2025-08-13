@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "文学类/语录/语录集合.md",
+                "file": "文学类/语录/王立群.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "语录集合"
+              "title": "王立群"
+            }
+          },
+          {
+            "id": "eccaa7556ae585d8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "文学类/语录/王立群.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "王立群"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -176,10 +191,16 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "d7de8e9fca3ff4b4",
+  "active": "eccaa7556ae585d8",
   "lastOpenFiles": [
-    "文学类/语录/未命名.md",
+    "AAA模板.md",
+    "文学类/语录/王立群.md",
     "文学类/语录/语录集合.md",
+    "文学类/诗词格律-王利",
+    "文学类/穷通宝鉴/卷二·论木.md",
+    "太空/坎巴拉-火箭设计.md",
+    "太空",
+    "文学类/穷通宝鉴",
     "wine/wine-游戏助手.md",
     "文学类/语录",
     "学习板块/强化学习/011-模型预测控制-MPC.md",
@@ -203,18 +224,12 @@
     "学术板块/生物信息/0-论文记录.md",
     "Linux_工具_环境/Git 使用记录.md",
     "Linux_工具_环境/LaTex 语法.md",
-    "学习板块/强化学习/008-参数化的值函数和策略.md",
-    "学习板块/强化学习/007-基于规划的强化学习.md",
-    "学习板块/强化学习/006-2多步自助法.md",
     "人杰地灵，东箭南金/人杰地灵，东箭南金.canvas",
     "Linux_工具_环境/可用",
     "Linux_工具_环境/搁置",
     "Excalidraw",
     "学习板块/Python 常用模块/Pandas",
     "学习板块/Python 常用模块",
-    "img",
-    "学术板块/生物信息",
-    "学习板块/ROS2",
     "ROS2/未命名.canvas"
   ]
 }

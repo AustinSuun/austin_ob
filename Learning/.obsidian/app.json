@@ -3,5 +3,12 @@
   "vimMode": false,
   "readableLineLength": true,
   "attachmentFolderPath": "./attachments",
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "Tabloid",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
 }

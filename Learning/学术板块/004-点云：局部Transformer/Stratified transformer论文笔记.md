@@ -4,9 +4,9 @@
   - Austin
 tags:
 ---
+受 swin transformer 启发的网络架构
 
-
-
+https://arxiv.org/abs/2203.14508
 
 # 摘要
 
@@ -35,7 +35,7 @@ tags:
 
 
 ---
-# 相关工作
+# 材料与方法
 
 ## 试验材料
 
