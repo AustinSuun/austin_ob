@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "b467e37d8e18cb3d",
+    "type": "split",
+    "children": [
+      {
+        "id": "f29b92005ee176b6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "88f7ee725743188e",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "论文/000-论文数据库.base",
+                "viewName": "表格"
+              },
+              "icon": "lucide-table",
+              "title": "000-论文数据库"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b0be7f89055ea7c8",
+    "type": "split",
+    "children": [
+      {
+        "id": "8c897a6593b73937",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "388c1baf8eeaf808",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "6ea8b80b69520bc4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          },
+          {
+            "id": "70d0f79da7f87828",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "似然",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 328.5
+  },
+  "right": {
+    "id": "58be646a45855f50",
+    "type": "split",
+    "children": [
+      {
+        "id": "30797fbaf6d42891",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0221884f6086a7fd",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "学习板块/ROS2/001-安装环境-使用 DOCKER 安装 ROS2.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "001-安装环境-使用 DOCKER 安装 ROS2 的反向链接列表"
+            }
+          },
+          {
+            "id": "3bff843f47729f84",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "学习板块/ROS2/001-安装环境-使用 DOCKER 安装 ROS2.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "001-安装环境-使用 DOCKER 安装 ROS2 的出链列表"
+            }
+          },
+          {
+            "id": "e28b0c4d21a283ba",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": true,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "d8b8740a50be500b",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "e2f5293d40ee6871",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {},
+              "icon": "lines-of-text",
+              "title": "Quiet Outline"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:创建新数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "obsidian-git:Open Git source control": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "388c1baf8eeaf808",
+  "lastOpenFiles": [
+    "aaaa-模板.md",
+    "论文/000-论文数据库.base",
+    "论文/25-09-28/2019-FCOS-Fully-Convolutional-One-Stage-Object-Detection.md",
+    "论文/25-09-28/readme.md",
+    "论文/25-09-28/2020-FoveaBox_Beyond_Anchor-based_Object_Detector.md",
+    "论文/25-09-28",
+    "AAA模板.md",
+    "文学类/语录/王立群.md",
+    "文学类/语录/语录集合.md",
+    "文学类/诗词格律-王利",
+    "文学类/穷通宝鉴/卷二·论木.md",
+    "太空/坎巴拉-火箭设计.md",
+    "太空",
+    "文学类/穷通宝鉴",
+    "wine/wine-游戏助手.md",
+    "文学类/语录",
+    "学习板块/强化学习/011-模型预测控制-MPC.md",
+    "学习板块/强化学习/012-SAC算法.md",
+    "学习板块/强化学习/009-深度强化学习价值方法.md",
+    "学习板块/强化学习/010-0深度强化学习策略方法.md",
+    "学习板块/强化学习/010-1补充-TROP近似求解.md",
+    "学习板块/强化学习/010-2补充-TROP求解过程.md",
+    "学术板块/生物信息/progGAE 代码.md",
+    "学术板块/3D点云/000-发展历程.md",
+    "学术板块/3D点云/001-发展方向-多模态与机器人（ULIP、具身智能）.md",
+    "学习板块/Python 常用模块/Pandas/pandas 使用记录.md",
+    "学习板块/强化学习/000-强化学习 目录.md",
+    "学术板块/000-学术板块目录.md",
+    "学术板块/3D点云",
+    "学术板块/生物信息/3- 数据处理.md",
+    "学习板块/强化学习/004-动态规划.md",
+    "学术板块/生物信息/2-了解数据.md",
+    "人杰地灵，东箭南金/人杰地灵，东箭南金.canvas",
+    "Linux_工具_环境/可用",
+    "Linux_工具_环境/搁置",
+    "Excalidraw",
+    "ROS2/未命名.canvas"
+  ]
+}

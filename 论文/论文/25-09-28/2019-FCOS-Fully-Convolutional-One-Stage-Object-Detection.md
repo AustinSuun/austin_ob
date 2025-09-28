@@ -1,0 +1,12 @@
+---
+Date: 2025-09-28T18:28:00
+作者:
+  - Austin Suun
+tags:
+  - 2D目标检测
+  - anchor-free
+---
+
+> [!NOTE] 简要介绍
+> 2 D 目标检测中早期的 anchor-free 方法
+

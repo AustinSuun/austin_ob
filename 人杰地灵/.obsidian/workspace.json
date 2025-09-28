@@ -35,8 +35,7 @@
               "title": "王立群"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -180,6 +179,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:创建新数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -191,7 +191,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "eccaa7556ae585d8",
+  "active": "d7de8e9fca3ff4b4",
   "lastOpenFiles": [
     "AAA模板.md",
     "文学类/语录/王立群.md",

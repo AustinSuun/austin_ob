@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: 表格
+    filters:
+      and:
+        - '!file.tags.contains("readme")'
+        - file.ext != "base"
+    order:
+      - file.name
+      - tags
+    columnSize:
+      file.name: 408
