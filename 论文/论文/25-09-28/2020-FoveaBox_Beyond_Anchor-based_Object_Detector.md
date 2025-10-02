@@ -6,7 +6,6 @@ tags:
   - 2D目标检测
   - anchor-free
 ---
-2 D 目标检测中
 
 
 > [!NOTE] 简要介绍

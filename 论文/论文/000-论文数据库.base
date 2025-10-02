@@ -1,3 +1,6 @@
+properties:
+  note.excalidraw-link-prefix:
+    displayName: link
 views:
   - type: table
     name: 表格
@@ -8,5 +11,18 @@ views:
     order:
       - file.name
       - tags
+      - Date
+      - 链接
+    sort:
+      - property: Date
+        direction: DESC
+      - property: tags
+        direction: ASC
+      - property: excalidraw-link-prefix
+        direction: ASC
+      - property: file.links
+        direction: ASC
     columnSize:
-      file.name: 408
+      file.name: 468
+      note.tags: 297
+      note.Date: 148
