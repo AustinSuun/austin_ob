@@ -6,6 +6,7 @@ tags:
   - 3D目标检测
   - mamba
   - AAAI2025
+  - 废弃
 链接: https://arxiv.org/abs/2501.11971
 ---
 

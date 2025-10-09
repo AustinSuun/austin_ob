@@ -8,6 +8,7 @@ views:
       and:
         - '!file.tags.contains("readme")'
         - file.ext != "base"
+        - '!file.tags.contains("other")'
     order:
       - file.name
       - tags
