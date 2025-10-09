@@ -8,35 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "88f7ee725743188e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "论文/25-09-28/2019-CenterNet-Objects as Points.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2019-CenterNet-Objects as Points"
-            }
-          },
-          {
             "id": "fc493f3fc3b6bcab",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "缓存区/缓存区.md",
+                "file": "论文/25-09-28/2021-DETR3D-An End-to-End Transformer Model for 3D Object Detection.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "缓存区"
+              "title": "2021-DETR3D-An End-to-End Transformer Model for 3D Object Detection"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -78,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "似然",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 503.5
+    "width": 453.5
   },
   "right": {
     "id": "58be646a45855f50",
@@ -194,42 +179,42 @@
   },
   "active": "fc493f3fc3b6bcab",
   "lastOpenFiles": [
-    "论文/25-09-28/2019-CenterNet-Objects as Points.md",
-    "论文/25-09-28/2019-FCOS-Fully-Convolutional-One-Stage-Object-Detection.md",
-    "论文/25-09-28/2020-FoveaBox_Beyond_Anchor-based_Object_Detector.md",
-    "论文/25-09-28/2020-CenterPoint-Center-based 3D Object Detection and Tracking.md",
-    "论文/25-09-28/2020-CenterNet3D-An Anchor Free Object Detector for Point Cloud.md",
-    "缓存区/缓存区.md",
     "论文/000-论文数据库.base",
-    "缓存区",
+    "论文/25-09-28/2021-DETR3D-An End-to-End Transformer Model for 3D Object Detection.md",
+    "缓存区/idea记录.md",
+    "论文/25-09-28/2024-3DET-Mamba_Causal Sequence Modelling for End-to-End 3D Object Detection.md",
+    "杂乱概念/未命名/000-IoU总结.md",
     "aaaa-模板.md",
+    "杂乱概念/未命名/傅里叶位置嵌入.md",
+    "杂乱概念/未命名",
     "论文/25-09-28/readme.md",
+    "论文/25-09-28/2024-MambaBEV-An efficient 3D detection model with Mamba2.md",
+    "论文/25-09-28/2024-Voxel Mamba-Group-Free State Space Models for Point Cloud based 3D Object Detection.md",
+    "论文/25-09-28/2025-StruMamba3D-Exploring Structural Mamba for Self-supervised Point Cloud Representation Learning.md",
+    "论文/25-09-28/2021-Group-Free 3D-Object Detection via Transformers.md",
+    "论文/25-09-28/数据集-02.md",
+    "论文/25-09-28/数据集-01.md",
+    "缓存区/临时记录.md",
+    "论文/25-09-28/2025-SMamba-Sparse Mamba for Event-based Object Detection.md",
+    "论文/25-09-28/2025-DDFusion_Dual-Domain Homogeneous Fusion with Cross-Modal Mamba and Progressive Decoder for 3D Object Detection.md",
+    "论文/25-09-28/2020-PointFormer-3D Object Detection with Pointformer.md",
+    "论文/25-09-28/2020-FoveaBox_Beyond_Anchor-based_Object_Detector.md",
+    "论文/25-09-28/2021-TransFusion-Robust LiDAR-Camera Fusion for 3D Object Detection with Transformers.md",
+    "杂乱概念/未命名/001-填充曲线.md",
+    "缓存区/缓存论文.md",
+    "论文/25-09-28/2020-CenterNet3D-An Anchor Free Object Detector for Point Cloud.md",
+    "未命名.md",
+    "杂乱概念",
+    "未命名.base",
+    "未命名 1.base",
+    "论文/25-09-28/2019-FCOS-Fully-Convolutional-One-Stage-Object-Detection.md",
+    "论文/25-09-28/2019-CenterNet-Objects as Points.md",
+    "缓存区",
     "论文/25-09-28",
-    "AAA模板.md",
-    "文学类/语录/王立群.md",
-    "文学类/语录/语录集合.md",
     "文学类/诗词格律-王利",
-    "文学类/穷通宝鉴/卷二·论木.md",
-    "太空/坎巴拉-火箭设计.md",
     "太空",
     "文学类/穷通宝鉴",
-    "wine/wine-游戏助手.md",
-    "文学类/语录",
-    "学习板块/强化学习/011-模型预测控制-MPC.md",
-    "学习板块/强化学习/012-SAC算法.md",
-    "学习板块/强化学习/009-深度强化学习价值方法.md",
-    "学习板块/强化学习/010-0深度强化学习策略方法.md",
-    "学习板块/强化学习/010-1补充-TROP近似求解.md",
-    "学习板块/强化学习/010-2补充-TROP求解过程.md",
-    "学术板块/生物信息/progGAE 代码.md",
-    "学术板块/3D点云/000-发展历程.md",
-    "学术板块/3D点云/001-发展方向-多模态与机器人（ULIP、具身智能）.md",
-    "学习板块/Python 常用模块/Pandas/pandas 使用记录.md",
-    "学习板块/强化学习/000-强化学习 目录.md",
-    "学术板块/3D点云",
     "人杰地灵，东箭南金/人杰地灵，东箭南金.canvas",
-    "Linux_工具_环境/可用",
-    "Linux_工具_环境/搁置",
     "ROS2/未命名.canvas"
   ]
 }

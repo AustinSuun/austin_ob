@@ -11,8 +11,8 @@ views:
     order:
       - file.name
       - tags
-      - Date
       - 链接
+      - Date
     sort:
       - property: Date
         direction: DESC
@@ -23,6 +23,8 @@ views:
       - property: file.links
         direction: ASC
     columnSize:
-      file.name: 468
-      note.tags: 297
+      file.name: 396
+      note.tags: 449
       note.Date: 148
+  - type: cards
+    name: 视图
