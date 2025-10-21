@@ -27,5 +27,17 @@
   "blue-topaz-theme@@font-family-folder-file-title": "‘思源黑体 CN’,Arlrdbd, 'Source Han Sans', 'Noto Sans CJK', 'Source Sans Pro', 'Segoe UI Emoji', sans-serif",
   "blue-topaz-theme@@outline-style": "logseq-outline-style",
   "blue-topaz-theme@@font-monospace-theme": "'FiraCode Nerd Font Mono','JetBrains Mono', Consolas, Monaco, '等距更纱黑体 SC', 'Source Han Mono', 'Microsoft Yahei Mono', 'Segoe UI Emoji', 'Microsoft YaHei', 'Source Code Pro', monospace",
-  "blue-topaz-theme@@font-family-inline-code": "'FiraCode Nerd Font Mono','JetBrains Mono',var(--font-monospace-override), var(--font-monospace-theme)"
+  "blue-topaz-theme@@font-family-inline-code": "'FiraCode Nerd Font Mono','JetBrains Mono',var(--font-monospace-override), var(--font-monospace-theme)",
+  "blue-topaz-theme@@tag1@@light": "#2EB872",
+  "blue-topaz-theme@@tag1@@dark": "#2EB872",
+  "blue-topaz-theme@@tag2@@light": "#A3DE83",
+  "blue-topaz-theme@@tag2@@dark": "#A3DE83",
+  "blue-topaz-theme@@tag3@@light": "#FEFFE4",
+  "blue-topaz-theme@@tag3@@dark": "#FEFFE4",
+  "blue-topaz-theme@@tag4@@light": "#FA4659",
+  "blue-topaz-theme@@tag4@@dark": "#FA4659",
+  "blue-topaz-theme@@tag5@@light": "#7A08FA",
+  "blue-topaz-theme@@tag5@@dark": "#7A08FA",
+  "blue-topaz-theme@@tag-text@@light": "#00FFF5",
+  "blue-topaz-theme@@tag-text@@dark": "#00FFF5"
 }

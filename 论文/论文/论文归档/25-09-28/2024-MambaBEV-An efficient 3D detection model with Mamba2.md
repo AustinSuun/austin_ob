@@ -4,12 +4,12 @@ Date: 2025-10-05T12:24:00
   - Austin Suun
 tags:
   - 3D目标检测
-  - mamba
+  - mamba2
 链接: https://arxiv.org/abs/2410.12673
 ---
 
 > [!NOTE] 简要介绍
->  - 基于相机的 3 D 检测
+>  - 基于相机的 3 D 检测，多视图输入
 >  - 把 Mamba 用在 BEV 表示与时间融合中（提出 TemporalMamba 等模块来做长期序列建模与 BEV 特征重排），专注自动驾驶场景的时序 BEV 融合
 
 

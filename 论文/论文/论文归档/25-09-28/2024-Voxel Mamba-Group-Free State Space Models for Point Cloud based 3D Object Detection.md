@@ -11,6 +11,7 @@ tags:
   - 优先级-1
 链接: https://arxiv.org/abs/2406.10700
 ---
+仓库连接： https://github.com/gwenzhang/Voxel-Mamba
 
 > [!NOTE] 简要介绍
 >  - 把体素空间序列化为单条序列并用 SSM（Mamba）做 group-free 处理，兼顾空间邻近性与线性复杂度，针对 Waymo / nuScenes 做了检测实证
