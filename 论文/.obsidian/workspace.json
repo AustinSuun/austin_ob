@@ -13,40 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "杂乱概念/25-09-28/恶劣天气下3D，目标检测的调研.md",
+                "file": "论文/2025-11-1/readme.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "恶劣天气下3D，目标检测的调研"
-            }
-          },
-          {
-            "id": "b6f2271ed705422e",
-            "type": "leaf",
-            "state": {
-              "type": "thino_view",
-              "state": {},
-              "icon": "Memos",
-              "title": "Thino"
-            }
-          },
-          {
-            "id": "1392d869e879cff3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "论文/25-10-11/3D Lidar-Based Object Conditions in Adverse Weather Conditions.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "3D Lidar-Based Object Conditions in Adverse Weather Conditions"
+              "title": "readme"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -203,43 +178,44 @@
       "obsidian-memos:Thino": false
     }
   },
-  "active": "1392d869e879cff3",
+  "active": "b0d15f371fe86387",
   "lastOpenFiles": [
-    "论文/000-论文数据库.base",
+    "论文/2025-11-1/未命名.md",
+    "论文/2025-11-1/2023-MSF_Motion-guided Sequential Fusion for Efficient 3D Object Detection from Point Cloud Sequences.md",
+    "论文/2025-11-1/readme.md",
+    "论文/2025-11-1/2020-An LSTM Approach to Temporal 3D Object Detection in LiDAR Point Clouds.md",
     "杂乱概念/25-09-28/恶劣天气下3D，目标检测的调研.md",
     "2025-10-21.md",
+    "2025-11-03.md",
+    "论文/2025-11-1/2023-LEF_Late-to-Early Temporal Fusion for LiDAR 3D Object Detection.md",
+    "论文/2025-11-1/数据集-04 KITTI.md",
+    "杂乱概念/2025-11-1/时间融合.md",
+    "缓存区/idea记录.md",
+    "杂乱概念/25-09-28/DETR 检测头存在缺点.md",
+    "杂乱概念/2025-11-1",
+    "缓存区/未命名.md",
+    "论文/000-论文数据库.base",
+    "论文/论文归档/25-10-11/数据集-03 waymo.md",
+    "论文/论文归档/25-10-11/3D Lidar-Based Object Conditions in Adverse Weather Conditions.md",
+    "缓存区/MMDetection3D库.md",
+    "论文/论文归档/25-10-11/2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds.md",
+    "论文/论文归档/25-09-28/2020-CenterNet3D-An Anchor Free Object Detector for Point Cloud.md",
+    "论文/论文归档/25-09-28/2020-CenterPoint-Center-based 3D Object Detection and Tracking.md",
+    "论文/2025-11-1",
     "缓存区/恶劣天气论文-数据集与发明广发.md",
     "论文/论文归档/25-09-28/数据集-02.md",
-    "论文/25-10-11/3D Lidar-Based Object Conditions in Adverse Weather Conditions.md",
-    "缓存区/MMDetection3D库.md",
     "缓存区/LION的性能.md",
     "缓存区/缓存论文.md",
-    "论文/25-10-11/2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds.md",
-    "论文/25-10-11/2024-Unleashing the Potential of Mamba_Boosting a LiDAR 3D Sparse Detector by Using Cross-Model Knowledge Distillation.md",
+    "论文/论文归档/25-10-11/2024-Unleashing the Potential of Mamba_Boosting a LiDAR 3D Sparse Detector by Using Cross-Model Knowledge Distillation.md",
     "论文/论文归档/25-09-28/2024-3DET-Mamba_Causal Sequence Modelling for End-to-End 3D Object Detection.md",
-    "论文/25-10-11/数据集-03 waymo.md",
     "论文/论文归档/25-09-28/readme.md",
-    "论文/论文归档/25-09-28/数据集-01.md",
-    "论文/论文归档/25-09-28/2025-StruMamba3D-Exploring Structural Mamba for Self-supervised Point Cloud Representation Learning.md",
-    "论文/论文归档/25-09-28/2025-UniMamba-Unified Spatial-Channel Representation Learning with Group-Efficient Mamba for LiDAR-based 3D Object Detection.md",
-    "论文/论文归档/25-09-28/2025-DDFusion_Dual-Domain Homogeneous Fusion with Cross-Modal Mamba and Progressive Decoder for 3D Object Detection.md",
-    "论文/论文归档/25-09-28/2024-Voxel Mamba-Group-Free State Space Models for Point Cloud based 3D Object Detection.md",
-    "缓存区/idea记录.md",
-    "论文/论文归档/25-09-28/2024-MambaBEV-An efficient 3D detection model with Mamba2.md",
-    "论文/25-10-11/2024-SAFDNet-A Simple and Effective Network for Fully Sparse 3D Object Detection.md",
-    "杂乱概念/25-09-28/基于Mamba的sota.md",
-    "杂乱概念/25-09-28/傅里叶位置嵌入.md",
-    "论文/论文归档/25-09-28/2021-Group-Free 3D-Object Detection via Transformers.md",
-    "杂乱概念/25-09-28/DETR 检测头存在缺点.md",
-    "论文/25-10-11",
+    "论文/论文归档/25-10-11",
     "论文/论文归档",
     "未命名.base",
     "模板",
     "杂乱概念/25-09-28/未命名",
     "杂乱概念/25-09-28",
     "杂乱概念",
-    "未命名 1.base",
-    "缓存区",
     "人杰地灵，东箭南金/人杰地灵，东箭南金.canvas",
     "ROS2/未命名.canvas"
   ]
