@@ -12,6 +12,7 @@ tags:
 
 
 # 时序融合相关的论文
+
 简短回答：有。在纯点云（LiDAR）时序融合做 3 D 目标检测的文献里，确实存在把“递增式隐状态（incremental hidden state）”／循环记忆（RNN/LSTM/GRU/状态器件）作为时间融合机制的工作 —— 这是一个常见且自然的思路。下面把代表性论文、思想、优缺点和实践建议给你汇总起来，便于你选基线或设计新方法。
 
 
@@ -92,9 +93,6 @@ Backbone：sparse conv 或 voxel encoder（同单帧检测器）；
 
 5. 训练细节：联合训练检测与时序模块；loss 在检测 loss 的同时加对隐状态预测（如 future flow / velocity 回归）会帮助稳定训练。使用 track/velocity ground truth（Waymo/nuScenes 都有）来监督时序输出更好。
 
-
-
-
 ---
 
 给你的快速阅读 / 实验清单（按优先级）
@@ -109,9 +107,6 @@ Backbone：sparse conv 或 voxel encoder（同单帧检测器）；
 
 
 4. 若想做前沿尝试，查阅 2024–2025 年关于 state-space / LION / DySS 的工作（SSM 在长序列/在线场景的优势）。
-
-
-
 
 ---
 
