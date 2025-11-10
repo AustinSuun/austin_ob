@@ -1,0 +1,71 @@
+/* === 全局界面字体（设置、菜单、侧栏等） === */
+body {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* === 左侧资源管理器字体 === */
+.workspace-leaf-content .nav-file-title,
+.workspace-leaf-content .nav-folder-title {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* === 编辑器正文（markdown 编辑区）字体 === */
+.cm-s-obsidian .cm-line {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* === 编辑器中列表符号、折叠标记等辅助文字 === */
+.cm-s-obsidian .HyperMD-list-line,
+.cm-s-obsidian .cm-formatting,
+.cm-s-obsidian .cm-header {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* === 预览模式正文 === */
+.markdown-preview-view,
+.markdown-preview-section {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* === 预览模式标题（# h1~h6） === */
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6 {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+  font-weight: bold !important;
+  font-style: italic;
+}
+
+/* === 编辑器代码块、行内代码（等宽字体） === */
+.cm-s-obsidian .cm-content,
+.markdown-preview-view code,
+.markdown-preview-view pre {
+  font-family: "FiraCode Nerd Font Mono", "FiraCode Nerd Font", monospace !important;
+  font-weight: 400 !important;
+}
+
+/* === 编辑器 YAML frontmatter 部分 === */
+.cm-s-obsidian .cm-hmd-frontmatter {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* === 文件标题（视图顶部显示的文件名） === */
+.view-header-title {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* === 标签页上的文件名文字（tab标题） === */
+.workspace-tab-header-inner-title {
+  font-family: "思源黑体 CN", "Source Han Sans CN", sans-serif !important;
+  font-weight: 400 !important;
+

@@ -13,12 +13,40 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "论文/2025-11-1/readme.md",
+                "file": "论文/论文归档/25-09-28/2025-UniMamba-Unified Spatial-Channel Representation Learning with Group-Efficient Mamba for LiDAR-based 3D Object Detection.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "readme"
+              "title": "2025-UniMamba-Unified Spatial-Channel Representation Learning with Group-Efficient Mamba for LiDAR-based 3D Object Detection"
+            }
+          },
+          {
+            "id": "e08c28b51939927f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "杂乱概念/25-09-28/保存随时间的特征图历史.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "保存随时间的特征图历史"
+            }
+          },
+          {
+            "id": "bf81f4281a638ace",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "论文/论文归档/25-10-11/2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds"
             }
           }
         ]
@@ -63,7 +91,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "lion",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,11 +102,12 @@
               "title": "搜索"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 453.5
+    "width": 278.5
   },
   "right": {
     "id": "58be646a45855f50",
@@ -155,9 +184,19 @@
               "icon": "lines-of-text",
               "title": "Quiet Outline"
             }
+          },
+          {
+            "id": "2434fa291153d06f",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Connections"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -175,40 +214,43 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false,
       "obsidian-git:Open Git source control": false,
       "templater-obsidian:Templater": false,
-      "obsidian-memos:Thino": false
+      "obsidian-memos:Thino": false,
+      "smart-connections:Open: Smart Chat": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Smart Connections: Open random connection": true
     }
   },
   "active": "b0d15f371fe86387",
   "lastOpenFiles": [
-    "论文/2025-11-1/未命名.md",
-    "论文/2025-11-1/2023-MSF_Motion-guided Sequential Fusion for Efficient 3D Object Detection from Point Cloud Sequences.md",
+    "论文/论文归档/25-10-11/2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds.md",
+    "论文/论文归档/25-09-28/2025-UniMamba-Unified Spatial-Channel Representation Learning with Group-Efficient Mamba for LiDAR-based 3D Object Detection.md",
+    "缓存区/未命名 1.md",
+    "论文/2025-11-1/25-Spotting the Unexpected (STU)-A 3D LiDAR Dataset for Anomaly Segmentation in Autonomous Driving.md",
     "论文/2025-11-1/readme.md",
+    "缓存区/idea记录.md",
     "论文/2025-11-1/2020-An LSTM Approach to Temporal 3D Object Detection in LiDAR Point Clouds.md",
+    "论文/2025-11-1/2023-MSF_Motion-guided Sequential Fusion for Efficient 3D Object Detection from Point Cloud Sequences.md",
+    "缓存区/LION的性能.md",
+    "论文/论文归档/25-10-11/3D Lidar-Based Object Conditions in Adverse Weather Conditions.md",
+    "论文/论文归档/25-10-11/2024-Unleashing the Potential of Mamba_Boosting a LiDAR 3D Sparse Detector by Using Cross-Model Knowledge Distillation.md",
+    "论文/论文归档/25-10-11/2024-SAFDNet-A Simple and Effective Network for Fully Sparse 3D Object Detection.md",
+    "论文/2025-11-1/2022-LiDAR Snowfall Simulation for Robust 3D Object Detection.md",
+    "杂乱概念/25-09-28/保存随时间的特征图历史.md",
+    "论文/2025-11-1/2024-TripleMixer-A 3D Point Cloud Denoising Model for Adverse Weather.md",
+    "论文/2025-11-1/2024-Towards Robust 3D Object Detection with LiDAR and 4D Radar Fusion in Various Weather Conditions.md",
+    "论文/2025-11-1/2023-3D Semantic Segmentation in the Wild-Learning Generalized Models for Adverse-Condition Point Clouds.md",
+    "论文/2025-11-1/2023-LEF_Late-to-Early Temporal Fusion for LiDAR 3D Object Detection.md",
+    "论文/2025-11-1/2021-Fog Simulation on Real LiDAR Point Clouds for 3D Object Detection in Adverse Weather.md",
+    "论文/2025-11-1/数据集-04 KITTI.md",
     "杂乱概念/25-09-28/恶劣天气下3D，目标检测的调研.md",
     "2025-10-21.md",
     "2025-11-03.md",
-    "论文/2025-11-1/2023-LEF_Late-to-Early Temporal Fusion for LiDAR 3D Object Detection.md",
-    "论文/2025-11-1/数据集-04 KITTI.md",
     "杂乱概念/2025-11-1/时间融合.md",
-    "缓存区/idea记录.md",
     "杂乱概念/25-09-28/DETR 检测头存在缺点.md",
     "杂乱概念/2025-11-1",
     "缓存区/未命名.md",
     "论文/000-论文数据库.base",
-    "论文/论文归档/25-10-11/数据集-03 waymo.md",
-    "论文/论文归档/25-10-11/3D Lidar-Based Object Conditions in Adverse Weather Conditions.md",
-    "缓存区/MMDetection3D库.md",
-    "论文/论文归档/25-10-11/2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds.md",
-    "论文/论文归档/25-09-28/2020-CenterNet3D-An Anchor Free Object Detector for Point Cloud.md",
-    "论文/论文归档/25-09-28/2020-CenterPoint-Center-based 3D Object Detection and Tracking.md",
     "论文/2025-11-1",
-    "缓存区/恶劣天气论文-数据集与发明广发.md",
-    "论文/论文归档/25-09-28/数据集-02.md",
-    "缓存区/LION的性能.md",
-    "缓存区/缓存论文.md",
-    "论文/论文归档/25-10-11/2024-Unleashing the Potential of Mamba_Boosting a LiDAR 3D Sparse Detector by Using Cross-Model Knowledge Distillation.md",
-    "论文/论文归档/25-09-28/2024-3DET-Mamba_Causal Sequence Modelling for End-to-End 3D Object Detection.md",
-    "论文/论文归档/25-09-28/readme.md",
     "论文/论文归档/25-10-11",
     "论文/论文归档",
     "未命名.base",

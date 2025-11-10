@@ -1,0 +1,13 @@
+{
+  "cssTheme": "Blue Topaz",
+  "interfaceFontFamily": "思源黑体 CN",
+  "textFontFamily": "思源黑体 CN",
+  "accentColor": "",
+  "baseFontSize": 20,
+  "theme": "system",
+  "monospaceFontFamily": "",
+  "enabledCssSnippets": [
+    "souce_fonts"
+  ],
+  "nativeMenus": false
+}

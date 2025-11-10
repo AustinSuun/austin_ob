@@ -1,0 +1,235 @@
+{
+  "main": {
+    "id": "b467e37d8e18cb3d",
+    "type": "split",
+    "children": [
+      {
+        "id": "cc53906eb8326b64",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e08c28b51939927f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "模板/aaaa-模.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "aaaa-模"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b0be7f89055ea7c8",
+    "type": "split",
+    "children": [
+      {
+        "id": "8c897a6593b73937",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "388c1baf8eeaf808",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "6ea8b80b69520bc4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          },
+          {
+            "id": "70d0f79da7f87828",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "docker",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 278.5
+  },
+  "right": {
+    "id": "58be646a45855f50",
+    "type": "split",
+    "children": [
+      {
+        "id": "30797fbaf6d42891",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0221884f6086a7fd",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "学习板块/ROS2/001-安装环境-使用 DOCKER 安装 ROS2.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "001-安装环境-使用 DOCKER 安装 ROS2 的反向链接列表"
+            }
+          },
+          {
+            "id": "3bff843f47729f84",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "学习板块/ROS2/001-安装环境-使用 DOCKER 安装 ROS2.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "001-安装环境-使用 DOCKER 安装 ROS2 的出链列表"
+            }
+          },
+          {
+            "id": "e28b0c4d21a283ba",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": true,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "d8b8740a50be500b",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "e2f5293d40ee6871",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "quiet-outline"
+            }
+          },
+          {
+            "id": "2434fa291153d06f",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Connections"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:创建新数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "obsidian-git:Open Git source control": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-memos:Thino": false,
+      "smart-connections:Open: Smart Chat": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Smart Connections: Open random connection": true
+    }
+  },
+  "active": "e08c28b51939927f",
+  "lastOpenFiles": [
+    "2025-11-09.md",
+    "KITTI数据集安装.md",
+    "模板/aaaa-模.md",
+    "().md",
+    "模板",
+    "欢迎.md",
+    "KITTI",
+    "论文/2025-11-1/25-Spotting the Unexpected (STU)-A 3D LiDAR Dataset for Anomaly Segmentation in Autonomous Driving.md",
+    "缓存区/未命名 1.md",
+    "论文/2025-11-1/readme.md",
+    "缓存区/idea记录.md",
+    "论文/2025-11-1/2020-An LSTM Approach to Temporal 3D Object Detection in LiDAR Point Clouds.md",
+    "论文/2025-11-1/2023-MSF_Motion-guided Sequential Fusion for Efficient 3D Object Detection from Point Cloud Sequences.md",
+    "缓存区/LION的性能.md",
+    "论文/论文归档/25-10-11/3D Lidar-Based Object Conditions in Adverse Weather Conditions.md",
+    "论文/论文归档/25-10-11/2024-Unleashing the Potential of Mamba_Boosting a LiDAR 3D Sparse Detector by Using Cross-Model Knowledge Distillation.md",
+    "论文/论文归档/25-10-11/2024-SAFDNet-A Simple and Effective Network for Fully Sparse 3D Object Detection.md",
+    "论文/论文归档/25-10-11/2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds.md",
+    "论文/2025-11-1/2022-LiDAR Snowfall Simulation for Robust 3D Object Detection.md",
+    "杂乱概念/25-09-28/保存随时间的特征图历史.md",
+    "论文/2025-11-1/2024-TripleMixer-A 3D Point Cloud Denoising Model for Adverse Weather.md",
+    "论文/2025-11-1/2024-Towards Robust 3D Object Detection with LiDAR and 4D Radar Fusion in Various Weather Conditions.md",
+    "论文/2025-11-1/2023-3D Semantic Segmentation in the Wild-Learning Generalized Models for Adverse-Condition Point Clouds.md",
+    "论文/2025-11-1/2023-LEF_Late-to-Early Temporal Fusion for LiDAR 3D Object Detection.md",
+    "论文/2025-11-1/2021-Fog Simulation on Real LiDAR Point Clouds for 3D Object Detection in Adverse Weather.md",
+    "论文/2025-11-1/数据集-04 KITTI.md",
+    "杂乱概念/25-09-28/恶劣天气下3D，目标检测的调研.md",
+    "2025-10-21.md",
+    "杂乱概念/2025-11-1",
+    "论文/000-论文数据库.base",
+    "论文/2025-11-1",
+    "论文/论文归档/25-10-11",
+    "论文/论文归档",
+    "未命名.base",
+    "杂乱概念/25-09-28/未命名",
+    "杂乱概念/25-09-28",
+    "人杰地灵，东箭南金/人杰地灵，东箭南金.canvas",
+    "ROS2/未命名.canvas"
+  ]
+}
