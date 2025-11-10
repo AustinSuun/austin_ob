@@ -1,0 +1,3 @@
+
+"smart_sources:服务器操作/未命名.md": {"path":"服务器操作/未命名.md","last_embed":{"hash":null},"embeddings":{},"last_read":{"hash":"208nua","at":1762775889647},"class_name":"SmartSource","last_import":{"mtime":1762775873696,"size":1352,"at":1762775889648,"hash":"208nua"},"blocks":{"#---frontmatter---":[1,7],"#":[11,14],"#Tmux 新会话":[15,25],"#Tmux 新会话#{1}":[16,25],"#KITTI 单 GPU 训练":[26,45],"#KITTI 单 GPU 训练#{1}":[27,45],"#TensorBoard":[46,65],"#TensorBoard#{1}":[47,65],"#Test":[66,75],"#Test#{1}":[67,75]},"outlinks":[],"metadata":{"Date":null,"作者":["Austin Suun"],"tags":null,"链接":null},"task_lines":[]},
+"smart_sources:服务器操作/未命名.md": null,

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "模板/aaaa-模.md",
+                "file": "服务器操作/训练用命令.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aaaa-模"
+              "title": "训练用命令"
             }
           }
         ]
@@ -167,7 +167,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -193,13 +193,14 @@
   },
   "active": "e08c28b51939927f",
   "lastOpenFiles": [
+    "杂七杂八/KITTI数据集安装.md",
+    "服务器操作/训练用命令.md",
+    "aaaa-模板.md",
     "2025-11-09.md",
-    "KITTI数据集安装.md",
-    "模板/aaaa-模.md",
     "().md",
-    "模板",
+    "杂七杂八",
     "欢迎.md",
-    "KITTI",
+    "服务器操作",
     "论文/2025-11-1/25-Spotting the Unexpected (STU)-A 3D LiDAR Dataset for Anomaly Segmentation in Autonomous Driving.md",
     "缓存区/未命名 1.md",
     "论文/2025-11-1/readme.md",
@@ -220,7 +221,6 @@
     "论文/2025-11-1/2021-Fog Simulation on Real LiDAR Point Clouds for 3D Object Detection in Adverse Weather.md",
     "论文/2025-11-1/数据集-04 KITTI.md",
     "杂乱概念/25-09-28/恶劣天气下3D，目标检测的调研.md",
-    "2025-10-21.md",
     "杂乱概念/2025-11-1",
     "论文/000-论文数据库.base",
     "论文/2025-11-1",
