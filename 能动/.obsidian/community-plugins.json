@@ -1,7 +1,6 @@
 [
   "easy-typing-obsidian",
   "editing-toolbar",
-  "obsidian-excalidraw-plugin",
   "obsidian-git",
   "obsidian-image-auto-upload-plugin",
   "obsidian-latex-suite",
@@ -9,6 +8,7 @@
   "obsidian-style-settings",
   "dataview",
   "templater-obsidian",
-  "obsidian-memos",
-  "smart-connections"
+  "obsidian-excalidraw-plugin",
+  "obsidian-annotator",
+  "drawio-obsidian"
 ]

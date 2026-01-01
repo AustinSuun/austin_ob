@@ -4,52 +4,37 @@
     "type": "split",
     "children": [
       {
-        "id": "cc53906eb8326b64",
+        "id": "9e910369ec4f4ba8",
         "type": "tabs",
         "children": [
           {
-            "id": "b0d15f371fe86387",
+            "id": "968f0768b145c18e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "论文/论文归档/25-09-28/2025-UniMamba-Unified Spatial-Channel Representation Learning with Group-Efficient Mamba for LiDAR-based 3D Object Detection.md",
-                "mode": "source",
-                "source": false
+                "file": "缓存区/Drawing 2025-11-14 12.46.56.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "2025-UniMamba-Unified Spatial-Channel Representation Learning with Group-Efficient Mamba for LiDAR-based 3D Object Detection"
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2025-11-14 12.46.56.excalidraw"
             }
           },
           {
-            "id": "e08c28b51939927f",
+            "id": "b7e03006d93f1731",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "杂乱概念/25-09-28/保存随时间的特征图历史.md",
+                "file": "论文/2025-12-3/DM3D- Deformable Mamba via Offset-Guided Gaussian Sequencing for Point Cloud Understanding.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "保存随时间的特征图历史"
-            }
-          },
-          {
-            "id": "bf81f4281a638ace",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "论文/论文归档/25-10-11/2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds"
+              "title": "DM3D- Deformable Mamba via Offset-Guided Gaussian Sequencing for Point Cloud Understanding"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -91,7 +76,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "lion",
+                "query": "tag:#开放词汇识别",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -102,12 +87,11 @@
               "title": "搜索"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 278.5
+    "width": 389.5
   },
   "right": {
     "id": "58be646a45855f50",
@@ -200,7 +184,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -220,44 +205,48 @@
       "smart-connections:Smart Connections: Open random connection": true
     }
   },
-  "active": "b0d15f371fe86387",
+  "active": "b7e03006d93f1731",
   "lastOpenFiles": [
-    "论文/论文归档/25-10-11/2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds.md",
+    "论文/2025-12-3/2025-PointNet4D- A Lightweight 4D Point Cloud Video Backbone for Online and Offline Perception in Robotic Applications.md",
+    "论文/2025-12-3/DM3D- Deformable Mamba via Offset-Guided Gaussian Sequencing for Point Cloud Understanding.md",
+    "论文/2025-12-3/2024-Point Cloud Mamba-Point Cloud Learning via State Space Model.md",
     "论文/论文归档/25-09-28/2025-UniMamba-Unified Spatial-Channel Representation Learning with Group-Efficient Mamba for LiDAR-based 3D Object Detection.md",
+    "论文/论文归档/2025-11-1/2025-A Unified Voxel Diffusion Module for Point Cloud 3D Object Detectio.md",
+    "缓存区/Drawing 2025-11-14 12.46.56.excalidraw.md",
+    "论文/论文归档/2025-11-1/2025-WaMaIR-Image Restoration via Multiscale Wavelet Convolutions and Mamba-based Channel Modeling with Texture Enhancement.md",
     "缓存区/未命名 1.md",
-    "论文/2025-11-1/25-Spotting the Unexpected (STU)-A 3D LiDAR Dataset for Anomaly Segmentation in Autonomous Driving.md",
-    "论文/2025-11-1/readme.md",
-    "缓存区/idea记录.md",
-    "论文/2025-11-1/2020-An LSTM Approach to Temporal 3D Object Detection in LiDAR Point Clouds.md",
-    "论文/2025-11-1/2023-MSF_Motion-guided Sequential Fusion for Efficient 3D Object Detection from Point Cloud Sequences.md",
+    "缓存区/临时记录-去噪部分设计.md",
+    "缓存区/如何构建一篇ECCV26.md",
+    "论文/论文归档/2025-11-1/2025-TripleMixer-A 3D Point Cloud Denoising Model for Adverse Weather.md",
+    "缓存区/MMDetection3D库.md",
+    "缓存区/LION复现结果.md",
     "缓存区/LION的性能.md",
-    "论文/论文归档/25-10-11/3D Lidar-Based Object Conditions in Adverse Weather Conditions.md",
-    "论文/论文归档/25-10-11/2024-Unleashing the Potential of Mamba_Boosting a LiDAR 3D Sparse Detector by Using Cross-Model Knowledge Distillation.md",
-    "论文/论文归档/25-10-11/2024-SAFDNet-A Simple and Effective Network for Fully Sparse 3D Object Detection.md",
-    "论文/2025-11-1/2022-LiDAR Snowfall Simulation for Robust 3D Object Detection.md",
-    "杂乱概念/25-09-28/保存随时间的特征图历史.md",
-    "论文/2025-11-1/2024-TripleMixer-A 3D Point Cloud Denoising Model for Adverse Weather.md",
-    "论文/2025-11-1/2024-Towards Robust 3D Object Detection with LiDAR and 4D Radar Fusion in Various Weather Conditions.md",
-    "论文/2025-11-1/2023-3D Semantic Segmentation in the Wild-Learning Generalized Models for Adverse-Condition Point Clouds.md",
-    "论文/2025-11-1/2023-LEF_Late-to-Early Temporal Fusion for LiDAR 3D Object Detection.md",
-    "论文/2025-11-1/2021-Fog Simulation on Real LiDAR Point Clouds for 3D Object Detection in Adverse Weather.md",
-    "论文/2025-11-1/数据集-04 KITTI.md",
-    "杂乱概念/25-09-28/恶劣天气下3D，目标检测的调研.md",
-    "2025-10-21.md",
-    "2025-11-03.md",
-    "杂乱概念/2025-11-1/时间融合.md",
-    "杂乱概念/25-09-28/DETR 检测头存在缺点.md",
-    "杂乱概念/2025-11-1",
-    "缓存区/未命名.md",
-    "论文/000-论文数据库.base",
-    "论文/2025-11-1",
-    "论文/论文归档/25-10-11",
-    "论文/论文归档",
+    "论文/论文归档/25-10-11/2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds.md",
+    "论文/2025-12-3/24-ImOV3D- Learning Open-Vocabulary Point Clouds 3D Object Detection from Only 2D Images.md",
+    "论文/2025-12-3/24-PointLLM- Empowering Large Language Models to Understand Point Clouds.md",
+    "论文/2025-12-3/25-LLM-Guided Material Inference for 3D Point Clouds.md",
+    "论文/2025-12-3/2025-BEVDilation- LiDAR-Centric Multi-Modal Fusion for 3D Object Detection.md",
+    "论文/2025-12-3/2025-DM3D- Deformable Mamba via Offset-Guided Gaussian Sequencing for Point Cloud Understanding.md",
+    "论文/2025-12-3/2025-Traffic Image Restoration under Adverse Weather via Frequency-Aware Mamba.md",
+    "未命名 1.base",
+    "杂乱概念/25-09-28/基于Mamba的sota.md",
+    "论文/论文归档/2025-11-1/2025-Task-Generalized Adaptive Cross-Domain Learningfor Multimodal Image Fusion.md",
+    "缓存区/idea记录.md",
+    "论文/2025-12-3",
+    "论文/论文归档/2025-11-1/2025-WaveFormer-A 3D Transformer withWavelet-Driven Feature Representation forEfficient Medical Image Segmentation.md",
+    "论文/2025-11-1/LION-Linear Group RNN for 3D Object Detection in Point Cloudst Medical Image Segmentation.md",
     "未命名.base",
-    "模板",
-    "杂乱概念/25-09-28/未命名",
-    "杂乱概念/25-09-28",
-    "杂乱概念",
+    "缓存区/attachments/Pasted Image 20251126150022_967.png",
+    "缓存区/attachments",
+    "Excalidraw/Scripts/Downloaded/Organic Line Legacy.svg",
+    "Excalidraw/Scripts/Downloaded/Mindmap format.svg",
+    "Excalidraw/Scripts/Downloaded",
+    "Excalidraw/Scripts",
+    "Excalidraw",
+    "缓存区/未命名.canvas",
+    "论文/未命名",
+    "论文/000-论文数据库.base",
+    "杂乱概念/2025-11-1",
     "人杰地灵，东箭南金/人杰地灵，东箭南金.canvas",
     "ROS2/未命名.canvas"
   ]

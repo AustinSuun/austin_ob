@@ -8,7 +8,7 @@ tags:
   - 3D目标检测
 链接: https://arxiv.org/abs/2503.12009
 ---
-
+ 
 > [!NOTE] 简要介绍
 > UniMamba 提出一种统一空间与通道表征的 Group-Efficient Mamba 架构，用于 LiDAR 3D 目标检测，在保持稀疏高效的同时提升时空特征建模能力，显著优于现有 Transformer 与 CNN 方法。
 

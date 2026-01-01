@@ -1,0 +1,590 @@
+{
+  "当前论文设计/消融试验1-高低频融合模块设计.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/补救措施.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 25,
+        "ch": 0
+      },
+      "to": {
+        "line": 25,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "杂七杂八/前沿作业.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 95,
+        "ch": 3
+      },
+      "to": {
+        "line": 95,
+        "ch": 3
+      }
+    },
+    "expandedKeys": []
+  },
+  "杂七杂八/前沿作业 大纲.md": {
+    "scroll": 0.2608695652173913,
+    "cursor": {
+      "from": {
+        "line": 5,
+        "ch": 0
+      },
+      "to": {
+        "line": 5,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "服务器操作/LION训练用命令.md": {
+    "scroll": 83.04040404040404,
+    "cursor": {
+      "from": {
+        "line": 99,
+        "ch": 247
+      },
+      "to": {
+        "line": 99,
+        "ch": 247
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/未命名.md": {
+    "scroll": 95.32916666666667,
+    "cursor": {
+      "from": {
+        "line": 103,
+        "ch": 14
+      },
+      "to": {
+        "line": 103,
+        "ch": 14
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区-总览.md": {
+    "scroll": 84.7,
+    "cursor": {
+      "from": {
+        "line": 75,
+        "ch": 0
+      },
+      "to": {
+        "line": 75,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/分离高低频信号的处理方案.md": {
+    "scroll": 27.15,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/可学习小波变换.md": {
+    "scroll": 17.741935483870968,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/去噪能力.md": {
+    "scroll": 14.130952380952381,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/融合的处理方案对比.md": {
+    "scroll": 19.773809523809526,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/门控升级方案.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/小波变换的小波基选择.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "杂七杂八/如何在嵌入式设备上部署yolov8n_seg模型.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/总结.md": {
+    "scroll": 28.15,
+    "cursor": {
+      "from": {
+        "line": 36,
+        "ch": 8
+      },
+      "to": {
+        "line": 36,
+        "ch": 8
+      }
+    },
+    "expandedKeys": []
+  },
+  "杂七杂八/yolo8_seg.exe.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "杂七杂八/yolov8n_seg部署.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "aaaa-模板.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "服务器操作/Tmux+yazi.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "服务器操作/向服务器传输文件.md": {
+    "scroll": 45.791666666666664,
+    "cursor": {
+      "from": {
+        "line": 22,
+        "ch": 0
+      },
+      "to": {
+        "line": 22,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "服务器操作/文件夹软链接+挂载硬盘到文件夹.md": {
+    "scroll": 11.333333333333334,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 12
+      },
+      "to": {
+        "line": 30,
+        "ch": 12
+      }
+    },
+    "expandedKeys": []
+  },
+  "服务器操作/服务器SSH本地连接.md": {
+    "scroll": 84.84848484848484,
+    "cursor": {
+      "from": {
+        "line": 71,
+        "ch": 0
+      },
+      "to": {
+        "line": 71,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "实验配置/MMDet-Backbone.md": {
+    "scroll": 0.5949008498583569,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "实验配置/MMDetection3D.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "实验配置/openpcdet-LION环境配置.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 61,
+        "ch": 0
+      },
+      "to": {
+        "line": 61,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/未命名.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/3D小波变换的整理.md": {
+    "scroll": 205.265873015873,
+    "cursor": {
+      "from": {
+        "line": 60,
+        "ch": 25
+      },
+      "to": {
+        "line": 60,
+        "ch": 25
+      }
+    },
+    "expandedKeys": []
+  },
+  "杂七杂八/未命名.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/重力场的设计.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 110,
+        "ch": 83
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/重力场的补全-填充设计.md": {
+    "scroll": 18.60483870967742,
+    "cursor": {
+      "from": {
+        "line": 149,
+        "ch": 33
+      },
+      "to": {
+        "line": 149,
+        "ch": 33
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/重力场的序列化设计.md": {
+    "scroll": 45.983333333333334,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/网络性能.md": {
+    "scroll": 9.383466294055012,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 27
+      },
+      "to": {
+        "line": 15,
+        "ch": 27
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/未命名 1.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/总结.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/Gravity Backbone Design Summary (重力骨干网络设计总结).md": {
+    "scroll": 132.5730769230769,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/消融试验1.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 10
+      },
+      "to": {
+        "line": 10,
+        "ch": 10
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/a a论文架构.md": {
+    "scroll": 93.628,
+    "cursor": {
+      "from": {
+        "line": 60,
+        "ch": 0
+      },
+      "to": {
+        "line": 60,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/引言.md": {
+    "scroll": 9.089166666666667,
+    "cursor": {
+      "from": {
+        "line": 64,
+        "ch": 0
+      },
+      "to": {
+        "line": 64,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/相关工作.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 140,
+        "ch": 91
+      },
+      "to": {
+        "line": 140,
+        "ch": 91
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/方法.md": {
+    "scroll": 55.579166666666666,
+    "cursor": {
+      "from": {
+        "line": 81,
+        "ch": 4
+      },
+      "to": {
+        "line": 81,
+        "ch": 4
+      }
+    },
+    "expandedKeys": []
+  },
+  "当前论文设计/缓存区/AAA 序列化.md": {
+    "scroll": 102.87083333333334,
+    "cursor": {
+      "from": {
+        "line": 178,
+        "ch": 45
+      },
+      "to": {
+        "line": 178,
+        "ch": 45
+      }
+    },
+    "expandedKeys": []
+  },
+  "杂七杂八/未命名 1.md": {
+    "scroll": 65.45376016260163,
+    "cursor": {
+      "from": {
+        "line": 79,
+        "ch": 0
+      },
+      "to": {
+        "line": 79,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  }
+}

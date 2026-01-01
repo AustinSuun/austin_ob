@@ -4,24 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "cc53906eb8326b64",
+        "id": "7ecd14565e4aafec",
         "type": "tabs",
         "children": [
           {
-            "id": "e08c28b51939927f",
+            "id": "19ed1973804c5d70",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "服务器操作/训练用命令.md",
+                "file": "当前论文设计/缓存区-总览.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "训练用命令"
+              "title": "缓存区-总览"
+            }
+          },
+          {
+            "id": "eccecc3816ef0a09",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "杂七杂八/未命名 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名 1"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -78,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.5
+    "width": 233.5
   },
   "right": {
     "id": "58be646a45855f50",
@@ -155,23 +170,14 @@
               "icon": "lucide-ghost",
               "title": "quiet-outline"
             }
-          },
-          {
-            "id": "2434fa291153d06f",
-            "type": "leaf",
-            "state": {
-              "type": "smart-connections-view",
-              "state": {},
-              "icon": "smart-connections",
-              "title": "Connections"
-            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -184,51 +190,53 @@
       "command-palette:打开命令面板": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false,
       "obsidian-git:Open Git source control": false,
-      "templater-obsidian:Templater": false,
-      "obsidian-memos:Thino": false,
-      "smart-connections:Open: Smart Chat": false,
-      "smart-connections:Smart Connections: Open connections view": false,
-      "smart-connections:Smart Connections: Open random connection": true
+      "templater-obsidian:Templater": false
     }
   },
-  "active": "e08c28b51939927f",
+  "active": "eccecc3816ef0a09",
   "lastOpenFiles": [
-    "杂七杂八/KITTI数据集安装.md",
-    "服务器操作/训练用命令.md",
-    "aaaa-模板.md",
-    "2025-11-09.md",
-    "().md",
+    "当前论文设计/缓存区/AAA 序列化.md",
+    "杂七杂八/未命名 1.md",
+    "当前论文设计/未命名.md",
+    "当前论文设计/缓存区/重力场的补全-填充设计.md",
+    "当前论文设计/缓存区/引言.md",
+    "当前论文设计/缓存区/小波变换的小波基选择.md",
+    "当前论文设计/缓存区/3D小波变换的整理.md",
+    "当前论文设计/缓存区/补救措施.md",
+    "当前论文设计/缓存区/方法.md",
+    "当前论文设计/缓存区/分离高低频信号的处理方案.md",
+    "当前论文设计/缓存区/可学习小波变换.md",
+    "当前论文设计/缓存区/门控升级方案.md",
+    "当前论文设计/缓存区/去噪能力.md",
+    "当前论文设计/缓存区/融合的处理方案对比.md",
+    "当前论文设计/缓存区/相关工作.md",
+    "当前论文设计/缓存区-总览.md",
+    "当前论文设计/网络性能.md",
+    "当前论文设计/消融试验1.md",
+    "当前论文设计/小波变换+编解码器.md",
+    "当前论文设计/a a论文架构.md",
+    "当前论文设计/Gravity Backbone Design Summary (重力骨干网络设计总结).md",
+    "服务器操作/LION训练用命令.md",
+    "服务器操作/Tmux+yazi.md",
+    "当前论文设计/缓存区/未命名",
+    "当前论文设计/缓存区/重力场的序列化设计.md",
+    "当前论文设计/缓存区/总结.md",
+    "服务器操作/向服务器传输文件.md",
+    "杂七杂八/未命名.canvas",
+    "当前论文设计/Untitled Diagram.svg",
+    "Excalidraw/Scripts/Downloaded/Auto Layout.svg",
+    "当前论文设计/缓存区/未命名.canvas",
+    "当前论文设计/缓存区",
+    "Excalidraw/Scripts/Downloaded/Elbow connectors.svg",
+    "Excalidraw/Scripts/Downloaded",
+    "Excalidraw/Scripts",
+    "Excalidraw",
+    "当前论文设计/未命名.canvas",
+    "当前论文设计",
+    "实验配置",
     "杂七杂八",
-    "欢迎.md",
     "服务器操作",
-    "论文/2025-11-1/25-Spotting the Unexpected (STU)-A 3D LiDAR Dataset for Anomaly Segmentation in Autonomous Driving.md",
-    "缓存区/未命名 1.md",
-    "论文/2025-11-1/readme.md",
-    "缓存区/idea记录.md",
-    "论文/2025-11-1/2020-An LSTM Approach to Temporal 3D Object Detection in LiDAR Point Clouds.md",
-    "论文/2025-11-1/2023-MSF_Motion-guided Sequential Fusion for Efficient 3D Object Detection from Point Cloud Sequences.md",
-    "缓存区/LION的性能.md",
-    "论文/论文归档/25-10-11/3D Lidar-Based Object Conditions in Adverse Weather Conditions.md",
-    "论文/论文归档/25-10-11/2024-Unleashing the Potential of Mamba_Boosting a LiDAR 3D Sparse Detector by Using Cross-Model Knowledge Distillation.md",
-    "论文/论文归档/25-10-11/2024-SAFDNet-A Simple and Effective Network for Fully Sparse 3D Object Detection.md",
-    "论文/论文归档/25-10-11/2024-LION-Linear Group RNN for 3D Object Detection in Point Clouds.md",
-    "论文/2025-11-1/2022-LiDAR Snowfall Simulation for Robust 3D Object Detection.md",
-    "杂乱概念/25-09-28/保存随时间的特征图历史.md",
-    "论文/2025-11-1/2024-TripleMixer-A 3D Point Cloud Denoising Model for Adverse Weather.md",
-    "论文/2025-11-1/2024-Towards Robust 3D Object Detection with LiDAR and 4D Radar Fusion in Various Weather Conditions.md",
-    "论文/2025-11-1/2023-3D Semantic Segmentation in the Wild-Learning Generalized Models for Adverse-Condition Point Clouds.md",
-    "论文/2025-11-1/2023-LEF_Late-to-Early Temporal Fusion for LiDAR 3D Object Detection.md",
-    "论文/2025-11-1/2021-Fog Simulation on Real LiDAR Point Clouds for 3D Object Detection in Adverse Weather.md",
-    "论文/2025-11-1/数据集-04 KITTI.md",
-    "杂乱概念/25-09-28/恶劣天气下3D，目标检测的调研.md",
     "杂乱概念/2025-11-1",
-    "论文/000-论文数据库.base",
-    "论文/2025-11-1",
-    "论文/论文归档/25-10-11",
-    "论文/论文归档",
-    "未命名.base",
-    "杂乱概念/25-09-28/未命名",
-    "杂乱概念/25-09-28",
     "人杰地灵，东箭南金/人杰地灵，东箭南金.canvas",
     "ROS2/未命名.canvas"
   ]

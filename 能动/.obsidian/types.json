@@ -26,6 +26,7 @@
     "last-reviewed": "datetime",
     "Date": "datetime",
     "日期": "date",
-    "作者": "multitext"
+    "作者": "multitext",
+    "excalidraw-embed-md": "checkbox"
   }
 }

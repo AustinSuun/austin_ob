@@ -14,7 +14,7 @@ sudo apt update
 sudo apt install openssh-server
 ```
 
-### 2. 启动 SSH 服务
+### 2. 启动 SSH 服
 ```bash
 # 启动服务
 sudo systemctl start ssh

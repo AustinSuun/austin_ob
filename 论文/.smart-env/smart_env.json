@@ -39,7 +39,7 @@
       "adapter": "ollama",
       "ollama": {}
     },
-    "active_thread_key": "",
+    "active_thread_key": "Untitled Chat 2025-11-11 19-01-56",
     "system_prompt": "",
     "detect_self_referential": true,
     "review_context": true,
@@ -50,7 +50,8 @@
   },
   "smart_notices": {
     "muted": {
-      "done_import": true
+      "done_import": true,
+      "Failed_to_load_embed_model": true
     }
   },
   "version": ""
