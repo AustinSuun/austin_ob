@@ -1,2 +1,0 @@
-
-"smart_sources:实验配置/MMDet-Backbone.md": {"path":"实验配置/MMDet-Backbone.md","last_embed":{"hash":null},"embeddings":{},"last_read":{"hash":"6yc4a9","at":1763296335651},"class_name":"SmartSource","last_import":{"mtime":1763296322887,"size":229,"at":1763296335652,"hash":"6yc4a9"},"blocks":{"#---frontmatter---":[1,7],"#":[9,19],"##{1}":[15,15],"##{2}":[16,19],"#基类 Backbone":[20,24],"#基类 Backbone#BaseModule":[22,24],"##":[25,25]},"outlinks":[],"metadata":{"Date":"2025-11-16T20:30:00","作者":["Austin Suun"],"tags":null,"链接":null},"task_lines":[15,16]},

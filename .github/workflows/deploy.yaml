@@ -1,0 +1,5 @@
+name: Deploy Quartz to GitHub Pages
+on:
+  push:
+    branches:
+      - v4  # 必须确保这里是 v4
