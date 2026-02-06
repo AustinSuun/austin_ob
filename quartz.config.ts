@@ -8,14 +8,14 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Austin's Space",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
     },
-    locale: "en-US",
+    locale: "zh-CN",
     baseUrl: "quartz.jzhao.xyz",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
@@ -23,31 +23,31 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        header: "Inter", 
+        body: "Inter",
+        code: "JetBrains Mono",
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+          light: "#fbfbf9",       // Warm paper white
+          lightgray: "#e0e0e0",   // Subtle borders
+          gray: "#b8b8b8",        // Metadata text
+          darkgray: "#2c2c2c",    // Main body text - High Contrast
+          dark: "#1a1a1a",        // Headings
+          secondary: "#007CF0",   // Vercel Blue (Links, Graph Nodes)
+          tertiary: "#7928CA",    // Vercel Purple (Hover, Graph)
+          highlight: "rgba(0, 124, 240, 0.15)", // Blue highlight
           textHighlight: "#fff23688",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+          light: "#1e1e2e",       // Apple Dark Grey style (not pitch black)
+          lightgray: "#3a3a3c",   // Separators
+          gray: "#8e8e93",        // Metadata
+          darkgray: "#d1d1d6",    // Body text (readable grey-white)
+          dark: "#f2f2f7",        // Headings (almost white)
+          secondary: "#29a3ff",   // Brighter Blue for Dark Mode
+          tertiary: "#a36bd4",    // Brighter Purple for Dark Mode
+          highlight: "rgba(41, 163, 255, 0.15)",
           textHighlight: "#b3aa0288",
         },
       },

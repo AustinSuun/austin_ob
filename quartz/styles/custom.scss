@@ -1,3 +1,600 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+// 1. Scoped Gradient Background (Dark Mode Only)
+:root[saved-theme="dark"] body {
+  background-color: #1e1e2e;
+  background-image: radial-gradient(circle at top left, #2b2b40, transparent 40%),
+                    radial-gradient(circle at bottom right, #232330, transparent 40%);
+  background-attachment: fixed;
+}
+:root[saved-theme="dark"] h1, 
+:root[saved-theme="dark"] h2 {
+  background: linear-gradient(120deg, #b4befe, #f5c2e7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; 
+  display: inline-block;
+}
+:root[saved-theme="dark"] h1 { display: block; }
+
+
+// 2. Explicit Light Mode Overrides (High Contrast with Subtle Gradient)
+:root[saved-theme="light"] body {
+   background-color: #fbfbf9 !important; 
+   background-image: none !important;    
+   color: #2c2c2c;
+}
+:root[saved-theme="light"] h1,
+:root[saved-theme="light"] h2 {
+   font-weight: 800 !important; 
+   letter-spacing: -0.5px;
+   display: inline-block;
+}
+
+// FIX: Apply Gradient ONLY to the text span, not the emoji
+:root[saved-theme="light"] .gradient-text {
+   background: linear-gradient(90deg, #007CF0 0%, #7928CA 50%, #007CF0 100%);
+   background-size: 400px auto; 
+   -webkit-background-clip: text !important;
+   background-clip: text !important;
+   color: transparent !important;
+}
+
+// Emojis should remain natural
+:root[saved-theme="light"] h1 .emoji-text,
+:root[saved-theme="light"] h2 .emoji-text,
+:root[saved-theme="light"] .page-title .emoji-text {
+    color: var(--dark) !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+:root[saved-theme="light"] h1 { display: block; }
+
+// Apply to Sidebar Title
+:root[saved-theme="light"] .page-title {
+   // Gradient removed from container, handled by .gradient-text child
+   font-weight: 800 !important;
+   display: inline-block;
+}
+
+// 3. Readability & Spacing (High Definition Text)
+// 3. Readability & Spacing (High Definition Text - Optimized for Reading)
+p, ul, ol, li {
+  font-size: 1.15rem !important;   // Larger text (~18px) for effortless reading
+  line-height: 1.8 !important;     // Breathable line height
+  letter-spacing: 0.01em;          // Slight tracking for clarity
+  margin-bottom: 1.4rem;           // Distinct paragraph separation
+  
+  // Advanced Font Rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// Enhance List visibility - Colored markers make lists easier to scan
+ul > li::marker {
+    color: var(--secondary); // Blue bullets
+    font-weight: bold;
+}
+ol > li::marker {
+    color: var(--tertiary);  // Purple numbers
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+// Increase contrast for body text in Light Mode for pure readability
+:root[saved-theme="light"] p, 
+:root[saved-theme="light"] li {
+    color: #222 !important; // Very dark grey/black for high contrast
+}
+
+// Ensure code blocks font size is readable too
+code {
+//    font-size: 0.95em;
+}
+
+// 4. Explorer / Left Sidebar Font Size & Spacing
+.explorer .folder-outer, 
+.explorer .folder-container,
+.explorer ul li a,
+.explorer .folder-title {
+//    font-size: 1.15rem !important; 
+//    line-height: 1.35 !important; // Tighter line height (was 1.6)
+    font-weight: 500;
+}
+
+// Reduce spacing between items specifically
+.explorer li {
+    margin-top: 0.1rem !important;
+    margin-bottom: 0.1rem !important;
+}
+
+// Button styling (The "Explorer" title)
+button#explorer, 
+.explorer > button,
+.explorer-title { 
+//     font-size: 1.4rem !important; // Much larger as requested
+     font-weight: 800;             
+     text-transform: none;          // Prevent uppercase if set by default
+}
+
+// Floating Animation (Slower)
+@keyframes bg-float {
+    0% { background-position: 0 0; }
+    100% { background-position: 400px 400px; } 
+}
+
+// 2. Base Modern Typography & Background (Clean & Professional)
+body {
+  font-family: var(--headerFont) !important;
+  color: var(--dark) !important;
+  
+  background-color: var(--light);
+  
+  // Abstract Geometric Background
+  background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23999' stroke-width='1' opacity='0.06'%3E%3Cpath d='M50 50 L150 50 L150 150 L50 150 Z M80 80 L120 80 L120 120 L80 120 Z M50 50 L80 80 M150 50 L120 80 M150 150 L120 120 M50 150 L80 120' /%3E%3Cpath d='M300 50 L350 80 L350 130 L300 160 L250 130 L250 80 Z M300 50 L300 160 M250 80 L350 130 M350 80 L250 130' transform='rotate(15 300 105)' /%3E%3Cpath d='M20 300 Q 50 250, 80 300 T 140 300 T 200 300' stroke-dasharray='4,4' /%3E%3Cpath d='M300 300 L350 350 L250 350 Z M300 300 L300 250 L350 350 M300 250 L250 350' /%3E%3C/g%3E%3C/svg%3E");
+  
+  background-size: 500px 500px; // Large spread
+  background-attachment: fixed;
+  // No animation (User request: Static)
+}
+
+// Dark Mode Override: Use lighter stroke for geometry
+:root[saved-theme="dark"] body {
+  // Same SVG but with lighter stroke color encoded (%23ccc)
+  background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ccc' stroke-width='1' opacity='0.05'%3E%3Cpath d='M50 50 L150 50 L150 150 L50 150 Z M80 80 L120 80 L120 120 L80 120 Z M50 50 L80 80 M150 50 L120 80 M150 150 L120 120 M50 150 L80 120' /%3E%3Cpath d='M300 50 L350 80 L350 130 L300 160 L250 130 L250 80 Z M300 50 L300 160 M250 80 L350 130 M350 80 L250 130' transform='rotate(15 300 105)' /%3E%3Cpath d='M20 300 Q 50 250, 80 300 T 140 300 T 200 300' stroke-dasharray='4,4' /%3E%3Cpath d='M300 300 L350 350 L250 350 Z M300 300 L300 250 L350 350 M300 250 L250 350' /%3E%3C/g%3E%3C/svg%3E") !important;
+  background-size: 500px 500px !important;
+  background-attachment: fixed !important;
+}
+
+// 5. Rainbow Folder Lines (Enhance indentation visibility)
+// Level 1 (Default)
+.folder-outer {
+    border-left-color: rgba(0, 122, 223, 0.3) !important; // Blue
+}
+// Level 2
+.folder-outer .folder-outer {
+    border-left-color: rgba(131, 58, 180, 0.4) !important; // Purple
+}
+// Level 3
+.folder-outer .folder-outer .folder-outer {
+    border-left-color: rgba(253, 29, 29, 0.4) !important; // Red/Pink
+}
+// Level 4
+.folder-outer .folder-outer .folder-outer .folder-outer {
+    border-left-color: rgba(252, 176, 69, 0.5) !important; // Orange
+}
+
+// Hover effect for lines
+.folder-outer:hover {
+    border-left-width: 2px; // Slightly thicken on hover
+}
+
+// 6. Advanced Callout Styles (Admonitions)
+// 6. Advanced Callout Styles (Admonitions - Refined)
+.callout {
+    border-radius: 6px !important;
+    border-left-width: 4px !important;
+    background-color: rgba(0, 0, 0, 0.02) !important; // Very subtle grey
+    border: 1px solid rgba(0,0,0,0.05); // Subtle contour
+    box-shadow: none; // Remove heavy shadow for cleanliness
+    margin: 1rem 0 !important;
+    padding: 0.8rem 1rem !important; // Tighter padding
+}
+
+// Dark Mode adjustments for Callouts
+:root[saved-theme="dark"] .callout {
+    background-color: rgba(255, 255, 255, 0.03) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left-width: 4px !important;
+}
+
+// Specific Gradient Borders for Note types (Optional, overrides default colors)
+.callout[data-callout="note"] { border-left-color: #007CF0 !important; }
+.callout[data-callout="important"] { border-left-color: #7928CA !important; }
+.callout[data-callout="warning"] { border-left-color: #ff9f0a !important; }
+
+
+// 7. Layout Customization (Wider Content & Bigger Gaps)
+// Increase spacing between columns
+// 7. Layout Customization (Wider Content & Bigger Gaps)
+// Increase spacing between columns
+.page {
+    gap: 5rem !important; 
+    padding: 0 4rem !important; // Absolute zero top padding (User request: "Further Up")
+}
+
+// Ensure columns and top elements start at the very top
+.center, .sidebar, .left, .right, 
+.article-title, .page-title {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+// 11. Refined Spacing & Clarity -> CS ACADEMIC PAPER STYLE (IEEE/ACM Inspired)
+// Move Breadcrumbs further up
+.breadcrumb-container {
+    margin-top: -1.5rem !important; 
+    margin-bottom: 0.5rem !important;
+}
+
+// Breadcrumb Links - Functional Grey
+.breadcrumb-container a {
+    color: #555 !important; 
+    font-weight: 400;
+    text-decoration: none;
+}
+
+// Main Title - Global Size & Spacing (Align Dark/Light)
+h1.article-title, .page-title {
+    font-size: 2.75rem !important; // Big for everyone (User request: Align sizes)
+    letter-spacing: -0.01em;
+    padding-bottom: 0.2rem;
+    margin-bottom: 0.2rem !important;
+    font-weight: 700;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+// Light Mode Title Color - Academic Black
+:root[saved-theme="light"] h1.article-title,
+:root[saved-theme="light"] .page-title {
+    color: #000000 !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+// Dark Mode Title Color - Clean White
+:root[saved-theme="dark"] h1.article-title,
+:root[saved-theme="dark"] .page-title {
+    color: #ffffff !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+// Academic Text Accents - High Visibility (User request: Make bold obvious)
+strong {
+    font-weight: 700 !important;
+}
+:root[saved-theme="light"] strong {
+    color: #0d47a1 !important; // Deep Navy (Distinct from black text)
+}
+:root[saved-theme="dark"] strong {
+    color: #64b5f6 !important; // Bright Blue (Clear against dark bg)
+}
+
+:root[saved-theme="light"] em {
+    color: #333 !important;
+}
+:root[saved-theme="dark"] em {
+    color: #aaa !important;
+}
+
+code {
+    color: #c7254e !important; // Classic Academic Code Red (LaTeX listing style)
+    background-color: #f8f8f8 !important; // Very faint grey
+    border: 1px solid #e1e4e8; // Tiny border for definition
+    border-radius: 3px;
+    padding: 2px 4px;
+}
+:root[saved-theme="dark"] code {
+    background-color: rgba(255,255,255,0.1) !important;
+    color: #ff8a80 !important; // Light Red for Dark Mode
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+// Tags - Minimalist Bordered (No background color)
+.tags .tag-link {
+    background-color: transparent !important;
+    color: #333 !important;
+    border: 1px solid #999 !important; // Visible functional border
+    font-weight: 400;
+    border-radius: 3px; // Boxy
+}
+
+// List Markers - Standard Blue
+ul > li::marker {
+    color: #0056b3 !important; // IEEE Link Blue
+}
+ol > li::marker {
+    color: #0056b3 !important;
+}
+
+// DARK MODE LEGIBILITY FIXES (User Request: "Hard to see")
+:root[saved-theme="dark"] {
+    // Breadcrumbs: Brighten up
+    .breadcrumb-container a {
+        color: #b0bec5 !important; // Light Blue Grey
+    }
+    
+    // Metadata: readable grey
+    .content-meta {
+        color: #90a4ae !important; 
+    }
+    
+    // Tags: White text on dark
+    .tags .tag-link {
+        background-color: rgba(255,255,255,0.05) !important; // Subtle fill
+        border: 1px solid rgba(255,255,255,0.3) !important;   // Visible border
+        color: #eceff1 !important; // Almost White text
+    }
+    
+    // Body Text: High Brightness
+    p, ul, ol, li {
+        color: #e3f2fd !important; // Very light blue-white (Easy on eyes)
+    }
+    
+    // Explicitly brighten list markers too
+    ul > li::marker, ol > li::marker {
+        color: #82b1ff !important;
+    }
+}
+
+// Tighten Metadata/Tags Area
+.content-meta {
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important; 
+}
+.tags {
+    margin-top: 0 !important; 
+    margin-bottom: 3rem !important; 
+}
+
+// Wider central reading area
+.center {
+    max-width: 1000px !important; 
+    min-width: 0 !important; 
+    width: 100%;
+    overflow-x: hidden; 
+}
+
+// Adjust desktop grid layout
+@media all and (min-width: 1400px) {
+  .page > #quartz-body {
+      grid-template-columns: 320px minmax(0, 1fr) 320px !important; // Force center to shrink
+  }
+}
+@media all and (min-width: 1200px) and (max-width: 1399px) {
+    .page > #quartz-body {
+        grid-template-columns: 280px minmax(0, 1fr) 280px !important;
+    }
+}
+
+// 8. Inline Typography Styling (Theme Matching)
+
+// Bold: Slight Blue tint in light mode to link with theme
+strong {
+    font-weight: 750;
+    color: var(--options-strong, var(--darkgray)); // Default to strict dark
+}
+:root[saved-theme="light"] strong {
+    color: #004d95; // Deep Vercel Blue for emphasis in light mode
+}
+
+// Italic: Serif font for contrast (if available) or just distinct color
+em {
+    font-family: var(--headerFont); // Use the Header font for italics (Inter) - actually keep default but change color
+    color: var(--tertiary); // Use Purple for italics?
+    font-style: italic;
+}
+
+// Highlight (==text==): Soft Blue/Purple Gradient Background
+mark {
+    background: linear-gradient(120deg, rgba(0, 124, 240, 0.2) 0%, rgba(121, 40, 202, 0.2) 100%);
+    border-radius: 4px;
+    padding: 0.1em 0.3em;
+    color: inherit;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+// Inline Code: Purple Tint Background + Red Text (Like Notion/Vercel docs)
+// Inline Code: Purple Tint Background + Red Text (Like Notion/Vercel docs)
+// Note: We use :not(pre) > code logic or simply reset block code behaviors below
+code {
+    font-family: "JetBrains Mono", monospace !important;
+    // font-size: 0.9em;
+    color: #e01e5a; // Vivid Red/Pink
+    background: rgba(121, 40, 202, 0.15); // Increased opacity for visibility
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
+}
+
+// FIX: Reset styles for Code Blocks (pre > code) so they don't look like inline pills
+pre code {
+    background: transparent !important;
+    color: inherit !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
+// Make Code Blocks (the container) have a clear background
+pre {
+    background-color: #f6f8fa !important; // Visible GitHub-style Gray
+    border: 1px solid #e1e4e8 !important;
+    border-radius: 8px !important;
+    padding: 1rem !important; // Comfortable padding
+    overflow-x: auto !important;
+    overflow-y: hidden !important;   // Prevent vertical scrollbar
+    box-sizing: border-box !important; // Ensure padding doesn't cause overflow
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+:root[saved-theme="dark"] code {
+    color: #ff79c6; // Pink in dark mode
+    background: rgba(121, 40, 202, 0.25);
+}
+:root[saved-theme="dark"] pre code {
+    background: transparent !important;
+    color: inherit !important;
+}
+:root[saved-theme="dark"] pre {
+    background-color: #1e1e2e !important;
+    border: 1px solid #30363d !important;
+}
+
+// Blockquote: Theme Border
+blockquote {
+    border-left: 4px solid var(--secondary) !important; // Blue border
+    background: rgba(0, 124, 240, 0.05); // Very faint blue bg
+    border-radius: 0 8px 8px 0;
+    padding: 1rem !important;
+    font-style: italic;
+}
+
+
+
+
+// 3. Clean & Readable Tweaks
+// Remove table borders for cleaner look
+table, tr, td, th {
+  border-color: var(--lightgray) !important;
+}
+
+// 2. Element cleanup
+// Remove Code Block borders but keep background
+pre {
+  border: none !important;
+}
+
+// Search bar: Floating look
+.search-container {
+  border: 1px solid transparent !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+// Sidebar: Ensure no borders or hard lines, and enable scrolling if content is too long
+.sidebar {
+  border: none !important;
+  position: sticky;
+  top: 2rem; 
+  max-height: calc(100vh - 4rem); 
+  overflow-y: auto !important; 
+  scrollbar-width: none !important; // Hide scrollbar (Firefox)
+  -ms-overflow-style: none;  // Hide scrollbar (IE/Edge)
+  padding-bottom: 2rem; 
+}
+
+// Hide scrollbar for Chrome/Safari/Opera so it looks clean
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+// 10. Table of Contents Expansion
+// Allow TOC to expand fully since sidebar is now scrollable
+.toc {
+    display: block !important; 
+    flex: none !important;
+    overflow-y: visible !important;
+    max-height: none !important;
+}
+
+ul.toc-content.overflow,
+.toc-content {
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+// 12. Article Internal Headings (Color-Coded Hierarchy)
+article {
+    // Level 2 Title: Major Section Break
+    h2 {
+        font-size: 1.8rem;
+        margin-top: 3.5rem !important;
+        margin-bottom: 1.5rem !important;
+        padding-left: 0;
+        border-left: none; // Remove visual border (User request: Use color instead)
+        line-height: 1.3;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+    }
+
+    // Level 3 Title: Sub-section
+    h3 {
+        font-size: 1.45rem;
+        margin-top: 2.5rem !important;
+        margin-bottom: 1rem !important;
+        font-weight: 600;
+        padding-left: 0;
+        // Remove dot indicator
+        &::before {
+            content: none;
+        }
+    }
+}
+
+// Color Hierarchy - Light Mode (Academic Distinction)
+:root[saved-theme="light"] article h2 {
+    color: #0d47a1 !important; // Deep Navy Blue (Primary Section)
+}
+:root[saved-theme="light"] article h3 {
+    color: #006064 !important; // Dark Cyan/Teal (Sub Section)
+}
+:root[saved-theme="light"] article h4 {
+    color: #37474f !important; // Slate Grey (Minor Section)
+}
+
+// Color Hierarchy - Dark Mode (Legibility)
+:root[saved-theme="dark"] article h2 {
+    color: #82b1ff !important; // Soft Blue Accent
+}
+:root[saved-theme="dark"] article h3 {
+    color: #80deea !important; // Soft Cyan Accent
+}
+
+// Explorer: Clean up
+.explorer-container {
+    background: transparent;
+}
+
+// 9. Concise Separators (hr) - Garden Style
+hr {
+    border: none;
+    border-top: 1px solid var(--lightgray); // Solid thin line
+    height: 0; // Use border for line to align better with emoji text
+    margin: 4rem 0 !important; // Plenty of breathing room
+    width: 100%;    // Full width of content area
+    position: relative;
+    overflow: visible !important;
+    opacity: 0.8;
+}
+
+// Add a central "Leaf" to match the Digital Garden theme
+hr::after {
+    content: "🌿"; 
+    position: absolute;
+    top: -14px; // Center vertically on the line
+    left: 50%;
+    transform: translateX(-50%); // Center horizontally
+    background: var(--light); // Mask the line behind text
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+
+// 3. Readability Improvements
+p {
+  font-weight: 400;
+  letter-spacing: 0.01em; 
+  line-height: 1.75; // Increase line height for better readability
+}
+
+// Links: Cleaner underlining
+a.internal {
+  text-decoration: none;
+  background: transparent !important; 
+  color: var(--secondary);
+  font-weight: 600;
+  border-bottom: 2px solid rgba(137, 180, 250, 0.3); // Subtle underline
+  transition: all 0.2s ease;
+}
+a.internal:hover {
+  color: var(--tertiary);
+  border-bottom-color: var(--tertiary);
+  text-decoration: none;
+}

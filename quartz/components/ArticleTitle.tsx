@@ -4,7 +4,16 @@ import { classNames } from "../util/lang"
 const ArticleTitle: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
   const title = fileData.frontmatter?.title
   if (title) {
-    return <h1 class={classNames(displayClass, "article-title")}>{title}</h1>
+    const segments = title.split(/(\p{Emoji_Presentation})/gu)
+    return (
+      <h1 class={classNames(displayClass, "article-title")}>
+        {segments.map((segment, i) => (
+          /\p{Emoji_Presentation}/u.test(segment) 
+            ? <span key={i} class="emoji-text">{segment}</span>
+            : <span key={i} class="gradient-text">{segment}</span>
+        ))}
+      </h1>
+    )
   } else {
     return null
   }

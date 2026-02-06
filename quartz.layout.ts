@@ -44,6 +44,8 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
+    // Add Recent Notes to sidebar to make the page feel alive
+    Component.DesktopOnly(Component.RecentNotes({ title: "Recent Notes", limit: 3 })),
   ],
 }
 
