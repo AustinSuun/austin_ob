@@ -1,0 +1,31 @@
+properties:
+  note.excalidraw-link-prefix:
+    displayName: link
+views:
+  - type: table
+    name: 表格
+    filters:
+      and:
+        - '!file.tags.contains("readme")'
+        - file.ext != "base"
+        - '!file.tags.contains("other")'
+    order:
+      - file.name
+      - tags
+      - 链接
+      - Date
+    sort:
+      - property: Date
+        direction: DESC
+      - property: tags
+        direction: ASC
+      - property: excalidraw-link-prefix
+        direction: ASC
+      - property: file.links
+        direction: ASC
+    columnSize:
+      file.name: 396
+      note.tags: 449
+      note.Date: 148
+  - type: cards
+    name: 视图
