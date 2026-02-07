@@ -88,7 +88,6 @@
    font-style: normal;
    background: none !important;
    -webkit-text-fill-color: initial !important;
-   text-fill-color: initial !important;
    color: initial !important;
    text-shadow: none !important; /* No glow for emojis to keep them sharp */
    filter: none !important;
@@ -403,12 +402,12 @@ ol > li::marker {
 // Adjust desktop grid layout
 @media all and (min-width: 1400px) {
   .page > #quartz-body {
-      grid-template-columns: 320px minmax(0, 1fr) 320px !important; // Force center to shrink
+      grid-template-columns: var(--sidePanelWidth, 380px) minmax(0, 1fr) var(--sidePanelWidth, 380px) !important; 
   }
 }
 @media all and (min-width: 1200px) and (max-width: 1399px) {
     .page > #quartz-body {
-        grid-template-columns: 280px minmax(0, 1fr) 280px !important;
+        grid-template-columns: 320px minmax(0, 1fr) 320px !important;
     }
 }
 
@@ -699,15 +698,62 @@ a.internal:hover {
 }
 
 .section {
-    // layout: date | title | tags
     display: grid !important; 
-    grid-template-columns: 8em 1fr max-content !important; 
-    gap: 1rem;
+    grid-template-columns: 8rem 1fr !important; // Fixed width for date, flexible for content
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "meta desc"
+        "meta tags";
+    gap: 0.3rem 1.2rem; // Horizontal gap 1.2rem, vertical gap 0.3rem
     align-items: baseline;
-    position: relative !important;
-    z-index: 10 !important;
-    color: var(--dark) !important;
-    visibility: visible !important;
+    margin-bottom: 2rem !important;
+}
+
+.section .meta {
+    grid-area: meta;
+    font-size: 0.95rem;
+    color: var(--gray);
+    white-space: nowrap;
+}
+
+.section .desc {
+    grid-area: desc;
+    min-width: 0; // Prevent overflow
+}
+
+.section .tags {
+    grid-area: tags;
+    display: flex !important;
+    flex-wrap: wrap !important; // Allow tags to wrap to next line
+    gap: 0.5rem;
+    margin: 0 !important;
+    justify-content: flex-start !important;
+    
+    .tag-link {
+        font-size: 0.8rem !important;
+        padding: 0.1rem 0.4rem !important;
+    }
+}
+
+// Desktop sidebar specific overrides for RecentNotes
+.recent-notes .section {
+    grid-template-columns: 1fr auto !important; // Title first (1fr), Date second (auto)
+    grid-template-areas: "desc meta";
+    gap: 0.3rem 0.8rem;
+    
+    .desc { 
+        grid-area: desc;
+        min-width: 0;
+        h3 { margin: 0 !important; }
+    }
+    .meta { 
+        grid-area: meta;
+        justify-self: end;
+        text-align: right;
+    }
+    .tags {
+        display: none !important; // Hide tags in right sidebar to save horizontal space
+    }
 }
 
 // Mobile fallback for section grid
