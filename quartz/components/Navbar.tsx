@@ -4,9 +4,9 @@ export default (() => {
   const Navbar: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
     return (
       <div class={`navbar-links ${displayClass ?? ""}`}>
-        <a href="/" class="nav-btn">🏠 Home</a>
+        <a href="/index" class="nav-btn">🏠 Home</a>
         <a href="/Timeline" class="nav-btn">⏳ Timeline</a>
-        <a href="/tags" class="nav-btn">🏷️ Tags</a>
+        <a href="/tags/" class="nav-btn">🏷️ Tags</a>
       </div>
     )
   }

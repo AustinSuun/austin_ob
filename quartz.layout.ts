@@ -5,7 +5,26 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [Component.Navbar()],
-  afterBody: [],
+  afterBody: [
+    Component.ConditionalRender({
+      component: Component.PageList({
+        sort: (f1, f2) => {
+          if (f1.dates && f2.dates) {
+            return f2.dates.created.getTime() - f1.dates.created.getTime()
+          } else if (f1.dates && !f2.dates) {
+            return -1
+          } else if (!f1.dates && f2.dates) {
+            return 1
+          }
+          const f1Title = f1.frontmatter?.title.toLowerCase() ?? ""
+          const f2Title = f2.frontmatter?.title.toLowerCase() ?? ""
+          return f1Title.localeCompare(f2Title)
+        },
+        limit: 50
+      }),
+      condition: (page) => page.fileData.slug === "Timeline",
+    }),
+  ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/jackyzha0/quartz",

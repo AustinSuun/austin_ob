@@ -1,7 +1,7 @@
 import { FullSlug, isFolderPath, resolveRelative } from "../util/path"
 import { QuartzPluginData } from "../plugins/vfile"
 import { Date, getDate } from "./Date"
-import { QuartzComponent, QuartzComponentProps } from "./types"
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { GlobalConfiguration } from "../cfg"
 
 export type SortFn = (f1: QuartzPluginData, f2: QuartzPluginData) => number
@@ -52,63 +52,81 @@ export function byDateAndAlphabeticalFolderFirst(cfg: GlobalConfiguration): Sort
   }
 }
 
-type Props = {
-  limit?: number
+// Re-export options type so it can be used by the constructor
+export type Options = {
   sort?: SortFn
-} & QuartzComponentProps
+  limit?: number
+}
 
-export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort }: Props) => {
-  const sorter = sort ?? byDateAndAlphabeticalFolderFirst(cfg)
-  let list = allFiles.sort(sorter)
-  if (limit) {
-    list = list.slice(0, limit)
+// Change to default export and high-order function pattern
+export default ((opts?: Partial<Options>) => {
+  const PageList: QuartzComponent = (props: QuartzComponentProps) => {
+    // Merge props with options (options take precedence if passed at creation time)
+    // Note: PageList doesn't seem to use props for config, but relies on what's passed here or calculated
+    const { cfg, fileData, allFiles } = props
+
+    // Use options passed during component creation
+    const limit = opts?.limit
+    const sort = opts?.sort
+    
+    // Filter out index pages or non-content pages if necessary (optional improvement)
+    // For now, keep original logic but apply sort/limit
+    
+    const sorter = sort ?? byDateAndAlphabeticalFolderFirst(cfg)
+    let list = allFiles.sort(sorter)
+    if (limit) {
+      list = list.slice(0, limit)
+    }
+
+    return (
+      <ul class="section-ul">
+        {list.map((page) => {
+          const title = page.frontmatter?.title
+          const tags = page.frontmatter?.tags ?? []
+
+          return (
+            <li class="section-li">
+              <div class="section">
+                <p class="meta">
+                  {page.dates && <Date date={getDate(cfg, page)!} locale={cfg.locale} />}
+                </p>
+                <div class="desc">
+                  <h3>
+                    <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">
+                      {title}
+                    </a>
+                  </h3>
+                </div>
+                <ul class="tags">
+                  {tags.map((tag) => (
+                    <li>
+                      <a
+                        class="internal tag-link"
+                        href={resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)}
+                      >
+                        {tag}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          )
+        })}
+      </ul>
+    )
   }
 
-  return (
-    <ul class="section-ul">
-      {list.map((page) => {
-        const title = page.frontmatter?.title
-        const tags = page.frontmatter?.tags ?? []
+  PageList.css = `
+  .section h3 {
+    margin: 0;
+  }
+  
+  .section > .tags {
+    margin: 0;
+  }
+  `
+  return PageList
+}) satisfies QuartzComponentConstructor
 
-        return (
-          <li class="section-li">
-            <div class="section">
-              <p class="meta">
-                {page.dates && <Date date={getDate(cfg, page)!} locale={cfg.locale} />}
-              </p>
-              <div class="desc">
-                <h3>
-                  <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">
-                    {title}
-                  </a>
-                </h3>
-              </div>
-              <ul class="tags">
-                {tags.map((tag) => (
-                  <li>
-                    <a
-                      class="internal tag-link"
-                      href={resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)}
-                    >
-                      {tag}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        )
-      })}
-    </ul>
-  )
-}
 
-PageList.css = `
-.section h3 {
-  margin: 0;
-}
-
-.section > .tags {
-  margin: 0;
-}
-`
