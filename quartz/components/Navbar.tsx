@@ -5,8 +5,7 @@ export default (() => {
     return (
       <div class={`navbar-links ${displayClass ?? ""}`}>
         <a href="/" class="nav-btn">🏠 Home</a>
-        <a href="/01-AI-System" class="nav-btn">🤖 AI & System</a>
-        <a href="/04-Academic-Research/Paper-Reading" class="nav-btn">📄 Papers</a>
+        <a href="/Timeline" class="nav-btn">⏳ Timeline</a>
         <a href="/tags" class="nav-btn">🏷️ Tags</a>
       </div>
     )
