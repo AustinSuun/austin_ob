@@ -12,7 +12,7 @@ export default (() => {
         <a href={baseDir} class="nav-btn">🏠 Home</a>
         <a href={`${baseDir}/Timeline`} class="nav-btn">⏳ Timeline</a>
         <a href={`${baseDir}/tags`} class="nav-btn">🏷️ Tags</a>
-        <a href="#" class="nav-btn" id="random-button" data-base-dir={baseDir}>🎲 漫步</a>
+        <a href="#" class="nav-btn random-btn" data-base-dir={baseDir}>🎲 漫步</a>
       </div>
     )
   }
