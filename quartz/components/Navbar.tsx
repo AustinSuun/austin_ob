@@ -1,12 +1,18 @@
+import { pathToRoot } from "../util/path"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
+// @ts-ignore
+import script from "./scripts/randomPage.inline"
+
 export default (() => {
-  const Navbar: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
+  const Navbar: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
+    const baseDir = pathToRoot(fileData.slug!)
     return (
       <div class={`navbar-links ${displayClass ?? ""}`}>
-        <a href="/index" class="nav-btn">🏠 Home</a>
-        <a href="/Timeline" class="nav-btn">⏳ Timeline</a>
-        <a href="/tags/" class="nav-btn">🏷️ Tags</a>
+        <a href={baseDir} class="nav-btn">🏠 Home</a>
+        <a href={`${baseDir}/Timeline`} class="nav-btn">⏳ Timeline</a>
+        <a href={`${baseDir}/tags`} class="nav-btn">🏷️ Tags</a>
+        <a href="#" class="nav-btn" id="random-button" data-base-dir={baseDir}>🎲 漫步</a>
       </div>
     )
   }
@@ -30,6 +36,8 @@ export default (() => {
     color: var(--secondary);
     border-bottom: 2px solid var(--secondary);
   }
+
   `
+  Navbar.afterDOMLoaded = script
   return Navbar
 }) satisfies QuartzComponentConstructor

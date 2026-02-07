@@ -1,39 +1,56 @@
 ---
-title: Austin's Space 🪐
+title: 灵感空间 🪐
 ---
 
-> [!abstract] About This Space
-> 这里是我的**个人科研与技术笔记 (Research & Tech Notes)**。
-> 主要用于沉淀计算机科学、算法理论与工程实践。内容涵盖 **AI/强化学习**、**Linux/DevOps** 以及 **学术论文归档**。
-> 
-> 坚持 **Open Source** 与 **Sharing** 的理念，希望这里的整理能为你提供参考。
 
-## 🌐 Connect
 
-- 📺 **Bilibili**: [我的B站主页](https://space.bilibili.com/258889817)
-- 🐙 **GitHub**: [本站仓库源码](https://github.com/AustinSuun/austin_ob)
+> [!abstract] 空间概览
+> 这里是我的**个人科研与技术笔记**。
+> 主要用于沉淀计算机科学、深度学习与算法理论。内容涵盖 **人工智能、机器人算法、Linux 系统运维** 以及 **学术论文研读**。
+> 这里的记录既是为了自用沉淀，也希望能为同路人提供参考。
 
 ---
 
-## 🗂️ 快速索引 (Quick Access)
+## 🚀 核心板块
 
-### 🦾 AI & Algorithms
-> 核心算法与理论推导，聚焦智能决策。
-- [[Learning/学习板块/强化学习/000-强化学习 目录|🤖 强化学习 (Reinforcement Learning)]]
-- [[Learning/学习板块/算法设计与分析/101-算法概论|🧮 算法设计与分析]]
+<div class="grid-container">
 
-### 🛠️ Linux & DevTools
+> [!abstract] 🎓 学术课程
+> 理论推导与核心知识沉淀。
+> - [[课程/强化学习/000-强化学习 目录|🤖 强化学习 (RL)]]
+> - [[课程/算法设计与分析/101-算法概论|🧮 算法设计与分析]]
+
+> [!abstract] 🔬 论文研读
+> 追踪最新前沿，解析学术思路。
+> - [[论文/论文精读/000-如何阅读一篇论文|📄 论文精读方法论]]
+> - [[论文/正在阅读/|📖 正在研读中]]
+
+</div>
+
+<div class="grid-container">
+
+> [!abstract] 🧪 实验档案
+> 代码复现与环境配置实战。
+> - [[实验/openpcdet-LION环境配置|🦁 OpenPCDet-LION 环境]]
+> - [[实验/MMDetection3D|📦 MMDetection3D 实践]]
+
+> [!abstract] 🛠️ 工具 & 环境
 > 工欲善其事，必先利其器。
-- [[Learning/Linux_工具_环境/000-Linux_工具_环境 目录|🐧 Linux & 开发环境配置]]
-- [[Learning/Linux_工具_环境/Quartz部署笔记到github|🚀 本站搭建笔记 (Quartz)]]
+> - [[工具/quartz部署ob笔记|🚀 Quartz 博客搭建]]
+> - [[工具/服务器SSH本地连接|🐧 Linux & 服务器运维]]
 
-### 🔬 Research & Papers
-> 学术科研与论文阅读归档。
-- [[论文/论文/论文精读/000-如何阅读一篇论文|📄 论文精读笔记]]
-- [[Learning/学术板块/000-学术板块目录|🎓 学术研究方法论]]
+</div>
 
 ---
 
-> [!tip] 随便逛逛
-> - 点击左侧 **Sidebar** 查看完整目录树。
-> - 按下 `Ctrl + K` (Mac: `Cmd + K`) 随时唤起全局搜索。
+## 🌐 社交与联系
+
+- 📺 **Bilibili**: [我的 B 站主页](https://space.bilibili.com/258889817) — 记录学习与生活
+- 🐙 **GitHub**: [仓库源码](https://github.com/AustinSuun/austin_ob) — 欢迎交流与建议
+
+---
+
+> [!tip] 浏览指南
+> - **Ctrl + K**: 唤起全局搜索（推荐使用）。
+> - **左侧边栏**: 查阅完整的文件树层级。
+> - **顶部导航**: 快速跳转 [⏳ 时间轴](Timeline) 与 [🏷️ 标签云](tags)。

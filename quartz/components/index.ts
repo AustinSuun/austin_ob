@@ -26,6 +26,8 @@ import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import PageList from "./PageList"
 import EmojiRestorer from "./EmojiRestorer"
+import ReadingProgress from "./ReadingProgress"
+import BackToTop from "./BackToTop"
 
 export {
   ArticleTitle,
@@ -55,4 +57,6 @@ export {
   ConditionalRender,
   Navbar,
   PageList,
+  ReadingProgress,
+  BackToTop,
 }

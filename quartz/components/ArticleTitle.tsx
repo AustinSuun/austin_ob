@@ -9,6 +9,15 @@ const ArticleTitle: QuartzComponent = ({ fileData, displayClass }: QuartzCompone
     // This regex matches Emoji Presentation and Extended Pictographics
     const parts = title.split(/(\p{Emoji_Presentation}|\p{Extended_Pictographic})/gu)
     
+    if (fileData.slug === "index") {
+      return (
+        <h1 class={classNames(displayClass, "article-title")}>
+          <span class="gradient-text typing-animation" data-text="欢迎来到我的数字花园" data-speed="100"></span>
+          <span class="emoji-text"> 🪐</span>
+        </h1>
+      )
+    }
+
     return (
       <h1 class={classNames(displayClass, "article-title")}>
         {parts.map((part, index) => {

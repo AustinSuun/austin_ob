@@ -5,7 +5,7 @@ import { isFolderPath } from "./quartz/util/path"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [Component.Navbar()],
+  header: [Component.Navbar(), Component.ReadingProgress()],
   afterBody: [
     Component.ConditionalRender({
       component: Component.PageList({
@@ -37,6 +37,7 @@ export const sharedPageComponents: SharedLayout = {
       }),
       condition: (page) => !isFolderPath(page.fileData.slug!)
     }),
+    Component.BackToTop(),
   ],
   footer: Component.Footer({
     links: {
@@ -69,14 +70,16 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      folderClickBehavior: "collapse",
+    }),
   ],
   right: [
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
     // Add Recent Notes to sidebar to make the page feel alive
-    Component.DesktopOnly(Component.RecentNotes({ title: "Recent Notes", limit: 3 })),
+    Component.DesktopOnly(Component.RecentNotes({ title: "最近更新", limit: 3 })),
   ],
 }
 
@@ -95,7 +98,9 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      folderClickBehavior: "collapse",
+    }),
   ],
   right: [],
 }

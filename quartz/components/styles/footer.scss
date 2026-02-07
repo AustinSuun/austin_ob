@@ -12,4 +12,17 @@ footer {
     gap: 1rem;
     margin-top: -1rem;
   }
+
+  .busuanzi-stats {
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    color: var(--gray);
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+
+    .spacer {
+      opacity: 0.3;
+    }
+  }
 }

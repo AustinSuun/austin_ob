@@ -670,19 +670,164 @@ p {
   line-height: 1.75; // Increase line height for better readability
 }
 
-// Links: Cleaner underlining
-a.internal {
-  text-decoration: none;
-  background: transparent !important; 
-  color: var(--secondary);
-  font-weight: 600;
-  border-bottom: 2px solid rgba(137, 180, 250, 0.3); // Subtle underline
-  transition: all 0.2s ease;
+// --- 1. Core Animations ---
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(130, 177, 255, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(130, 177, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(130, 177, 255, 0); }
 }
-a.internal:hover {
-  color: var(--tertiary);
-  border-bottom-color: var(--tertiary);
-  text-decoration: none;
+
+@keyframes link-shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+}
+
+:root {
+  --primary: #82b1ff;
+  --secondary: #448aff;
+  --tertiary: #b0c4de;
+  --light: #f8f9fa;
+  --dark: #121212;
+}
+
+// --- 2. Advanced Explorer Interaction ---
+.explorer {
+    .folder-container {
+        display: flex !important;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        margin: 0.1rem 0;
+        position: relative;
+        
+        button {
+            transition: transform 0.2s ease;
+        }
+
+        &:hover {
+            background: rgba(130, 177, 255, 0.08);
+            transform: translateX(2px);
+            
+            button {
+                color: var(--secondary) !important;
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    li > a {
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        display: block; 
+        text-decoration: none !important;
+        margin: 0.1rem 0;
+        position: relative;
+
+        &:hover {
+            background: rgba(130, 177, 255, 0.08);
+            transform: translateX(2px);
+            color: var(--secondary) !important;
+        }
+
+        // --- Active State: For Current Page ---
+        &.active {
+            background: rgba(130, 177, 255, 0.12) !important;
+            color: var(--secondary) !important;
+            font-weight: 600;
+            
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 20%;
+                bottom: 20%;
+                width: 3px;
+                background: var(--secondary);
+                border-radius: 2px;
+            }
+        }
+    }
+
+    li > a::before {
+        display: none !important; // Hide the underline effect for explorer items to keep it clean
+    }
+
+    .folder-outer {
+        margin: 0.2rem 0;
+    }
+}
+
+// --- 3. RecentNotes Pulse Effect ---
+.recent-notes {
+    .section::after {
+        animation: pulse 2s infinite; // Make sidebar dots breathe
+    }
+
+    .section-li {
+        transition: transform 0.2s ease, background 0.2s ease;
+        padding: 0.4rem 0.8rem !important;
+        border-radius: 8px;
+        margin: 0 -0.8rem; // Offset padding to keep alignment
+
+        &:hover {
+            background: rgba(130, 177, 255, 0.06);
+            transform: scale(1.02);
+        }
+    }
+}
+
+// --- 4. Magnetic Underline for Internal Links ---
+a.internal {
+    position: relative;
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: -1px;
+        left: 0;
+        background-color: var(--secondary);
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &:hover {
+        color: var(--secondary) !important;
+        &::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+    }
+}
+
+// --- 5. Search Button Upgrade ---
+#search-button {
+    border-radius: 8px;
+    background: var(--lightgray) !important;
+    border: 1px solid transparent !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); // Pop effect
+
+    &:hover {
+        background: var(--light) !important;
+        border-color: var(--secondary) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
+
+    svg {
+        transition: transform 0.3s ease;
+    }
+    &:hover svg {
+        transform: rotate(15deg) scale(1.1);
+    }
 }
 
 // 13. Fix Missing Page List (Folder Content)
@@ -848,4 +993,141 @@ a.internal:hover {
     justify-content: flex-end;
     margin: 0 !important;
     opacity: 1 !important; // Ensure visible
+}
+
+// --- 14. Homepage Dashboard Grid ---
+.grid-container {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    align-items: stretch;
+
+    & > * {
+        flex: 1;
+        margin: 0 !important; // Override default callout margins
+    }
+}
+
+// Mobile responsiveness for grid
+@media all and (max-width: 600px) {
+    .grid-container {
+        flex-direction: column !important;
+        gap: 1rem;
+    }
+}
+
+// --- 15. Copy Code Button ---
+.copy-code-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(68, 138, 255, 0.1);
+    border: 1px solid var(--secondary);
+    border-radius: 6px;
+    color: var(--secondary);
+    font-size: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.2s ease;
+    opacity: 0.6;
+
+    &:hover {
+        opacity: 1;
+        background: rgba(68, 138, 255, 0.2);
+        transform: translateY(-1px);
+    }
+
+    &.copied {
+        background: rgba(76, 175, 80, 0.2);
+        border-color: #4caf50;
+        color: #4caf50;
+    }
+
+    svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+// --- 16. Typing Animation ---
+.typing-animation {
+    display: inline-block;
+    border-right: 2px solid var(--secondary);
+    padding-right: 4px;
+    
+    &.typing {
+        animation: blink 0.7s step-end infinite;
+    }
+    
+    &.typed {
+        border-right: none;
+    }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+// --- 17. Content Freshness Warning ---
+.content-freshness-warning {
+    color: #ff9800;
+    font-weight: 600;
+    font-size: 0.85em;
+}
+
+// --- 18. Image Lightbox ---
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    cursor: zoom-out;
+
+    &.active {
+        background: rgba(0, 0, 0, 0.9);
+        opacity: 1;
+    }
+
+    .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        
+        img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+        font-weight: 300;
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
 }

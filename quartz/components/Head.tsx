@@ -5,6 +5,10 @@ import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { unescapeHTML } from "../util/escape"
 import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
+// @ts-ignore
+import typingScript from "./scripts/typingAnimation.inline"
+// @ts-ignore
+import lightboxScript from "./scripts/imageLightbox.inline"
 export default (() => {
   const Head: QuartzComponent = ({
     cfg,
@@ -61,6 +65,7 @@ export default (() => {
         <meta name="twitter:description" content={description} />
         <meta property="og:description" content={description} />
         <meta property="og:image:alt" content={description} />
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
         {!usesCustomOgImage && (
           <>
@@ -101,5 +106,6 @@ export default (() => {
     )
   }
 
+  Head.afterDOMLoaded = [typingScript, lightboxScript].flat()
   return Head
 }) satisfies QuartzComponentConstructor
