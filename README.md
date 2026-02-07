@@ -1,17 +1,37 @@
-# Quartz v4
+# 人杰地灵东箭南金 - 个人数字花园 🌿
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+欢迎来到我的个人数字花园！这是一个基于 [Quartz v4](https://quartz.jzhao.xyz/) 构建的知识库，记录了我在算法设计、服务器操作、科学研究以及生活中的点滴思考。
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
+## 🌐 访问地址
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+**点击进入：[人杰地灵东箭南金的博客](https://austinsuun.github.io/austin_ob/)**
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
+---
 
-## Sponsors
+## ✨ 博客特色
 
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+- **数字花园理念**：不仅仅是博客，更是不断生长、相互连接的知识网络。
+- **全文本搜索**：通过右上角的搜索框，秒级定位所有笔记内容。
+- **双向链接**：支持类似 Obsidian 的记录方式，笔记之间通过双向链接形成知识图谱。
+- **暗黑模式**：极致的护眼体验，支持随系统或手动切换。
+- **互动评论**：集成 Giscus 评论系统，支持通过 GitHub Discussion 进行深度交流。
+- **高性能渲染**：极速加载速度，流畅的阅读体验。
+
+## 📂 内容分类
+
+- **算法设计与分析**：我的学习笔记与刷题记录。
+- **服务器操作**：Linux、SSH、环境配置等实用指南。
+- **论文阅读**：AI 与 3D 点云领域的学术前沿探索。
+- **时间线**：按时间顺序回顾我的学习历程。
+
+---
+
+## 🛠️ 技术说明
+
+本项目由 [Quartz](https://quartz.jzhao.xyz/) 驱动。笔记内容使用 Markdown 编写，通过高性能的静态站点生成器自动部署。
+
+> “日拱一卒，功不唐捐。”
+
+---
+
+© 2026 人杰地灵东箭南金. Built with Quartz and ❤️

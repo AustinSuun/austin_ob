@@ -25,6 +25,7 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import PageList from "./PageList"
+import EmojiRestorer from "./EmojiRestorer"
 
 export {
   ArticleTitle,

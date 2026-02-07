@@ -77,6 +77,8 @@ export default ((opts?: Partial<TagContentOptions>) => {
               const tagListingPage = `/tags/${tag}` as FullSlug
               const href = resolveRelative(fileData.slug!, tagListingPage)
 
+              const TagPageList = PageList({ limit: options.numPages, sort: options?.sort })
+
               return (
                 <div>
                   <h2>
@@ -99,7 +101,7 @@ export default ((opts?: Partial<TagContentOptions>) => {
                         </>
                       )}
                     </p>
-                    <PageList limit={options.numPages} {...listProps} sort={options?.sort} />
+                    <TagPageList {...listProps} />
                   </div>
                 </div>
               )
@@ -114,13 +116,15 @@ export default ((opts?: Partial<TagContentOptions>) => {
         allFiles: pages,
       }
 
+      const TagPageList = PageList({ sort: options?.sort })
+
       return (
         <div class="popover-hint">
           <article class={classes}>{content}</article>
           <div class="page-listing">
             <p>{i18n(cfg.locale).pages.tagContent.itemsUnderTag({ count: pages.length })}</p>
             <div>
-              <PageList {...listProps} sort={options?.sort} />
+              <TagPageList {...listProps} />
             </div>
           </div>
         </div>
@@ -128,6 +132,6 @@ export default ((opts?: Partial<TagContentOptions>) => {
     }
   }
 
-  TagContent.css = concatenateResources(style, PageList.css)
+  TagContent.css = concatenateResources(style, (PageList as any).css)
   return TagContent
 }) satisfies QuartzComponentConstructor

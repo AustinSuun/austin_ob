@@ -92,9 +92,10 @@ export default ((opts?: Partial<FolderContentOptions>) => {
     const classes = cssClasses.join(" ")
     const listProps = {
       ...props,
-      sort: options.sort,
       allFiles: allPagesInFolder,
     }
+
+    const FolderPageList = PageList({ sort: options.sort })
 
     const content = (
       (tree as Root).children.length === 0
@@ -114,13 +115,13 @@ export default ((opts?: Partial<FolderContentOptions>) => {
             </p>
           )}
           <div>
-            <PageList {...listProps} />
+            <FolderPageList {...listProps} />
           </div>
         </div>
       </div>
     )
   }
 
-  FolderContent.css = concatenateResources(style, PageList.css)
+  FolderContent.css = concatenateResources(style, (PageList as any).css)
   return FolderContent
 }) satisfies QuartzComponentConstructor

@@ -9,46 +9,96 @@
                     radial-gradient(circle at bottom right, #232330, transparent 40%);
   background-attachment: fixed;
 }
+
+// Dark Mode Headers
 :root[saved-theme="dark"] h1, 
-:root[saved-theme="dark"] h2 {
-  background: linear-gradient(120deg, #b4befe, #f5c2e7);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent; 
+:root[saved-theme="dark"] h2,
+:root[saved-theme="dark"] h3,
+:root[saved-theme="dark"] .page-title {
+  color: #b4befe; // Default Fallback Color
   display: inline-block;
+  
+  // Apply gradient ONLY to the text span
+  .gradient-text {
+      // Wider Gradient Span: Sky Blue -> Soft Violet (More visible shift)
+      background: linear-gradient(to right, #38bdf8, #c084fc) !important; 
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      color: transparent !important;
+      // Softer Glow
+      text-shadow: 0 0 15px rgba(192, 132, 252, 0.3); 
+  }
+  
+  // Emojis should remain natural
+  .emoji-text {
+      color: initial !important;
+      background: none !important;
+      -webkit-text-fill-color: initial !important;
+      text-shadow: none !important;
+      filter: none !important;
+      display: inline-block;
+  }
 }
+
 :root[saved-theme="dark"] h1 { display: block; }
 
+// Article H2 in Dark Mode
+:root[saved-theme="dark"] article h2 {
+    color: #b4befe !important; // Simple solid color
+    text-shadow: 0 0 10px rgba(180, 190, 254, 0.3); // Softer Glow
+}
 
-// 2. Explicit Light Mode Overrides (High Contrast with Subtle Gradient)
+
+// 2. Explicit Light Mode Overrides
 :root[saved-theme="light"] body {
    background-color: #fbfbf9 !important; 
    background-image: none !important;    
    color: #2c2c2c;
 }
+
+// Light Mode Headers
 :root[saved-theme="light"] h1,
-:root[saved-theme="light"] h2 {
+:root[saved-theme="light"] h2,
+:root[saved-theme="light"] h3 {
    font-weight: 800 !important; 
    letter-spacing: -0.5px;
    display: inline-block;
+   
+   // Apply gradient ONLY to text span
+   .gradient-text {
+       // Brighter, Vercel-like Gradient: Sky Blue 500 -> Violet 500 (Matches "Dark Mode" aesthetic but readable on light)
+       background: linear-gradient(to right, #0EA5E9, #8B5CF6) !important;
+       -webkit-background-clip: text !important;
+       background-clip: text !important;
+       color: transparent !important;
+       background-size: 100% 100%; 
+       text-shadow: 0 4px 12px rgba(139, 92, 246, 0.15); // Softer, wider glow
+   }
+   
+   .emoji-text {
+      color: initial !important;
+      background: none !important;
+      -webkit-text-fill-color: initial !important;
+      text-shadow: none !important;
+   }
 }
 
-// FIX: Apply Gradient ONLY to the text span, not the emoji
-:root[saved-theme="light"] .gradient-text {
-   background: linear-gradient(90deg, #007CF0 0%, #7928CA 50%, #007CF0 100%);
-   background-size: 400px auto; 
-   -webkit-background-clip: text !important;
-   background-clip: text !important;
-   color: transparent !important;
+// Emoji Restoration Styles (Used by JS)
+.emoji-restore {
+   font-style: normal;
+   background: none !important;
+   -webkit-text-fill-color: initial !important;
+   text-fill-color: initial !important;
+   color: initial !important;
+   text-shadow: none !important; /* No glow for emojis to keep them sharp */
+   filter: none !important;
+   display: inline-block;
 }
 
-// Emojis should remain natural
-:root[saved-theme="light"] h1 .emoji-text,
-:root[saved-theme="light"] h2 .emoji-text,
-:root[saved-theme="light"] .page-title .emoji-text {
-    color: var(--dark) !important;
-    background: none !important;
-    -webkit-text-fill-color: initial !important;
+// Ensure Light Mode Article H2 matches Dark Mode style (Solid Color + Glow)
+:root[saved-theme="light"] article h2 {
+    color: #4F46E5 !important; // Indigo 600
+    text-shadow: 0 2px 10px rgba(79, 70, 229, 0.2); // Matching Glow
 }
 
 :root[saved-theme="light"] h1 { display: block; }
@@ -199,13 +249,14 @@ body {
 // 7. Layout Customization (Wider Content & Bigger Gaps)
 // Increase spacing between columns
 .page {
-    gap: 5rem !important; 
-    padding: 0 4rem !important; // Absolute zero top padding (User request: "Further Up")
+    gap: 3rem !important; 
+    padding: 0 4rem !important; // Absolute zero top padding
+    padding-top: 0 !important;
 }
 
 // Ensure columns and top elements start at the very top
 .center, .sidebar, .left, .right, 
-.article-title, .page-title {
+.article-title, .page-title, .page-header {
     margin-top: 0 !important;
     padding-top: 0 !important;
 }
@@ -235,13 +286,13 @@ h1.article-title, .page-title {
     padding-top: 0 !important;
 }
 
-// Light Mode Title Color - Academic Black
-:root[saved-theme="light"] h1.article-title,
-:root[saved-theme="light"] .page-title {
-    color: #000000 !important;
-    background: none !important;
-    -webkit-text-fill-color: initial !important;
-}
+// Light Mode Title Color - Academic Black -> REMOVED to restore Gradient
+// :root[saved-theme="light"] h1.article-title,
+// :root[saved-theme="light"] .page-title {
+//     color: #000000 !important;
+//     background: none !important;
+//     -webkit-text-fill-color: initial !important;
+// }
 
 // Dark Mode Title Color - Gradient Restored
 :root[saved-theme="dark"] h1.article-title,
@@ -494,8 +545,18 @@ pre {
 }
 
 // Hide scrollbar for Chrome/Safari/Opera so it looks clean
-.sidebar::-webkit-scrollbar {
+.sidebar::-webkit-scrollbar,
+.left::-webkit-scrollbar,
+.explorer::-webkit-scrollbar,
+#explorer-content::-webkit-scrollbar,
+.overflow::-webkit-scrollbar {
     display: none;
+}
+
+// Global sidebar scrollbar toggle (Hide all standard scrollbars in sidebars)
+.sidebar, .left, .right, .explorer, .overflow {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
 }
 
 // 10. Table of Contents Expansion
@@ -554,11 +615,11 @@ article {
 
 // Color Hierarchy - Dark Mode (Legibility)
 :root[saved-theme="dark"] article h2 {
-    // Restore gradient from root
-    background: linear-gradient(120deg, #b4befe, #f5c2e7) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
+    // Restore gradient from root -> REMOVED for consistency & Emoji fix
+    // background: linear-gradient(120deg, #b4befe, #f5c2e7) !important;
+    // -webkit-background-clip: text !important;
+    // background-clip: text !important;
+    color: #b4befe !important; // Consistent Solid Light Blue
     display: inline-block;
 }
 :root[saved-theme="dark"] article h3 {
@@ -616,4 +677,79 @@ a.internal:hover {
   color: var(--tertiary);
   border-bottom-color: var(--tertiary);
   text-decoration: none;
+}
+
+// 13. Fix Missing Page List (Folder Content)
+// Force visibility and layout for the file list in folder pages
+.section-ul {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-top: 2rem !important;
+    // display: block !important; // Let it flow naturally
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.section-li {
+    margin-bottom: 1.5rem !important;
+    // display: block !important; // Let it flow naturally
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+}
+
+.section {
+    // layout: date | title | tags
+    display: grid !important; 
+    grid-template-columns: 8em 1fr max-content !important; 
+    gap: 1rem;
+    align-items: baseline;
+    position: relative !important;
+    z-index: 10 !important;
+    color: var(--dark) !important;
+    visibility: visible !important;
+}
+
+// Mobile fallback for section grid
+@media all and (max-width: 600px) {
+    .section {
+        display: flex !important;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+    .section .meta {
+        margin-bottom: 0.2rem;
+    }
+    .section .tags {
+        display: none !important; // Hide tags on mobile to save space
+    }
+}
+
+.section .meta {
+    font-size: 0.9rem;
+    color: var(--gray);
+    white-space: nowrap;
+    opacity: 1 !important; // Ensure visible
+}
+
+.section .desc h3 {
+    margin: 0 !important;
+    font-size: 1.1rem !important;
+    line-height: 1.4 !important;
+}
+
+.section .desc h3 a {
+    background: transparent !important;
+    border: none !important;
+    color: var(--secondary) !important;
+    opacity: 1 !important; // Ensure visible
+}
+
+.section .tags {
+    display: flex !important; // Force display
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 0 !important;
+    opacity: 1 !important; // Ensure visible
 }

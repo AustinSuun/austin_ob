@@ -58,8 +58,8 @@ export type Options = {
   limit?: number
 }
 
-// Change to default export and high-order function pattern
-export default ((opts?: Partial<Options>) => {
+// Change to named export to fix import errors
+export const PageList: QuartzComponentConstructor<Partial<Options>> = ((opts?: Partial<Options>) => {
   const PageList: QuartzComponent = (props: QuartzComponentProps) => {
     // Merge props with options (options take precedence if passed at creation time)
     // Note: PageList doesn't seem to use props for config, but relies on what's passed here or calculated
@@ -83,6 +83,7 @@ export default ((opts?: Partial<Options>) => {
         {list.map((page) => {
           const title = page.frontmatter?.title
           const tags = page.frontmatter?.tags ?? []
+          const slug = page.slug!
 
           return (
             <li class="section-li">
@@ -92,7 +93,7 @@ export default ((opts?: Partial<Options>) => {
                 </p>
                 <div class="desc">
                   <h3>
-                    <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">
+                    <a href={resolveRelative(fileData.slug!, slug)} class="internal">
                       {title}
                     </a>
                   </h3>
@@ -128,5 +129,7 @@ export default ((opts?: Partial<Options>) => {
   `
   return PageList
 }) satisfies QuartzComponentConstructor
+
+export default PageList
 
 

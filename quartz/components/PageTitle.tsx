@@ -11,38 +11,50 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
   const segments = title.split(/(\p{Emoji_Presentation})/gu)
   
   return (
-    <h2 class={classNames(displayClass, "page-title")}>
+    <div class={classNames(displayClass, "page-title")}>
       <a href={baseDir} class="title-link">
         <img src={`${baseDir}/static/avatar.jpg`} alt="Logo" class="logo-image" />
+        <h2 class="title-text">
         {segments.map((segment, i) => (
-          // If segment matches emoji regex (simple check), render as is. Else wrap in gradient-text
           /\p{Emoji_Presentation}/u.test(segment) 
             ? <span key={i} class="emoji-text">{segment}</span>
             : <span key={i} class="gradient-text">{segment}</span>
         ))}
+        </h2>
       </a>
-    </h2>
+    </div>
   )
 }
 
 PageTitle.css = `
 .page-title {
-  font-size: 1.75rem;
-  margin: 0;
+  margin: 1rem 0;
 }
 .title-link {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Vertical layout */
+  align-items: center;    /* Center everything */
   gap: 0.5rem;
   text-decoration: none;
   color: inherit;
 }
 .logo-image {
-  width: 40px;
-  height: 40px;
+  width: 120px;           /* Much larger image */
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--lightgray);
+  border: 4px solid var(--lightgray); /* Thicker border */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Subtle shadow */
+  transition: transform 0.3s ease;
+}
+.logo-image:hover {
+  transform: scale(1.05); /* Interactive hover effect */
+}
+.title-text {
+  font-size: 1.2rem;      /* Smaller text */
+  margin: 0;
+  font-weight: 600;
+  text-align: center;
 }
 `
 
