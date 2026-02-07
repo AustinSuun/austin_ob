@@ -379,6 +379,13 @@ ol > li::marker {
     ul > li::marker, ol > li::marker {
         color: #82b1ff !important;
     }
+
+    // Fix: Dark mode link layout (Optical correction)
+    // Bright text on dark bg area looks thicker/longer, so we slightly tighten it.
+    a.internal {
+        letter-spacing: -0.015em; // Subtle contraction to match light mode width
+        -webkit-font-smoothing: subpixel-antialiased; // Sharpen strokes
+    }
 }
 
 // Tighten Metadata/Tags Area
@@ -682,31 +689,71 @@ a.internal:hover {
 // Force visibility and layout for the file list in folder pages
 .section-ul {
     list-style: none !important;
-    padding-left: 0 !important;
-    margin-top: 2rem !important;
-    // display: block !important; // Let it flow naturally
+    padding: 0 !important;
+    margin: 2rem 0 !important;
     visibility: visible !important;
     opacity: 1 !important;
+    position: relative;
+    padding-inline-start: 0 !important; // Ensure no default browser indentation
+    
+    // The continuous vertical line
+    &::before {
+        content: "";
+        position: absolute;
+        left: 10.75rem; 
+        top: 0.5rem;
+        bottom: 0;
+        width: 1px;
+        background: var(--lightgray);
+        opacity: 0.4;
+        z-index: 1;
+    }
 }
 
 .section-li {
-    margin-bottom: 1.5rem !important;
-    // display: block !important; // Let it flow naturally
+    margin-bottom: 2.5rem !important;
+    padding: 0 !important;
     visibility: visible !important;
     opacity: 1 !important;
     height: auto !important;
+    position: relative;
+    // Dot moved back to .meta for title-centric alignment
 }
 
 .section {
     display: grid !important; 
-    grid-template-columns: 8rem 1fr !important; // Fixed width for date, flexible for content
+    grid-template-columns: 9.5rem 1fr !important;
     grid-template-rows: auto auto;
     grid-template-areas: 
         "meta desc"
-        "meta tags";
-    gap: 0.3rem 1.2rem; // Horizontal gap 1.2rem, vertical gap 0.3rem
-    align-items: baseline;
-    margin-bottom: 2rem !important;
+        ". tags";
+    gap: 0.3rem 2.5rem;
+    align-items: center; // Centered with Title Block
+    margin-bottom: 0.5rem !important;
+    position: relative;
+
+    // The Dot: Mathematically centered on the gap axis
+    &::after {
+        content: "";
+        grid-area: meta;
+        justify-self: end;
+        align-self: center;
+        margin-right: -1.25rem; // Exactly half of the 2.5rem gap
+        transform: translateX(50%); // Pull center back to the vertical line
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--light);
+        border: 2px solid var(--secondary);
+        z-index: 2;
+        transition: all 0.2s ease;
+    }
+}
+
+.section-li:hover .section::after {
+    transform: translateX(50%) scale(1.3);
+    background: var(--secondary);
+    box-shadow: 0 0 8px var(--secondary);
 }
 
 .section .meta {
@@ -714,6 +761,9 @@ a.internal:hover {
     font-size: 0.95rem;
     color: var(--gray);
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .section .desc {
