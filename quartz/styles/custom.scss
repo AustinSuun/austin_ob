@@ -442,18 +442,24 @@ blockquote {
     border-left: 4px solid var(--secondary) !important; // Blue border
     background: rgba(0, 124, 240, 0.05); // Very faint blue bg
     border-radius: 0 8px 8px 0;
-    padding: 0.5rem 1rem !important; // Reduced vertical padding from 1rem
+    
+    // Fix: Symmetric padding for perfect vertical alignment
+    padding: 0.8rem 1rem !important; 
     font-style: italic;
 
-    // Fix: Remove massive margin from paragraphs inside blockquotes
+    // Fix: Reset ALL margins for paragraphs inside to rely solely on padding
     & > p {
-        margin-bottom: 0.5rem !important; 
+        margin: 0 !important;
     }
     
-    // Fix: Ensure the last element doesn't add extra whitespace at the bottom
-    & > *:last-child {
-        margin-bottom: 0 !important;
+    // Fix: Only add spacing between multiple paragraphs
+    & > p + p {
+        margin-top: 0.8rem !important;
     }
+
+    // Ensure no other elements ruin the symmetry
+    & > *:first-child { margin-top: 0 !important; }
+    & > *:last-child { margin-bottom: 0 !important; }
 }
 
 
