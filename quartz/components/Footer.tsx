@@ -7,6 +7,9 @@ interface Options {
   links: Record<string, string>
 }
 
+// @ts-ignore
+import script from "./scripts/busuanzi.inline"
+
 export default ((opts?: Options) => {
   const Footer: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
     const year = new Date().getFullYear()
@@ -38,5 +41,6 @@ export default ((opts?: Options) => {
   }
 
   Footer.css = style
+  Footer.afterDOMLoaded = script
   return Footer
 }) satisfies QuartzComponentConstructor

@@ -1,6 +1,7 @@
 import { QuartzEmitterPlugin } from "../types"
 import { QuartzComponentProps } from "../../components/types"
 import BodyConstructor from "../../components/Body"
+import HeaderConstructor from "../../components/Header"
 import { pageResources, renderPage } from "../../components/renderPage"
 import { FullPageLayout } from "../../cfg"
 import { FullSlug } from "../../util/path"
@@ -19,13 +20,14 @@ export const NotFoundPage: QuartzEmitterPlugin = () => {
     right: [],
   }
 
-  const { head: Head, pageBody, footer: Footer } = opts
+  const { head: Head, pageBody, footer: Footer, header, left, right, beforeBody, afterBody } = opts
   const Body = BodyConstructor()
+  const Header = HeaderConstructor()
 
   return {
     name: "404Page",
     getQuartzComponents() {
-      return [Head, Body, pageBody, Footer]
+      return [Head, Body, pageBody, Footer, Header, ...header, ...left, ...right, ...beforeBody, ...afterBody]
     },
     async *emit(ctx, _content, resources) {
       const cfg = ctx.cfg.configuration

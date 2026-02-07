@@ -1,9 +1,9 @@
-import { i18n } from "../../i18n"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
-import { pathToRoot } from "../../util/path"
 
-const NotFound: QuartzComponent = ({ cfg, fileData }: QuartzComponentProps) => {
-  const baseDir = pathToRoot(fileData.slug!)
+const NotFound: QuartzComponent = ({ cfg }: QuartzComponentProps) => {
+  // 404 页面可能出现在任何深度，相对路径会失效，必须使用绝对路径
+  const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
+  const baseDir = url.pathname
 
   return (
     <article class="popover-hint center-text">
@@ -12,7 +12,7 @@ const NotFound: QuartzComponent = ({ cfg, fileData }: QuartzComponentProps) => {
       <p style="margin-bottom: 2rem; color: var(--gray);">你要找的笔记可能还在我的脑子里，或者在另一个平行宇宙。</p>
       
       <div style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap;">
-        <a href={baseDir} class="external-link button-link">🏠 返回首页</a>
+        <a href={baseDir} class="external-link button-link home-link">🏠 返回首页</a>
         <a href="#" class="random-btn button-link" data-base-dir={baseDir}>🎲 随机传送</a>
       </div>
 
@@ -39,6 +39,15 @@ const NotFound: QuartzComponent = ({ cfg, fileData }: QuartzComponentProps) => {
           box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
       `}</style>
+      <script>{`
+        // 针对本地环境修正首页链接
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          const homeLink = document.querySelector('.home-link');
+          if (homeLink) {
+            homeLink.href = '/';
+          }
+        }
+      `}</script>
     </article>
   )
 }
