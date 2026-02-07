@@ -92,10 +92,6 @@ ol > li::marker {
 }
 
 // Ensure code blocks font size is readable too
-code {
-//    font-size: 0.95em;
-}
-
 // 4. Explorer / Left Sidebar Font Size & Spacing
 .explorer .folder-outer, 
 .explorer .folder-container,
@@ -134,19 +130,19 @@ body {
   
   background-color: var(--light);
   
-  // Abstract Geometric Background
-  background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23999' stroke-width='1' opacity='0.06'%3E%3Cpath d='M50 50 L150 50 L150 150 L50 150 Z M80 80 L120 80 L120 120 L80 120 Z M50 50 L80 80 M150 50 L120 80 M150 150 L120 120 M50 150 L80 120' /%3E%3Cpath d='M300 50 L350 80 L350 130 L300 160 L250 130 L250 80 Z M300 50 L300 160 M250 80 L350 130 M350 80 L250 130' transform='rotate(15 300 105)' /%3E%3Cpath d='M20 300 Q 50 250, 80 300 T 140 300 T 200 300' stroke-dasharray='4,4' /%3E%3Cpath d='M300 300 L350 350 L250 350 Z M300 300 L300 250 L350 350 M300 250 L250 350' /%3E%3C/g%3E%3C/svg%3E");
+  // Abstract Geometric Background - Sparse & Random (v2)
+  background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23999' stroke-width='1' opacity='0.04'%3E%3Cpath d='M100 100 L200 100 L200 200 L100 200 Z M130 130 L170 130 L170 170 L130 170 Z M100 100 L130 130 M200 100 L170 130 M200 200 L170 170 M100 200 L130 170' /%3E%3Cpath d='M600 250 L650 350 L550 350 Z M600 250 L600 350' transform='rotate(25 600 300)' /%3E%3Cpath d='M50 600 Q 150 550, 250 600' stroke-dasharray='8,8' /%3E%3C/g%3E%3C/svg%3E");
   
-  background-size: 500px 500px; // Large spread
+  background-size: 800px 800px; // Large spread for randomness
   background-attachment: fixed;
   // No animation (User request: Static)
 }
 
 // Dark Mode Override: Use lighter stroke for geometry
 :root[saved-theme="dark"] body {
-  // Same SVG but with lighter stroke color encoded (%23ccc)
-  background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ccc' stroke-width='1' opacity='0.05'%3E%3Cpath d='M50 50 L150 50 L150 150 L50 150 Z M80 80 L120 80 L120 120 L80 120 Z M50 50 L80 80 M150 50 L120 80 M150 150 L120 120 M50 150 L80 120' /%3E%3Cpath d='M300 50 L350 80 L350 130 L300 160 L250 130 L250 80 Z M300 50 L300 160 M250 80 L350 130 M350 80 L250 130' transform='rotate(15 300 105)' /%3E%3Cpath d='M20 300 Q 50 250, 80 300 T 140 300 T 200 300' stroke-dasharray='4,4' /%3E%3Cpath d='M300 300 L350 350 L250 350 Z M300 300 L300 250 L350 350 M300 250 L250 350' /%3E%3C/g%3E%3C/svg%3E") !important;
-  background-size: 500px 500px !important;
+  // Dark Mode Sparse SVG
+  background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ccc' stroke-width='1' opacity='0.03'%3E%3Cpath d='M100 100 L200 100 L200 200 L100 200 Z M130 130 L170 130 L170 170 L130 170 Z M100 100 L130 130 M200 100 L170 130 M200 200 L170 170 M100 200 L130 170' /%3E%3Cpath d='M600 250 L650 350 L550 350 Z M600 250 L600 350' transform='rotate(25 600 300)' /%3E%3Cpath d='M50 600 Q 150 550, 250 600' stroke-dasharray='8,8' /%3E%3C/g%3E%3C/svg%3E") !important;
+  background-size: 800px 800px !important;
   background-attachment: fixed !important;
 }
 
@@ -247,12 +243,14 @@ h1.article-title, .page-title {
     -webkit-text-fill-color: initial !important;
 }
 
-// Dark Mode Title Color - Clean White
+// Dark Mode Title Color - Gradient Restored
 :root[saved-theme="dark"] h1.article-title,
 :root[saved-theme="dark"] .page-title {
-    color: #ffffff !important;
-    background: none !important;
-    -webkit-text-fill-color: initial !important;
+    background: linear-gradient(120deg, #b4befe, #f5c2e7) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    display: inline-block;
 }
 
 // Academic Text Accents - High Visibility (User request: Make bold obvious)
@@ -556,7 +554,12 @@ article {
 
 // Color Hierarchy - Dark Mode (Legibility)
 :root[saved-theme="dark"] article h2 {
-    color: #82b1ff !important; // Soft Blue Accent
+    // Restore gradient from root
+    background: linear-gradient(120deg, #b4befe, #f5c2e7) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    display: inline-block;
 }
 :root[saved-theme="dark"] article h3 {
     color: #80deea !important; // Soft Cyan Accent
