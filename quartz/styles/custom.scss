@@ -442,8 +442,18 @@ blockquote {
     border-left: 4px solid var(--secondary) !important; // Blue border
     background: rgba(0, 124, 240, 0.05); // Very faint blue bg
     border-radius: 0 8px 8px 0;
-    padding: 1rem !important;
+    padding: 0.5rem 1rem !important; // Reduced vertical padding from 1rem
     font-style: italic;
+
+    // Fix: Remove massive margin from paragraphs inside blockquotes
+    & > p {
+        margin-bottom: 0.5rem !important; 
+    }
+    
+    // Fix: Ensure the last element doesn't add extra whitespace at the bottom
+    & > *:last-child {
+        margin-bottom: 0 !important;
+    }
 }
 
 
