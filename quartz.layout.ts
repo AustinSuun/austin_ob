@@ -5,16 +5,7 @@ import { isFolderPath } from "./quartz/util/path"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [
-    Component.Navbar(), 
-    Component.Flex({
-      components: [
-        { Component: Component.Search() },
-        { Component: Component.Darkmode() },
-      ]
-    }),
-    Component.ReadingProgress(),
-  ],
+  header: [Component.Navbar(), Component.ReadingProgress()],
   afterBody: [
     Component.ConditionalRender({
       component: Component.PageList({
@@ -44,7 +35,7 @@ export const sharedPageComponents: SharedLayout = {
           categoryId: "DIC_kwDOOfhCh84C1_5r",
         }
       }),
-      condition: (page) => !isFolderPath(page.fileData.slug!)
+      condition: (page) => !isFolderPath(page.fileData.slug!) && page.fileData.slug !== "index",
     }),
     Component.BackToTop(),
   ],
@@ -69,6 +60,16 @@ export const defaultContentPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+        { Component: Component.Darkmode() },
+        { Component: Component.ReaderMode() },
+      ],
+    }),
     Component.Explorer({
       folderClickBehavior: "collapse",
       filterFn: (node) => node.slugSegment !== "games",
@@ -89,6 +90,15 @@ export const defaultListPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Search(),
+          grow: true,
+        },
+        { Component: Component.Darkmode() },
+      ],
+    }),
     Component.Explorer({
       folderClickBehavior: "collapse",
       filterFn: (node) => node.slugSegment !== "games",
