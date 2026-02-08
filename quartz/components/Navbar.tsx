@@ -10,7 +10,7 @@ export default (() => {
     return (
       <div class={`navbar-links ${displayClass ?? ""}`}>
         <a href={baseDir} class="nav-btn">🏠 首页</a>
-        <a href={`${baseDir}/Timeline`} class="nav-btn">📅 时间轴</a>
+        <a href={`${baseDir}/Timeline`} class="nav-btn">⏳ 时间线</a>
         <a href={`${baseDir}/tags`} class="nav-btn">🏷️ 标签</a>
         <a href="#" class="nav-btn random-btn" data-base-dir={baseDir}>🎲 漫步</a>
       </div>

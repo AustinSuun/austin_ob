@@ -187,17 +187,6 @@ footer,
   line-height: 1.6;
 }
 
-.btn-primary {
-  padding: 0.8rem 2.5rem;
-  border-radius: 50px;
-  background: var(--secondary) !important;
-  color: white !important;
-  text-decoration: none !important;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(41, 163, 255, 0.3);
-  transition: all 0.3s ease;
-}
-
 
 
 
@@ -308,9 +297,11 @@ footer,
 
 <div class="hero-actions">
 <a href="Timeline" id="timeline-btn" class="btn-primary">
-⏳ 时间线
+⏳ 查看时间线
 </a>
 </div>
+
+
 
 <div class="garden-stats" id="stats-container">
   <!-- 动态加载统计数据 -->
@@ -483,3 +474,5 @@ body {
     </div>
   </div>
 </div>
+
+

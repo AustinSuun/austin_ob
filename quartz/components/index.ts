@@ -29,6 +29,8 @@ import EmojiRestorer from "./EmojiRestorer"
 import ReadingProgress from "./ReadingProgress"
 import BackToTop from "./BackToTop"
 
+import GravityParticles from "./GravityParticles"
+
 export {
   ArticleTitle,
   Content,
@@ -59,4 +61,5 @@ export {
   PageList,
   ReadingProgress,
   BackToTop,
+  GravityParticles,
 }
