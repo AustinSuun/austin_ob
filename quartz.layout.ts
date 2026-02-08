@@ -72,6 +72,7 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer({
       folderClickBehavior: "collapse",
+      filterFn: (node) => node.slugSegment !== "games",
     }),
   ],
   right: [
@@ -100,6 +101,7 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer({
       folderClickBehavior: "collapse",
+      filterFn: (node) => node.slugSegment !== "games",
     }),
   ],
   right: [],

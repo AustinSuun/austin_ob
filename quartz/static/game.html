@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>量子回旋 (Quantum Evasion)</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            /* Update to match Quartz Dark Mode: #1e1e2e */
+            background: #1e1e2e;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #d1d1d6; /* Dark mode text color */
+            touch-action: none; /* Prevent scroll on mobile */
+        }
+        #gameCanvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+        }
+        #ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        #score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #29a3ff; /* Secondary color from config */
+            text-shadow: 0 0 10px rgba(41, 163, 255, 0.3); /* Subtle glow */
+        }
+        #leaderboard {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(30, 30, 46, 0.85); /* Slightly transparent */
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #3a3a3c;
+            min-width: 150px;
+            /* Allow clicking if visible, though top-right is usually safe */
+            backdrop-filter: blur(5px);
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        #leaderboard.hidden-ui {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #leaderboard h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #8e8e93;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #3a3a3c;
+            padding-bottom: 5px;
+        }
+        .leaderboard-entry {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #d1d1d6;
+        }
+        .leaderboard-entry span:first-child {
+            font-weight: 600;
+            color: #29a3ff;
+            margin-right: 10px;
+        }
+
+        #startScreen, #gameOverScreen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background: rgba(30, 30, 46, 0.95); /* Slightly transparent dark mode bg */
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #3a3a3c; /* Separator color */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 300px;
+            backdrop-filter: blur(5px);
+        }
+        h1 {
+            margin: 0;
+            color: #f2f2f7; /* Headings color from config */
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        input {
+            background: #3a3a3c;
+            border: 1px solid #48484a;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            width: 80%;
+            margin: 0 auto;
+        }
+        input:focus {
+            border-color: #29a3ff;
+        }
+        p {
+            margin: 0;
+            color: #d1d1d6; /* Body text color */
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        button {
+            background: #29a3ff; /* Secondary color */
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            outline: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(41, 163, 255, 0.3);
+        }
+        button:hover {
+            background: #007aff; /* Slightly darker/more saturated blue */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(41, 163, 255, 0.4);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .hidden {
+            display: none !important;
+        }
+        .tip {
+            font-size: 13px !important;
+            margin-top: 10px !important;
+            color: #8e8e93 !important;
+        }
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            h1 { font-size: 24px; }
+            #startScreen, #gameOverScreen { padding: 30px; min-width: 250px; }
+            #leaderboard { display: none; } /* Hide leaderboard on small screens to save space */
+        }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <div id="score">当前得分: 0</div>
+    </div>
+    
+    <div id="leaderboard">
+        <h3>排行榜 (TOP 5)</h3>
+        <div id="leaderboardList">
+            <!-- Entries will be injected here -->
+            <div class="leaderboard-entry"><span>1. ???</span> 0</div>
+        </div>
+    </div>
+
+    <div id="startScreen">
+        <h1>量子回旋</h1>
+        <p>Quantum Evasion</p>
+        <p class="tip">拖动鼠标或触摸屏幕控制核心<br>躲避红色量子流</p>
+        <input type="text" id="playerNameInput" placeholder="输入玩家代号" maxlength="10">
+        <button id="startBtn">开始游戏</button>
+    </div>
+
+    <div id="gameOverScreen" class="hidden">
+        <h1 style="color: #ff453a;">核心损毁</h1> <!-- iOS Red -->
+        <p>最终得分: <span id="finalScore" style="color: #29a3ff; font-weight: bold;">0</span></p>
+        <button id="restartBtn">再次尝试</button>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreEl = document.getElementById('score');
+        const leaderboardList = document.getElementById('leaderboardList');
+        const leaderboard = document.getElementById('leaderboard');
+        const startScreen = document.getElementById('startScreen');
+        const gameOverScreen = document.getElementById('gameOverScreen');
+        const finalScoreEl = document.getElementById('finalScore');
+        const startBtn = document.getElementById('startBtn');
+        const restartBtn = document.getElementById('restartBtn');
+        const playerNameInput = document.getElementById('playerNameInput');
+
+        // Game State
+        let isRunning = false;
+        let score = 0;
+        let playerName = localStorage.getItem('qe_last_player') || '';
+        let frames = 0;
+        let difficulty = 1;
+
+        // Leaderboard Logic
+        function getLeaderboard() {
+            const data = localStorage.getItem('qe_leaderboard');
+            return data ? JSON.parse(data) : [];
+        }
+
+        function saveLeaderboard(leaderboard) {
+            localStorage.setItem('qe_leaderboard', JSON.stringify(leaderboard));
+        }
+
+        function updateLeaderboard(name, score) {
+            let leaderboard = getLeaderboard();
+            leaderboard.push({ name, score });
+            // Sort descending by score
+            leaderboard.sort((a, b) => b.score - a.score);
+            // Keep top 5
+            leaderboard = leaderboard.slice(0, 5);
+            saveLeaderboard(leaderboard);
+            renderLeaderboard();
+        }
+
+        function renderLeaderboard() {
+            const leaderboard = getLeaderboard();
+            leaderboardList.innerHTML = '';
+            if (leaderboard.length === 0) {
+                leaderboardList.innerHTML = '<div class="leaderboard-entry" style="color:#666">暂无记录</div>';
+                return;
+            }
+            leaderboard.forEach((entry, index) => {
+                const div = document.createElement('div');
+                div.className = 'leaderboard-entry';
+                // Escape HTML needed for name? Basic protection
+                const safeName = entry.name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                div.innerHTML = `<span>${index + 1}. ${safeName}</span> ${entry.score}`;
+                leaderboardList.appendChild(div);
+            });
+        }
+
+        // Player
+        const player = {
+            x: 0,
+            y: 0,
+            radius: 8,
+            color: '#29a3ff', // Secondary color
+            trail: []
+        };
+
+        // Entities
+        let particles = [];
+        let enemies = [];
+        
+        // Mouse/Touch
+        const mouse = { x: 0, y: 0 };
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            if (!isRunning) {
+                player.x = canvas.width / 2;
+                player.y = canvas.height / 2;
+                mouse.x = canvas.width / 2;
+                mouse.y = canvas.height / 2;
+            }
+        }
+        window.addEventListener('resize', resize);
+        
+        // Initialize UI
+        playerNameInput.value = playerName;
+        renderLeaderboard();
+        resize();
+
+        // Input Handling
+        function updatePosition(x, y) {
+            mouse.x = x;
+            mouse.y = y;
+        }
+
+        window.addEventListener('mousemove', e => updatePosition(e.clientX, e.clientY));
+        window.addEventListener('touchmove', e => {
+            e.preventDefault();
+            updatePosition(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: false });
+        window.addEventListener('touchstart', e => {
+            updatePosition(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: false });
+
+        // Classes
+        class Enemy {
+            constructor() {
+                this.radius = Math.random() * 15 + 5;
+                // Red-ish hues for danger, slightly muted to match theme
+                this.color = `hsl(${Math.random() * 40 + 340}, 80%, 65%)`; 
+                this.speed = (Math.random() * 2 + 2) * difficulty;
+                
+                if (Math.random() < 0.5) {
+                    this.x = Math.random() < 0.5 ? -this.radius : canvas.width + this.radius;
+                    this.y = Math.random() * canvas.height;
+                } else {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() < 0.5 ? -this.radius : canvas.height + this.radius;
+                }
+                
+                const targetX = (canvas.width / 2) + (Math.random() * 200 - 100);
+                const targetY = (canvas.height / 2) + (Math.random() * 200 - 100);
+                const angle = Math.atan2(targetY - this.y, targetX - this.x);
+                
+                this.vx = Math.cos(angle) * this.speed;
+                this.vy = Math.sin(angle) * this.speed;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Add trail particle
+                if (frames % 5 === 0) {
+                    particles.push(new Particle(this.x, this.y, this.radius * 0.5, this.color, {x: 0, y: 0}, 0.05));
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                // Reduced shadow blur for performance and cleaner look
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = this.color;
+            }
+        }
+
+        class Particle {
+            constructor(x, y, radius, color, velocity, decay = 0.02) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.velocity = velocity;
+                this.alpha = 1;
+                this.decay = decay;
+            }
+
+            update() {
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= this.decay;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function init() {
+            playerName = playerNameInput.value.trim() || '无名氏';
+            localStorage.setItem('qe_last_player', playerName); // Remember last name
+
+            player.x = canvas.width / 2;
+            player.y = canvas.height / 2;
+            mouse.x = canvas.width / 2;
+            mouse.y = canvas.height / 2;
+            particles = [];
+            enemies = [];
+            score = 0;
+            difficulty = 1;
+            frames = 0;
+            scoreEl.innerText = '当前得分: 0';
+            
+            // Hide UI
+            startScreen.classList.add('hidden');
+            gameOverScreen.classList.add('hidden');
+            leaderboard.classList.add('hidden-ui');
+            
+            isRunning = true;
+            animate();
+        }
+
+        function gameOver() {
+            isRunning = false;
+            finalScoreEl.innerText = score;
+            
+            // Update leaderboard
+            updateLeaderboard(playerName, score);
+            
+            // Show UI
+            gameOverScreen.classList.remove('hidden');
+            leaderboard.classList.remove('hidden-ui');
+        }
+
+        function animate() {
+            if (!isRunning) return;
+            requestAnimationFrame(animate);
+            
+            // Background trail effect matching theme bg color
+            ctx.fillStyle = 'rgba(30, 30, 46, 0.25)'; // Corrected to #1e1e2e (Dark Mode)
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.shadowBlur = 0; 
+
+            frames++;
+            if (frames % 60 === 0) {
+                score++;
+                scoreEl.innerText = `当前得分: ${score}`;
+                if (score % 10 === 0) difficulty += 0.1;
+            }
+
+            // Player logic
+            const dx = mouse.x - player.x;
+            const dy = mouse.y - player.y;
+            player.x += dx * 0.15;
+            player.y += dy * 0.15;
+
+            // Player Trail
+            if (frames % 2 === 0) {
+                player.trail.push({x: player.x, y: player.y, alpha: 1});
+            }
+            player.trail.forEach((p, index) => {
+                p.alpha -= 0.05;
+                if (p.alpha <= 0) player.trail.splice(index, 1);
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, player.radius * p.alpha, 0, Math.PI * 2);
+                // Use theme secondary color for trail
+                ctx.fillStyle = `rgba(41, 163, 255, ${p.alpha})`; 
+                ctx.fill();
+            });
+
+            // Draw Player
+            ctx.beginPath();
+            ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
+            ctx.fillStyle = player.color;
+            ctx.fill();
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = player.color;
+
+            // Spawn Enemies
+            if (frames % Math.max(20, 60 - score) === 0) {
+                enemies.push(new Enemy());
+            }
+
+            // Update/Draw Enemies (Reverse loop for safe removal)
+            for (let i = enemies.length - 1; i >= 0; i--) {
+                const enemy = enemies[i];
+                enemy.update();
+                enemy.draw();
+
+                // Collision
+                const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
+                if (dist - enemy.radius - player.radius < 1) {
+                    // Boom
+                    for (let j = 0; j < 25; j++) {
+                        particles.push(new Particle(
+                            player.x, player.y, Math.random() * 4, '#ff453a',
+                            { x: (Math.random() - 0.5) * 12, y: (Math.random() - 0.5) * 12 }
+                        ));
+                    }
+                    gameOver();
+                }
+
+                // Remove off-screen
+                if (enemy.x < -100 || enemy.x > canvas.width + 100 || 
+                    enemy.y < -100 || enemy.y > canvas.height + 100) {
+                    enemies.splice(i, 1);
+                }
+            }
+
+            // Update/Draw Particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update();
+                p.draw();
+                if (p.alpha <= 0) particles.splice(i, 1);
+            }
+        }
+
+        // Initial Draw
+        resize();
+        
+        startBtn.addEventListener('click', () => {
+             // Basic validation
+            if(playerNameInput.value.trim() === ""){
+                 playerNameInput.style.borderColor = "#ff453a";
+                 return;
+            }
+            init();
+        });
+        playerNameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                if(playerNameInput.value.trim() === ""){
+                    playerNameInput.style.borderColor = "#ff453a";
+                    return;
+                }
+                init();
+            }
+        });
+        playerNameInput.addEventListener('input', () => {
+             playerNameInput.style.borderColor = "#48484a";
+        });
+        
+        restartBtn.addEventListener('click', () => {
+            // Restart uses the same name, or allows user to restart completely
+            startScreen.classList.remove('hidden');
+            gameOverScreen.classList.add('hidden');
+            leaderboard.classList.remove('hidden-ui'); // Show leaderboard again on restart
+        });
+        
+        window.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>

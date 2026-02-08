@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>交互科研样板全集</title>
+    <title>科研交互样板全集 - 精选交互版</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js -->
@@ -32,7 +32,9 @@
             --bg-quartz: rgb(251, 251, 249);
             --primary: #3b82f6;
             --accent: #10b981;
+            --rose: #f43f5e;
             --slate-text: #1e293b;
+            --brand-primary: #3b82f6;
         }
 
         body { 
@@ -51,7 +53,7 @@
             background: white;
             border: 1px solid #e5e7eb;
             border-radius: 1.25rem;
-            padding: 2rem;
+            padding: 2.5rem;
             margin-bottom: 2.5rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -59,9 +61,10 @@
         .showcase-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary);
         }
 
-        /* 3D 容器 */
+        /* Module 1: 3D Container */
         #three-viewport {
             width: 100%;
             height: 350px;
@@ -71,72 +74,117 @@
             overflow: hidden;
         }
 
-        /* 图表容器 */
+        /* Module 2: Gaussian Lab */
+        .gaussian-lab {
+            height: 200px;
+            background: #f8fafc;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .data-point {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #cbd5e1;
+            border-radius: 50%;
+        }
+        .fit-curve {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Module 3: Radar Chart Container */
         .chart-box { position: relative; width: 100%; height: 300px; }
 
-        /* 数学公式块 */
-        .formula-block {
-            font-family: 'serif';
-            background: #f8fafc;
-            border-left: 4px solid var(--primary);
-            padding: 1.25rem;
-            margin: 1rem 0;
-            border-radius: 0.5rem;
-            text-align: center;
-            font-size: 1.1rem;
+        /* Module 4: Heatmap Grid */
+        .heatmap-grid {
+            display: grid;
+            grid-template-columns: repeat(15, 1fr);
+            gap: 2px;
+        }
+        .heatmap-cell {
+            aspect-ratio: 1/1;
+            border-radius: 2px;
+            transition: all 0.3s;
+            cursor: crosshair;
         }
 
-        /* 代码块样式 */
-        .code-snippet {
-            font-family: 'JetBrains Mono', monospace;
-            background: #1e293b;
-            color: #38bdf8;
-            padding: 1.25rem;
-            border-radius: 0.75rem;
-            font-size: 0.8rem;
-            overflow-x: auto;
+        /* Module 5: 3D Slices */
+        .slice-container {
+            height: 200px;
+            perspective: 1000px;
+        }
+        .slice-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            background: rgba(59, 130, 246, 0.05);
+            transform: rotateX(60deg) rotateZ(-10deg);
+            transition: all 0.5s ease;
+        }
+        .slice-layer:hover {
+            transform: rotateX(50deg) rotateZ(-5deg) translateZ(20px);
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--primary);
         }
 
-        /* 标签页交互 */
-        .tab-btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #64748b;
-            border-bottom: 2px solid transparent;
+        /* Module 6: SSM Gate Buttons */
+        .gate-btn {
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            border: 1px solid #e2e8f0;
             transition: all 0.2s;
         }
-        .tab-btn.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
+        .gate-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
         }
 
-        /* 滑块美化 */
-        input[type=range] {
-            accent-color: var(--primary);
+        /* Module 7: Spatial Grid */
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 4px;
         }
+        .search-cell {
+            aspect-ratio: 1/1;
+            background: #f1f5f9;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .search-cell.active { background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+        .search-cell.neighbor { background: #dbeafe; }
 
-        .animate-fade { animation: fadeIn 0.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Common: Range Input */
+        input[type=range] { accent-color: var(--primary); }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- 顶部引导 -->
     <header class="text-center mb-16">
         <div class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
-            Component Showcase v1.0
+            Interactive Showcase v4.0
         </div>
-        <h1 class="text-3xl font-black text-slate-900 tracking-tight mb-2">科研演示全能样板</h1>
-        <p class="text-slate-500 text-sm">专为 Quartz Markdown 优化的交互式展示方案</p>
+        <h1 class="text-3xl font-black text-slate-900 tracking-tight mb-2">精选交互全集</h1>
+        <p class="text-slate-500 text-sm">仅保留高频交互与核心原理演示模块</p>
     </header>
 
-    <!-- STYLE 1: 3D 仿真模块 -->
+    <!-- MODULE 1: 3D Geometries (Three.js) -->
     <section class="showcase-card">
         <div class="flex items-center gap-3 mb-6">
             <div class="p-2 bg-blue-500 text-white rounded-lg"><i data-lucide="box" class="w-5 h-5"></i></div>
             <div>
-                <h2 class="text-xl font-bold">样式一：3D 几何仿真</h2>
+                <h2 class="text-xl font-bold">交互一：3D 几何仿真</h2>
                 <p class="text-[10px] text-slate-400 uppercase tracking-widest">Three.js Engine Integration</p>
             </div>
         </div>
@@ -151,11 +199,40 @@
         <p class="mt-4 text-xs text-slate-500 italic">交互说明：拖动鼠标旋转视角，滚轮缩放。适合展示 3D 检测结果或局部几何流形。</p>
     </section>
 
-    <!-- STYLE 2: 动态数据实验台 -->
+    <!-- MODULE 2: Gaussian Lab (Canvas) -->
+    <section class="showcase-card">
+        <div class="flex items-center justify-between mb-8">
+            <h3 class="font-bold flex items-center gap-2">
+                <i data-lucide="activity" class="w-5 h-5 text-rose-500"></i> 交互二：高斯拟合实验室
+            </h3>
+            <span class="text-[10px] bg-rose-50 text-rose-600 px-2 py-1 rounded font-bold uppercase">Dynamic Curve Fitting</span>
+        </div>
+        
+        <div class="gaussian-lab mb-6" id="lab-container">
+            <canvas id="gaussian-curve" class="fit-curve"></canvas>
+            <!-- 散点由脚本填充 -->
+        </div>
+
+        <div class="grid grid-cols-2 gap-8">
+            <div class="space-y-4">
+                <label class="block text-[10px] font-bold text-slate-400 uppercase">均值偏移 (Mu)</label>
+                <input type="range" id="mu-slider" min="20" max="80" value="50" class="w-full h-1.5 bg-slate-200 rounded-lg cursor-pointer accent-rose-500">
+            </div>
+            <div class="space-y-4">
+                <label class="block text-[10px] font-bold text-slate-400 uppercase">方差缩放 (Sigma)</label>
+                <input type="range" id="sigma-slider" min="5" max="30" value="15" class="w-full h-1.5 bg-slate-200 rounded-lg cursor-pointer accent-rose-500">
+            </div>
+        </div>
+        <p class="text-[11px] text-slate-400 mt-6 leading-relaxed">
+            交互逻辑：调整滑块查看高斯曲线如何覆盖原始点云分布。
+        </p>
+    </section>
+
+    <!-- MODULE 3: Dynamic Radar (Chart.js) -->
     <section class="showcase-card">
         <div class="flex items-center gap-3 mb-8">
             <div class="p-2 bg-emerald-500 text-white rounded-lg"><i data-lucide="line-chart" class="w-5 h-5"></i></div>
-            <h2 class="text-xl font-bold">样式二：参数反馈仪表盘</h2>
+            <h2 class="text-xl font-bold">交互三：多维参数反馈</h2>
         </div>
         <div class="grid grid-cols-2 gap-8 items-center">
             <!-- 控件 -->
@@ -169,12 +246,8 @@
                         <span>0.20m</span>
                     </div>
                 </div>
-                <div class="p-4 bg-slate-50 rounded-xl">
-                    <label class="block text-xs font-bold text-slate-500 mb-3 uppercase">计算阈值 (Threshold)</label>
-                    <input type="range" id="param-thresh" min="0" max="100" value="75" class="w-full h-1.5 bg-slate-200 rounded-lg cursor-pointer">
-                </div>
                 <div class="text-[11px] text-slate-400 leading-relaxed">
-                    调整左侧滑块，右侧图表将根据<strong>预设响应函数</strong>实时更新 mAP 与 FPS 的权衡曲线。
+                    调整分辨率滑块，右侧图表将根据<strong>预设响应函数</strong>实时更新 mAP 与 FPS 的权衡曲线。
                 </div>
             </div>
             <!-- 图表 -->
@@ -184,56 +257,109 @@
         </div>
     </section>
 
-    <!-- STYLE 3: 分步逻辑/算法流水线 -->
-    <section class="showcase-card">
-        <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 bg-indigo-500 text-white rounded-lg"><i data-lucide="layers" class="w-5 h-5"></i></div>
-            <h2 class="text-xl font-bold">样式三：交互式算法流水线</h2>
+    <!-- MODULE 4: Heatmap (Grid + Hover) -->
+    <div class="showcase-card">
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="font-bold flex items-center gap-2">
+                <i data-lucide="flame" class="w-5 h-5 text-orange-500"></i> 交互四：特征激活热力图
+            </h3>
+            <span class="text-[10px] bg-orange-50 text-orange-600 px-2 py-1 rounded font-bold">交互：悬停探测</span>
         </div>
-        <div class="flex gap-4 border-b border-slate-100 mb-6">
-            <button onclick="switchTab(0)" class="tab-btn active" id="btn-0">数据输入</button>
-            <button onclick="switchTab(1)" class="tab-btn active" id="btn-1">特征升维</button>
-            <button onclick="switchTab(2)" class="tab-btn" id="btn-2">SSM 处理</button>
+        <div class="heatmap-grid" id="heatmap">
+            <!-- 由 JS 填充 -->
         </div>
-        <div id="tab-content" class="min-h-[120px] text-sm text-slate-600 animate-fade">
-            <!-- 动态注入内容 -->
-            获取原始点云序列，执行坐标归一化与 VFE 初始映射。
+        <div class="mt-4 flex justify-between items-center bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-[10px] text-slate-500">当前体素激活强度 (Saliency): <span id="heat-val" class="font-bold text-orange-600">0.00</span></div>
+            <div class="flex gap-2">
+                <div class="w-20 h-2 bg-gradient-to-r from-blue-100 to-orange-500 rounded"></div>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <!-- STYLE 4: 顶会级数学与代码文档 -->
-    <section class="showcase-card">
-        <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 bg-amber-500 text-white rounded-lg"><i data-lucide="file-text" class="w-5 h-5"></i></div>
-            <h2 class="text-xl font-bold">样式四：学术文档排版</h2>
-        </div>
-        <div class="space-y-4">
-            <p class="text-sm text-slate-600">利用 Mamba-2 的对偶特性，我们将传统的离散状态空间方程定义为：</p>
-            <div class="formula-block shadow-inner">
-                $$h_t = \exp(\Delta A)h_{t-1} + (\Delta B)x_t$$
+    <!-- MODULE 5: 3D Slices (CSS 3D) -->
+    <div class="showcase-card">
+        <h3 class="font-bold mb-8 flex items-center gap-2">
+            <i data-lucide="layers-3" class="w-5 h-5 text-blue-500"></i> 交互五：多尺度几何切片
+        </h3>
+        <div class="slice-container relative flex justify-center items-center">
+            <!-- Layer 3 (Highest) -->
+            <div class="slice-layer" style="width: 150px; height: 150px; z-index: 30; transform: rotateX(60deg) rotateZ(-10deg) translateZ(60px); display: flex; align-items: center; justify-content: center;">
+                <span class="text-[10px] font-bold text-blue-600">8x Downsample</span>
             </div>
-            <p class="text-sm text-slate-600">在 OpenPCDet 中对应的核心算子调用逻辑如下：</p>
-            <div class="code-snippet">
-                # Gaussian Token 注入逻辑<br>
-                dt = self.dt_proj(voxel_features)<br>
-                A_disc = torch.exp(dt * self.A_log.expand())<br>
-                <span class="text-white">output = selective_scan(x, A_disc, B, C)</span>
+            <!-- Layer 2 -->
+            <div class="slice-layer" style="width: 250px; height: 250px; z-index: 20; transform: rotateX(60deg) rotateZ(-10deg) translateZ(30px); opacity: 0.6;"></div>
+            <!-- Layer 1 -->
+            <div class="slice-layer" style="width: 350px; height: 350px; z-index: 10; opacity: 0.3;"></div>
+        </div>
+        <p class="text-[10px] text-slate-500 mt-20 text-center leading-relaxed">
+            <b>空间层级：</b> 鼠标悬停可触发各分辨率层的激活反馈。适合展示 3D Backbone 的层级演进。
+        </p>
+    </div>
+
+    <!-- MODULE 6: SSM Gate (Buttons) -->
+    <div class="showcase-card">
+        <h3 class="font-bold mb-6 flex items-center gap-2">
+            <i data-lucide="sliders-horizontal" class="w-5 h-5 text-emerald-500"></i> 交互六：SSM 状态控制台
+        </h3>
+        <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800">
+            <div class="flex justify-between items-center mb-8">
+                <div class="text-xs text-slate-400 font-mono">Equation: $h_t = \bar{A}h_{t-1} + \bar{B}x_t$</div>
+                <div class="flex gap-2">
+                    <button id="gate-decay" class="gate-btn active" onclick="setGate('decay')">保持 (Δ≈0)</button>
+                    <button id="gate-update" class="gate-btn" onclick="setGate('update')">更新 (Δ≈1)</button>
+                </div>
+            </div>
+            <div class="h-16 w-full flex items-center gap-1">
+                <div id="signal-input" class="w-4 h-full bg-blue-500 rounded transition-all duration-1000"></div>
+                <div class="flex-grow h-0.5 bg-slate-700 relative">
+                    <div id="gate-indicator" class="absolute left-1/2 -top-1 w-2 h-2 bg-emerald-400 rounded-full shadow-[0_0_10px_#10b981]"></div>
+                </div>
+                <div id="signal-output" class="w-4 h-4 bg-slate-700 rounded transition-all duration-1000"></div>
+            </div>
+            <div class="mt-6 text-[10px] text-slate-500 italic text-center" id="gate-desc">
+                当前模式：状态保持。模型跳过背景空洞，不更新隐含状态。
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- MODULE 7: Spatial Grid (Click) -->
+    <div class="showcase-card">
+        <h3 class="font-bold mb-8 flex items-center gap-2">
+            <i data-lucide="scan-eye" class="w-5 h-5 text-indigo-500"></i> 交互七：空间感受野探查器
+        </h3>
+        <div class="flex flex-col md:flex-row gap-8 items-center">
+            <div class="search-grid w-64" id="spatial-grid">
+                <!-- 由 JS 填充 -->
+            </div>
+            <div class="flex-1 space-y-4">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                    <h4 class="text-xs font-bold text-slate-700 mb-2 uppercase">上下文关联度 (Attention)</h4>
+                    <div id="receptive-info" class="text-[11px] text-slate-500 italic leading-relaxed">
+                        点击左侧格点，观察 Mamba 序列中的长程特征依赖是如何在 3D 空间中分布的。
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <span class="px-2 py-1 bg-indigo-500 text-white text-[9px] rounded">中心体素</span>
+                    <span class="px-2 py-1 bg-blue-100 text-blue-600 text-[9px] rounded">激活邻域</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="text-center py-10 border-t border-slate-100 text-slate-400 text-[10px] tracking-[0.3em] uppercase">
-        Universal Interactive Template | Designed for Science
+        Continuous Innovation in Visual Perception | 2026
     </footer>
 
     <script>
         // 1. 初始化 Lucide 图标
         lucide.createIcons();
 
-        // 2. Three.js 逻辑
+        // --- MODULE 1: Three.js ---
         let scene, camera, renderer, currentMesh;
         function initThree() {
             const container = document.getElementById('three-canvas');
+            if(!container) return;
+
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -263,7 +389,6 @@
                 material = new THREE.MeshPhongMaterial({ color: 0x10b981 });
                 currentMesh = new THREE.Mesh(geometry, material);
             } else {
-                // 模拟点云
                 geometry = new THREE.BufferGeometry();
                 const pos = new Float32Array(3000 * 3);
                 for(let i=0; i<3000*3; i++) pos[i] = (Math.random() - 0.5) * 4;
@@ -280,9 +405,50 @@
             renderer.render(scene, camera);
         }
 
-        // 3. Chart.js 逻辑
-        const ctx = document.getElementById('dynamicChart').getContext('2d');
-        const dynamicChart = new Chart(ctx, {
+        // --- MODULE 2: Gaussian Lab ---
+        const canvas = document.getElementById('gaussian-curve');
+        const muSlider = document.getElementById('mu-slider');
+        const sigmaSlider = document.getElementById('sigma-slider');
+        
+        function drawGaussian() {
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+            
+            const mu = muSlider.value / 100 * canvas.width;
+            const sigma = sigmaSlider.value;
+            
+            ctx.beginPath();
+            ctx.strokeStyle = '#f43f5e';
+            ctx.lineWidth = 3;
+            
+            for(let x=0; x<canvas.width; x++) {
+                const y = canvas.height - (Math.exp(-Math.pow(x - mu, 2) / (2 * Math.pow(sigma * 2, 2))) * canvas.height * 0.8);
+                if(x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+        }
+        // 初始化散点
+        const lab = document.getElementById('lab-container');
+        if(lab) {
+            for(let i=0; i<30; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'data-point';
+                dot.style.left = (Math.random() * 80 + 10) + '%';
+                dot.style.bottom = (Math.random() * 20 + 5) + '%';
+                lab.appendChild(dot);
+            }
+            muSlider.oninput = drawGaussian;
+            sigmaSlider.oninput = drawGaussian;
+        }
+
+
+        // --- MODULE 3: Dynamic Radar ---
+        const ctxRadar = document.getElementById('dynamicChart').getContext('2d');
+        const dynamicChart = new Chart(ctxRadar, {
             type: 'radar',
             data: {
                 labels: ['mAP', 'FPS', '显存开销', '鲁棒性', '新颖度'],
@@ -301,43 +467,115 @@
                 plugins: { legend: { display: false } }
             }
         });
-
-        // 滑块交互
         document.getElementById('param-res').oninput = function() {
             const val = (this.value / 100).toFixed(2);
             document.getElementById('res-val').innerText = val + 'm';
-            // 模拟数据变动
             const newData = dynamicChart.data.datasets[0].data.map(d => Math.min(100, Math.max(0, d + (Math.random() - 0.5) * 10)));
             dynamicChart.data.datasets[0].data = newData;
             dynamicChart.update('none');
         };
 
-        // 4. Tab 切换逻辑
-        const tabData = [
-            "获取原始点云序列，执行坐标归一化与 VFE 初始映射。",
-            "在 64 维特征空间中注入高斯协方差统计量，提取物理朝向先验。",
-            "利用 Mamba-2 对偶算子执行全局特征建模，并在物体边缘自适应调节步长。"
-        ];
-        function switchTab(idx) {
-            document.querySelectorAll('.tab-btn').forEach((b, i) => {
-                b.classList.toggle('active', i === idx);
-            });
-            const content = document.getElementById('tab-content');
-            content.classList.remove('animate-fade');
-            void content.offsetWidth; // 触发回流重置动画
-            content.innerText = tabData[idx];
-            content.classList.add('animate-fade');
+        // --- MODULE 4: Heatmap ---
+        const heatmap = document.getElementById('heatmap');
+        const heatValDisplay = document.getElementById('heat-val');
+        if(heatmap) {
+             for(let i=0; i<15 * 6; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'heatmap-cell';
+                const x = i % 15;
+                const y = Math.floor(i / 15);
+                const dist = Math.sqrt(Math.pow(x-7, 2) + Math.pow(y-3, 2));
+                const val = Math.max(0.1, 1 - dist/8).toFixed(2);
+                cell.style.backgroundColor = `rgba(249, 115, 22, ${val})`;
+                cell.onmouseenter = () => {
+                    cell.style.transform = 'scale(1.3)';
+                    cell.style.zIndex = '10';
+                    heatValDisplay.innerText = val;
+                };
+                cell.onmouseleave = () => {
+                    cell.style.transform = 'scale(1)';
+                    cell.style.zIndex = '1';
+                };
+                heatmap.appendChild(cell);
+            }
+        }
+
+        // --- MODULE 6: Gate Controller ---
+        function setGate(mode) {
+            const input = document.getElementById('signal-input');
+            const output = document.getElementById('signal-output');
+            const indicator = document.getElementById('gate-indicator');
+            const desc = document.getElementById('gate-desc');
+            
+            document.querySelectorAll('.gate-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('gate-' + mode).classList.add('active');
+
+            if (mode === 'decay') {
+                input.style.height = '80%';
+                output.style.height = '16px';
+                output.style.backgroundColor = '#334155';
+                indicator.style.left = '50%';
+                desc.innerText = '当前模式：状态保持。模型跳过背景空洞，不更新隐含状态。';
+            } else {
+                input.style.height = '40%';
+                output.style.height = '40%';
+                output.style.backgroundColor = '#3b82f6';
+                output.style.boxShadow = '0 0 10px #3b82f6';
+                indicator.style.left = '90%';
+                desc.innerText = '当前模式：特征更新。模型正在吸收当前 Voxel 的几何特征并更新记忆。';
+            }
+        }
+
+        // --- MODULE 7: Spatial Grid ---
+        const grid = document.getElementById('spatial-grid');
+        const info = document.getElementById('receptive-info');
+        if(grid) {
+            for(let i=0; i<100; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'search-cell';
+                cell.onclick = () => {
+                    document.querySelectorAll('.search-cell').forEach(c => c.className = 'search-cell');
+                    cell.classList.add('active');
+                    
+                    const cx = i % 10;
+                    const cy = Math.floor(i / 10);
+                    
+                    // 定义 8 邻域偏移量 (x, y)
+                    const neighbors = [
+                        [-1, -1], [0, -1], [1, -1], // 上三
+                        [-1, 0],           [1, 0],  // 中二
+                        [-1, 1],  [0, 1],  [1, 1]   // 下三
+                    ];
+
+                    neighbors.forEach(offset => {
+                        const nx = cx + offset[0];
+                        const ny = cy + offset[1];
+                        // 边界检查
+                        if (nx >= 0 && nx < 10 && ny >= 0 && ny < 10) {
+                            const nIdx = ny * 10 + nx;
+                            document.querySelectorAll('.search-cell')[nIdx].classList.add('neighbor');
+                        }
+                    });
+                    
+                    info.innerText = `当前选中体素坐标: [${cx}, ${cy}]。已激活完整的 3x3 空间邻域上下文。`;
+                };
+                grid.appendChild(cell);
+            }
         }
 
         // 初始化
         window.onload = () => {
             initThree();
-            // 处理视窗调整
+            drawGaussian(); // 确保高斯曲线初始绘制
+            
             window.onresize = () => {
                 const container = document.getElementById('three-viewport');
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(container.clientWidth, container.clientHeight);
+                if(container && camera && renderer) {
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                }
+                drawGaussian(); // 高斯曲线重绘
             };
         };
     </script>

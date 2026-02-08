@@ -5,7 +5,7 @@
 tags:
 draft: false
 ---
-# 和 Gemini 交流
+# 可以将html嵌入到markdown中
 
 
 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
@@ -30,7 +30,7 @@ draft: false
 <iframe 
   src="/static/voxel-viz.html" 
   width="100%"
-  height="2000"
+  height="4000"
   frameBorder="0"
   scrolling="no"
   style={{

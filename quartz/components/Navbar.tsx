@@ -9,9 +9,9 @@ export default (() => {
     const baseDir = pathToRoot(fileData.slug!)
     return (
       <div class={`navbar-links ${displayClass ?? ""}`}>
-        <a href={baseDir} class="nav-btn">🏠 Home</a>
-        <a href={`${baseDir}/Timeline`} class="nav-btn">⏳ Timeline</a>
-        <a href={`${baseDir}/tags`} class="nav-btn">🏷️ Tags</a>
+        <a href={baseDir} class="nav-btn">🏠 首页</a>
+        <a href={`${baseDir}/Timeline`} class="nav-btn">📅 时间轴</a>
+        <a href={`${baseDir}/tags`} class="nav-btn">🏷️ 标签</a>
         <a href="#" class="nav-btn random-btn" data-base-dir={baseDir}>🎲 漫步</a>
       </div>
     )

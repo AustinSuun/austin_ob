@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命游戏</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #1e1e2e; /* Quartz Dark Mode: #1e1e2e */
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: #d1d1d6;
+        }
+
+        #canvas-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 30, 46, 0.85); /* Slightly transparent */
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid #3a3a3c;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            z-index: 10;
+        }
+
+        button, select {
+            background: #29a3ff; /* Secondary blue */
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.1s;
+            outline: none;
+        }
+
+        button:hover, select:hover {
+            background: #007aff;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.secondary, select.secondary {
+            background: #3a3a3c; /* Grayish */
+            color: #d1d1d6;
+        }
+
+        button.secondary:hover, select.secondary:hover {
+            background: #48484a;
+        }
+
+        #fps {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #8e8e93;
+            opacity: 0.7;
+        }
+
+        /* Introduction Modal */
+        #introModal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(30, 30, 46, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #3a3a3c;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 20;
+            max-width: 400px;
+            width: 90%;
+            backdrop-filter: blur(5px);
+            display: none; /* Initially hidden */
+        }
+        
+        #introModal h2 {
+            margin-top: 0;
+            color: #f2f2f7;
+        }
+
+        #introModal p {
+            line-height: 1.6;
+            color: #d1d1d6;
+            margin-bottom: 20px;
+        }
+
+        #introModal .close-btn {
+            background: #29a3ff;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .structure-preview {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .structure-badge {
+            font-size: 12px;
+            background: #3a3a3c;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #8e8e93;
+        }
+
+        /* Mobile tweaks */
+        @media (max-width: 600px) {
+            #controls {
+                width: 90%;
+                flex-wrap: wrap;
+                justify-content: center;
+                bottom: 10px;
+                padding: 10px;
+                gap: 8px;
+            }
+            button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="grid"></canvas>
+        <div id="fps">FPS: 60</div>
+        
+        <div id="controls">
+            <button id="toggleBtn">开始演化</button>
+            <button class="secondary" id="introBtn">📖 结构图鉴</button>
+            <select class="secondary" id="presetSelect" title="加载预设结构">
+                <option value="" disabled selected>⚡ 加载结构...</option>
+                <option value="glider">滑翔机 (Glider)</option>
+                <option value="lwss">轻量级飞船 (LWSS)</option>
+                <option value="pulsar">脉冲星 (Pulsar)</option>
+                <option value="gosper">高斯帕滑翔机枪</option>
+                <option value="random">随机生成</option>
+                <option value="clear">清空画布</option>
+            </select>
+            <button class="secondary" id="speedBtn" title="切换演化速度">速度: 1x</button>
+            <button class="secondary" id="gridToggleBtn">网格: 关</button>
+        </div>
+
+        <div id="introModal">
+            <h2>🧬 生命游戏结构图鉴</h2>
+            <p>这里收集了一些经典的细胞自动机结构。选择下方列表即可直接加载到画布中心。</p>
+            
+            <div style="margin-bottom: 15px;">
+                <strong>静止物 (Still Lifes)</strong>
+                <p style="font-size: 0.9em; opacity: 0.8; margin-bottom: 5px;">稳定不变的结构。</p>
+                <div class="structure-preview">
+                    <span class="structure-badge">方块 (Block)</span>
+                    <span class="structure-badge">蜂巢 (Beehive)</span>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>振荡器 (Oscillators)</strong>
+                <p style="font-size: 0.9em; opacity: 0.8; margin-bottom: 5px;">周期性变化的结构。</p>
+                <div class="structure-preview">
+                    <span class="structure-badge">闪烁者 (Blinker)</span>
+                    <span class="structure-badge">脉冲星 (Pulsar)</span>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <strong>飞船 (Spaceships)</strong>
+                <p style="font-size: 0.9em; opacity: 0.8; margin-bottom: 5px;">会移动的结构。</p>
+                <div class="structure-preview">
+                    <span class="structure-badge">滑翔机 (Glider)</span>
+                    <span class="structure-badge">轻量级飞船 (LWSS)</span>
+                </div>
+            </div>
+
+            <button class="close-btn" id="closeIntroBtn">关闭并开始探索</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('grid');
+        const ctx = canvas.getContext('2d', { alpha: false }); // Optimize by disabling alpha
+        const toggleBtn = document.getElementById('toggleBtn');
+        const introBtn = document.getElementById('introBtn');
+        const presetSelect = document.getElementById('presetSelect');
+        const speedBtn = document.getElementById('speedBtn');
+        const gridToggleBtn = document.getElementById('gridToggleBtn');
+        const fpsDisplay = document.getElementById('fps');
+        const introModal = document.getElementById('introModal');
+        const closeIntroBtn = document.getElementById('closeIntroBtn');
+
+        // Configuration
+        const CELL_SIZE = 10; // Pixel size of each cell
+        const BG_COLOR = '#1e1e2e'; // Quartz Dark Mode: #1e1e2e
+        const GRID_LINE_COLOR = '#2a2a35'; // Slightly lighter than bg
+        const ALIVE_COLOR = '#29a3ff'; // Theme secondary color
+        
+        let cols, rows;
+        let grid = [];
+        let nextGrid = [];
+        let isRunning = false;
+        let showGridLines = false; // Grid toggle state
+        let animationId;
+        let speedMultiplier = 1;
+        let lastFrameTime = 0;
+        let frameInterval = 1000 / 30; // Cap at 30 FPS initially
+        let isDragging = false;
+        let dragMode = null; // true for adding, false for removing
+
+        // Shapes Data
+        const SHAPES = {
+            glider: [[0,1], [1,2], [2,0], [2,1], [2,2]],
+            lwss: [[0,1], [0,4], [1,0], [2,0], [3,0], [4,0], [4,1], [4,2], [4,3]],
+            pulsar: [
+                [2,4], [2,5], [2,6], [2,10], [2,11], [2,12],
+                [4,2], [4,7], [4,9], [4,14],
+                [5,2], [5,7], [5,9], [5,14],
+                [6,2], [6,7], [6,9], [6,14],
+                [7,4], [7,5], [7,6], [7,10], [7,11], [7,12],
+                [9,4], [9,5], [9,6], [9,10], [9,11], [9,12],
+                [10,2], [10,7], [10,9], [10,14],
+                [11,2], [11,7], [11,9], [11,14],
+                [12,2], [12,7], [12,9], [12,14],
+                [14,4], [14,5], [14,6], [14,10], [14,11], [14,12]
+            ],
+            gosper: [
+                [0,4], [0,5], [1,4], [1,5],
+                [10,4], [10,5], [10,6],
+                [11,3], [11,7],
+                [12,2], [12,8],
+                [13,2], [13,8],
+                [14,5],
+                [15,3], [15,7],
+                [16,4], [16,5], [16,6],
+                [17,5],
+                [20,2], [20,3], [20,4],
+                [21,2], [21,3], [21,4],
+                [22,1], [22,5],
+                [24,0], [24,1], [24,5], [24,6],
+                [34,2], [34,3], [35,2], [35,3]
+            ]
+        };
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // Re-calculate grid size
+            const newCols = Math.ceil(canvas.width / CELL_SIZE);
+            const newRows = Math.ceil(canvas.height / CELL_SIZE);
+
+            // Create new grid preserving old data if possible
+            const newGrid = createGrid(newCols, newRows);
+            const newNextGrid = createGrid(newCols, newRows);
+
+            if (grid && grid.length > 0) {
+                for (let x = 0; x < Math.min(cols, newCols); x++) {
+                    for (let y = 0; y < Math.min(rows, newRows); y++) {
+                        newGrid[x][y] = grid[x][y];
+                    }
+                }
+            }
+
+            cols = newCols;
+            rows = newRows;
+            grid = newGrid;
+            nextGrid = newNextGrid;
+            
+            draw();
+        }
+
+        function createGrid(c, r) {
+            return new Array(c).fill(null).map(() => new Array(r).fill(0));
+        }
+
+        function randomize() {
+            for (let x = 0; x < cols; x++) {
+                for (let y = 0; y < rows; y++) {
+                    grid[x][y] = Math.random() < 0.15 ? 1 : 0;
+                }
+            }
+            draw();
+        }
+
+        function clear() {
+            for (let x = 0; x < cols; x++) {
+                for (let y = 0; y < rows; y++) {
+                    grid[x][y] = 0;
+                }
+            }
+            draw();
+            if (isRunning) toggleRun(); // Stop if running
+        }
+
+        function placeShape(name) {
+            clear();
+            const shape = SHAPES[name];
+            if (!shape) return;
+
+            const cx = Math.floor(cols / 2);
+            const cy = Math.floor(rows / 2);
+
+            // Calculate shape dimensions to center properly
+            let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+            shape.forEach(([x, y]) => {
+                minX = Math.min(minX, x);
+                minY = Math.min(minY, y);
+                maxX = Math.max(maxX, x);
+                maxY = Math.max(maxY, y);
+            });
+            
+            const shapeW = maxX - minX;
+            const shapeH = maxY - minY;
+            const offsetX = cx - Math.floor(shapeW / 2);
+            const offsetY = cy - Math.floor(shapeH / 2);
+
+            shape.forEach(([x, y]) => {
+                const globalX = x + offsetX;
+                const globalY = y + offsetY;
+                if (globalX >= 0 && globalX < cols && globalY >= 0 && globalY < rows) {
+                    grid[globalX][globalY] = 1;
+                }
+            });
+            draw();
+        }
+
+        function onPresetChange(e) {
+            const val = e.target.value;
+            if (val === 'random') randomize();
+            else if (val === 'clear') clear();
+            else placeShape(val);
+            
+            // Reset selection so we can select same item again if needed
+            e.target.value = "";
+        }
+
+        function draw() {
+            // Fill background
+            ctx.fillStyle = BG_COLOR;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw grid lines if enabled
+            if (showGridLines) {
+                ctx.strokeStyle = GRID_LINE_COLOR;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                for (let x = 0; x <= canvas.width; x += CELL_SIZE) {
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, canvas.height);
+                }
+                for (let y = 0; y <= canvas.height; y += CELL_SIZE) {
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(canvas.width, y);
+                }
+                ctx.stroke();
+            }
+
+            ctx.fillStyle = ALIVE_COLOR;
+            
+            // Batch drawing cells
+            for (let x = 0; x < cols; x++) {
+                for (let y = 0; y < rows; y++) {
+                    if (grid[x][y] === 1) {
+                        const size = showGridLines ? CELL_SIZE - 1 : CELL_SIZE;
+                        ctx.fillRect(x * CELL_SIZE, y * CELL_SIZE, size, size);
+                    }
+                }
+            }
+        }
+
+        function computeNextGen() {
+            // Optimized neighbor counting using toroidal array (wrapping edges)
+            for (let x = 0; x < cols; x++) {
+                for (let y = 0; y < rows; y++) {
+                    let neighbors = 0;
+                    
+                    // Moore neighborhood
+                    for (let i = -1; i <= 1; i++) {
+                        for (let j = -1; j <= 1; j++) {
+                            if (i === 0 && j === 0) continue;
+                            const col = (x + i + cols) % cols;
+                            const row = (y + j + rows) % rows;
+                            neighbors += grid[col][row];
+                        }
+                    }
+
+                    const state = grid[x][y];
+                    
+                    if (state === 1 && (neighbors < 2 || neighbors > 3)) {
+                        nextGrid[x][y] = 0; 
+                    } else if (state === 0 && neighbors === 3) {
+                        nextGrid[x][y] = 1; 
+                    } else {
+                        nextGrid[x][y] = state; 
+                    }
+                }
+            }
+            [grid, nextGrid] = [nextGrid, grid];
+        }
+
+        function loop(timestamp) {
+            if (!isRunning) return;
+
+            const elapsed = timestamp - lastFrameTime;
+
+            if (elapsed > frameInterval) {
+                lastFrameTime = timestamp - (elapsed % frameInterval);
+                computeNextGen();
+                draw();
+                
+                const fps = Math.round(1000 / elapsed);
+                fpsDisplay.innerText = `FPS: ${fps}`;
+            }
+
+            animationId = requestAnimationFrame(loop);
+        }
+
+        function toggleRun() {
+            isRunning = !isRunning;
+            toggleBtn.innerText = isRunning ? '暂时停止' : '开始演化';
+            toggleBtn.style.backgroundColor = isRunning ? '#ff453a' : '#29a3ff'; // Red for stop, Blue for start
+            
+            if (isRunning) {
+                lastFrameTime = performance.now();
+                loop(lastFrameTime);
+            } else {
+                cancelAnimationFrame(animationId);
+            }
+        }
+
+        function handleInput(e) {
+            const rect = canvas.getBoundingClientRect();
+            // Handle both Mouse and Touch events
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            
+            const x = Math.floor((clientX - rect.left) / CELL_SIZE);
+            const y = Math.floor((clientY - rect.top) / CELL_SIZE);
+
+            if (x >= 0 && x < cols && y >= 0 && y < rows) {
+                if (dragMode === null) {
+                    dragMode = grid[x][y] === 1 ? 0 : 1;
+                }
+                grid[x][y] = dragMode;
+                if (!isRunning) draw();
+            }
+        }
+
+        // Event Listeners
+        window.addEventListener('resize', resize);
+        
+        toggleBtn.addEventListener('click', toggleRun);
+        
+        // Modal events
+        introBtn.addEventListener('click', () => {
+            introModal.style.display = 'block';
+            if (isRunning) toggleRun(); // Pause game when viewing intro
+        });
+        closeIntroBtn.addEventListener('click', () => {
+            introModal.style.display = 'none';
+        });
+
+        // Dropdown events
+        presetSelect.addEventListener('change', onPresetChange);
+        
+        speedBtn.addEventListener('click', () => {
+            speedMultiplier = (speedMultiplier % 3) + 1; 
+            speedBtn.innerText = `速度: ${speedMultiplier}x`;
+            if (speedMultiplier === 1) frameInterval = 1000 / 10;
+            else if (speedMultiplier === 2) frameInterval = 1000 / 30;
+            else frameInterval = 1000 / 60;
+        });
+
+        gridToggleBtn.addEventListener('click', () => {
+            showGridLines = !showGridLines;
+            gridToggleBtn.innerText = showGridLines ? '网格: 开' : '网格: 关';
+            draw();
+        });
+
+        // Mouse Interactivity
+        canvas.addEventListener('mousedown', e => {
+            isDragging = true;
+            dragMode = null; 
+            handleInput(e);
+        });
+        window.addEventListener('mousemove', e => {
+            if (isDragging) handleInput(e);
+        });
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+            dragMode = null;
+        });
+
+        // Touch Interactivity
+        canvas.addEventListener('touchstart', e => {
+            e.preventDefault(); 
+            isDragging = true;
+            dragMode = null;
+            handleInput(e);
+        }, { passive: false });
+        canvas.addEventListener('touchmove', e => {
+            e.preventDefault();
+            if (isDragging) handleInput(e);
+        }, { passive: false });
+        canvas.addEventListener('touchend', () => {
+            isDragging = false;
+            dragMode = null;
+        });
+
+        canvas.addEventListener('dblclick', () => {
+            if (!document.fullscreenElement) {
+                document.body.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        // Init
+        resize();
+        
+        // Start with a glider gun for demo
+        placeShape('gosper');
+        
+        // Initial speed
+        speedMultiplier = 2; // 30fps
+        frameInterval = 1000 / 30;
+        speedBtn.innerText = '速度: 1x'; // Display as 1x for user simplicity
+        
+        // Don't auto-start to save resources
+        // isRunning is false by default
+        draw(); // Draw the initial state (Gosper Gun)
+    </script>
+</body>
+</html>
