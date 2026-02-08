@@ -308,7 +308,7 @@ footer,
 
 <div class="hero-actions">
 <a href="Timeline" id="timeline-btn" class="btn-primary">
-📅 查看时间轴
+⏳ 时间线
 </a>
 </div>
 
