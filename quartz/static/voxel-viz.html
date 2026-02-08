@@ -3,203 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>特征稀疏性与信噪比深度分析</title>
+    <title>交互科研样板全集</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
         
-        /* 针对用户要求的 Quartz Markdown 背景色 (251, 251, 249) */
+        :root {
+            --bg-quartz: rgb(251, 251, 249);
+            --primary: #3b82f6;
+            --accent: #10b981;
+            --slate-text: #1e293b;
+        }
+
         body { 
             font-family: 'Noto Sans SC', sans-serif; 
-            background-color: rgb(251, 251, 249); 
-            color: #1e293b; 
-            width: 750px; /* 针对 Quartz 优化的固定宽度 */
+            background-color: var(--bg-quartz); 
+            color: var(--slate-text); 
+            width: 750px; 
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
+            line-height: 1.6;
+            overflow-y: hidden; /* 防止双滚动条 */
         }
 
-        .chart-container { position: relative; width: 100%; height: 300px; margin: 1.5rem 0; }
-        
-        .analysis-card { 
-            background: white; 
-            border: 1px solid #e2e8f0; 
-            border-radius: 1rem; 
-            padding: 1.5rem; 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            margin-bottom: 1.5rem;
+        /* 统一卡片样式 */
+        .showcase-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 1.25rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .showcase-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
         }
 
-        .highlight-blue { color: #2563eb; font-weight: 700; }
-        .highlight-red { color: #ef4444; font-weight: 700; }
-        .math-text { font-family: 'Courier New', Courier, monospace; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
-        
-        /* 模拟 Token 序列效果 */
-        .token-bar { height: 24px; border-radius: 6px; overflow: hidden; display: flex; gap: 2px; }
-        .token-fill-active { background-color: #3b82f6; flex-grow: 1; }
-        .token-fill-pad { background-color: #e2e8f0; flex-grow: 10; }
-        .token-fill-dapc { background-color: #3b82f6; flex-grow: 1; }
-        .token-fill-dapc-pad { background-color: #e2e8f0; flex-grow: 1; }
+        /* 3D 容器 */
+        #three-viewport {
+            width: 100%;
+            height: 350px;
+            background: #0f172a;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 图表容器 */
+        .chart-box { position: relative; width: 100%; height: 300px; }
+
+        /* 数学公式块 */
+        .formula-block {
+            font-family: 'serif';
+            background: #f8fafc;
+            border-left: 4px solid var(--primary);
+            padding: 1.25rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* 代码块样式 */
+        .code-snippet {
+            font-family: 'JetBrains Mono', monospace;
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            font-size: 0.8rem;
+            overflow-x: auto;
+        }
+
+        /* 标签页交互 */
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #64748b;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* 滑块美化 */
+        input[type=range] {
+            accent-color: var(--primary);
+        }
+
+        .animate-fade { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="antialiased">
 
-<div class="max-w-full">
-    <!-- Header -->
-    <header class="text-center mb-10">
-        <h1 class="text-2xl font-black mb-4 text-slate-900 tracking-tight">
-            为什么数量少的小物体也能 <span class="highlight-blue">增强特征</span>？
-        </h1>
-        <p class="text-sm text-slate-500 max-w-2xl mx-auto">
-            解析 GS-Mamba 如何通过“信噪比提升”而非“增加数量”来拯救稀疏识别。
-        </p>
+    <!-- 顶部引导 -->
+    <header class="text-center mb-16">
+        <div class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
+            Component Showcase v1.0
+        </div>
+        <h1 class="text-3xl font-black text-slate-900 tracking-tight mb-2">科研演示全能样板</h1>
+        <p class="text-slate-500 text-sm">专为 Quartz Markdown 优化的交互式展示方案</p>
     </header>
 
-    <!-- Section 1: 核心论点 - 信噪比 (SNR) -->
-    <section class="analysis-card">
-        <h2 class="text-lg font-bold mb-4 border-l-4 border-blue-600 pl-3">1. 从“大海捞针”到“精确定位”</h2>
-        <p class="text-xs text-slate-600 leading-relaxed mb-6">
-            即使小物体的 Token 占比只有 1%，在不同的计算模式下，它的 **“特征显示度”** 是完全不同的：
-        </p>
-        
-        <div class="space-y-6">
-            <!-- 传统情况 -->
+    <!-- STYLE 1: 3D 仿真模块 -->
+    <section class="showcase-card">
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 bg-blue-500 text-white rounded-lg"><i data-lucide="box" class="w-5 h-5"></i></div>
             <div>
-                <div class="flex justify-between text-[10px] mb-1">
-                    <span class="font-bold text-slate-400">传统方案 (固定 128 长度)</span>
-                    <span class="highlight-red">信号被极度稀释 (1/128)</span>
-                </div>
-                <div class="token-bar">
-                    <div class="bg-blue-500 w-[5%] h-full" title="真实物体特征"></div>
-                    <div class="bg-slate-200 w-[95%] h-full" title="无效 Padding"></div>
-                </div>
-                <p class="text-[9px] text-slate-400 mt-2 italic">Mamba 的隐藏状态 $h$ 在经过 95% 的空白位时，会产生严重的特征衰减或背景偏移。</p>
-            </div>
-
-            <!-- DAPC 情况 -->
-            <div>
-                <div class="flex justify-between text-[10px] mb-1">
-                    <span class="font-bold text-blue-600">DAPC 打包方案 (打包至 32)</span>
-                    <span class="text-emerald-600 font-bold">信号浓度提升 (1/4)</span>
-                </div>
-                <div class="token-bar">
-                    <div class="bg-blue-600 w-[25%] h-full"></div>
-                    <div class="bg-slate-300 w-[75%] h-full"></div>
-                </div>
-                <p class="text-[9px] text-slate-500 mt-2 italic">在同一个 SSD 矩阵计算块中，小物体的权重占比提升了数倍，模型更容易捕获其几何梯度。</p>
+                <h2 class="text-xl font-bold">样式一：3D 几何仿真</h2>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest">Three.js Engine Integration</p>
             </div>
         </div>
+        <div id="three-viewport">
+            <div class="absolute top-4 left-4 z-10 flex gap-2">
+                <button onclick="toggleGeometry('cube')" class="px-3 py-1 bg-white/10 hover:bg-white/20 text-white text-[10px] rounded backdrop-blur-md transition">立方体</button>
+                <button onclick="toggleGeometry('sphere')" class="px-3 py-1 bg-white/10 hover:bg-white/20 text-white text-[10px] rounded backdrop-blur-md transition">球体</button>
+                <button onclick="toggleGeometry('points')" class="px-3 py-1 bg-white/10 hover:bg-white/20 text-white text-[10px] rounded backdrop-blur-md transition">点云</button>
+            </div>
+            <div id="three-canvas" class="w-full h-full cursor-move"></div>
+        </div>
+        <p class="mt-4 text-xs text-slate-500 italic">交互说明：拖动鼠标旋转视角，滚轮缩放。适合展示 3D 检测结果或局部几何流形。</p>
     </section>
 
-    <!-- Section 2: 高斯 Token 的质量增益 -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div class="analysis-card">
-            <h3 class="font-bold text-sm mb-4">特征质量的“代差”</h3>
-            <p class="text-[11px] text-slate-500 leading-relaxed">
-                小物体的 Token 少，所以每一个 Token 必须承载更多的信息。
-                <br><br>
-                <span class="highlight-blue">● 传统体素：</span> 只是一个“点”。
-                <br>
-                <span class="highlight-blue">● 高斯 Token：</span> 虽然也是一个 Token，但它通过协方差 Σ 显式带入了 **方向感**（它是立着的还是横着的？）。
-            </p>
+    <!-- STYLE 2: 动态数据实验台 -->
+    <section class="showcase-card">
+        <div class="flex items-center gap-3 mb-8">
+            <div class="p-2 bg-emerald-500 text-white rounded-lg"><i data-lucide="line-chart" class="w-5 h-5"></i></div>
+            <h2 class="text-xl font-bold">样式二：参数反馈仪表盘</h2>
         </div>
-        <div class="analysis-card">
-            <h4 class="text-center text-[10px] font-bold text-slate-400 mb-2 uppercase">单 Token 信息量对比 (几何熵)</h4>
-            <div class="chart-container h-40">
-                <canvas id="infoEntropyChart"></canvas>
+        <div class="grid grid-cols-2 gap-8 items-center">
+            <!-- 控件 -->
+            <div class="space-y-6">
+                <div class="p-4 bg-slate-50 rounded-xl">
+                    <label class="block text-xs font-bold text-slate-500 mb-3 uppercase">模型分辨率 (Voxel Size)</label>
+                    <input type="range" id="param-res" min="5" max="20" value="10" class="w-full h-1.5 bg-slate-200 rounded-lg cursor-pointer">
+                    <div class="flex justify-between mt-2 text-[10px] text-slate-400 font-mono">
+                        <span>0.05m</span>
+                        <span id="res-val" class="text-blue-600 font-bold">0.10m</span>
+                        <span>0.20m</span>
+                    </div>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl">
+                    <label class="block text-xs font-bold text-slate-500 mb-3 uppercase">计算阈值 (Threshold)</label>
+                    <input type="range" id="param-thresh" min="0" max="100" value="75" class="w-full h-1.5 bg-slate-200 rounded-lg cursor-pointer">
+                </div>
+                <div class="text-[11px] text-slate-400 leading-relaxed">
+                    调整左侧滑块，右侧图表将根据<strong>预设响应函数</strong>实时更新 mAP 与 FPS 的权衡曲线。
+                </div>
+            </div>
+            <!-- 图表 -->
+            <div class="chart-box">
+                <canvas id="dynamicChart"></canvas>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: 状态空间模型的“驻留时长”逻辑 -->
-    <section class="analysis-card bg-slate-900 text-white border-none">
-        <h2 class="text-lg font-bold mb-4 text-blue-400">2. 隐藏状态的“激活一致性”</h2>
-        <p class="text-xs text-slate-400 leading-relaxed mb-6">
-            Mamba 是循环处理的。在传统变长填充下，模型扫描过长 Padding 就像在**走神**。
-        </p>
-        <div class="chart-container">
-            <canvas id="activationConsistencyChart"></canvas>
+    <!-- STYLE 3: 分步逻辑/算法流水线 -->
+    <section class="showcase-card">
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 bg-indigo-500 text-white rounded-lg"><i data-lucide="layers" class="w-5 h-5"></i></div>
+            <h2 class="text-xl font-bold">样式三：交互式算法流水线</h2>
         </div>
-        <div class="mt-4 p-3 bg-slate-800 rounded-lg">
-            <p class="text-[10px] text-slate-300 leading-relaxed">
-                通过 DAPC 压缩序列长度并配合高斯 Token 的高保真度，Mamba 的隐藏状态在小物体的关键特征点上能够保持更强的 **峰值响应**，而不会被前后的 Padding 背景“软化”。
-            </p>
+        <div class="flex gap-4 border-b border-slate-100 mb-6">
+            <button onclick="switchTab(0)" class="tab-btn active" id="btn-0">数据输入</button>
+            <button onclick="switchTab(1)" class="tab-btn active" id="btn-1">特征升维</button>
+            <button onclick="switchTab(2)" class="tab-btn" id="btn-2">SSM 处理</button>
+        </div>
+        <div id="tab-content" class="min-h-[120px] text-sm text-slate-600 animate-fade">
+            <!-- 动态注入内容 -->
+            获取原始点云序列，执行坐标归一化与 VFE 初始映射。
         </div>
     </section>
 
-    <!-- Section 4: 结论 -->
-    <section class="mt-10 border-t border-slate-200 pt-8 text-center">
-        <h3 class="text-xl font-black mb-4 text-slate-800">总结：不是靠“人多”，是靠“人精”</h3>
-        <p class="text-xs text-slate-500 italic leading-relaxed px-10">
-            “虽然小物体的 Token 依然很少，但通过 DAPC 我们让它们在计算块内的 **相对密度** 提升了；通过高斯化我们让单个 Token 的 **几何描述力** 增强了。这种‘密度对齐’与‘描述增强’的结合，才是增强稀疏特性的物理本质。”
-        </p>
+    <!-- STYLE 4: 顶会级数学与代码文档 -->
+    <section class="showcase-card">
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 bg-amber-500 text-white rounded-lg"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+            <h2 class="text-xl font-bold">样式四：学术文档排版</h2>
+        </div>
+        <div class="space-y-4">
+            <p class="text-sm text-slate-600">利用 Mamba-2 的对偶特性，我们将传统的离散状态空间方程定义为：</p>
+            <div class="formula-block shadow-inner">
+                $$h_t = \exp(\Delta A)h_{t-1} + (\Delta B)x_t$$
+            </div>
+            <p class="text-sm text-slate-600">在 OpenPCDet 中对应的核心算子调用逻辑如下：</p>
+            <div class="code-snippet">
+                # Gaussian Token 注入逻辑<br>
+                dt = self.dt_proj(voxel_features)<br>
+                A_disc = torch.exp(dt * self.A_log.expand())<br>
+                <span class="text-white">output = selective_scan(x, A_disc, B, C)</span>
+            </div>
+        </div>
     </section>
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        if (typeof Chart !== 'undefined') {
-            
-            // 01. Info Entropy Chart
-            new Chart(document.getElementById('infoEntropyChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['体素特征', '高斯 Token'],
-                    datasets: [{
-                        label: '几何描述力 (bits)',
-                        data: [12, 58],
-                        backgroundColor: ['#94a3b8', '#3b82f6'],
-                        borderRadius: 6,
-                        barThickness: 30
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true, grid: { color: '#f1f5f9' } }, x: { grid: { display: false } } }
-                }
-            });
+    <footer class="text-center py-10 border-t border-slate-100 text-slate-400 text-[10px] tracking-[0.3em] uppercase">
+        Universal Interactive Template | Designed for Science
+    </footer>
 
-            // 02. Activation Consistency Chart
-            new Chart(document.getElementById('activationConsistencyChart'), {
-                type: 'line',
-                data: {
-                    labels: ['Gap', 'Gap', 'Token1', 'Token2', 'Gap', 'Gap'],
-                    datasets: [
-                        {
-                            label: '本方案 (浓缩信号)',
-                            data: [5, 5, 95, 92, 10, 8],
-                            borderColor: '#38bdf8',
-                            backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                            fill: true,
-                            tension: 0.4
-                        },
-                        {
-                            label: '传统方案 (稀释信号)',
-                            data: [2, 2, 45, 42, 2, 1],
-                            borderColor: '#64748b',
-                            borderDash: [5, 5],
-                            tension: 0.4
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { 
-                        legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 10 } } }
-                    },
-                    scales: {
-                        y: { title: { display: true, text: '特征激活强度', color: '#64748b' }, grid: { color: '#1e293b' } },
-                        x: { ticks: { color: '#64748b' } }
-                    }
-                }
-            });
+    <script>
+        // 1. 初始化 Lucide 图标
+        lucide.createIcons();
+
+        // 2. Three.js 逻辑
+        let scene, camera, renderer, currentMesh;
+        function initThree() {
+            const container = document.getElementById('three-canvas');
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
+
+            const light = new THREE.DirectionalLight(0xffffff, 1);
+            light.position.set(5, 5, 5).normalize();
+            scene.add(light);
+            scene.add(new THREE.AmbientLight(0x404040));
+
+            camera.position.z = 5;
+            toggleGeometry('cube'); // 默认展示
+            animate();
         }
-    });
-</script>
+
+        function toggleGeometry(type) {
+            if (currentMesh) scene.remove(currentMesh);
+            let geometry, material;
+            
+            if (type === 'cube') {
+                geometry = new THREE.BoxGeometry(2, 2, 2);
+                material = new THREE.MeshPhongMaterial({ color: 0x3b82f6, wireframe: false });
+                currentMesh = new THREE.Mesh(geometry, material);
+            } else if (type === 'sphere') {
+                geometry = new THREE.SphereGeometry(1.5, 32, 32);
+                material = new THREE.MeshPhongMaterial({ color: 0x10b981 });
+                currentMesh = new THREE.Mesh(geometry, material);
+            } else {
+                // 模拟点云
+                geometry = new THREE.BufferGeometry();
+                const pos = new Float32Array(3000 * 3);
+                for(let i=0; i<3000*3; i++) pos[i] = (Math.random() - 0.5) * 4;
+                geometry.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+                material = new THREE.PointsMaterial({ color: 0x38bdf8, size: 0.05 });
+                currentMesh = new THREE.Points(geometry, material);
+            }
+            scene.add(currentMesh);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if (currentMesh) currentMesh.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+
+        // 3. Chart.js 逻辑
+        const ctx = document.getElementById('dynamicChart').getContext('2d');
+        const dynamicChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['mAP', 'FPS', '显存开销', '鲁棒性', '新颖度'],
+                datasets: [{
+                    label: '当前模型性能',
+                    data: [85, 70, 90, 80, 95],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    pointBackgroundColor: '#3b82f6'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { r: { suggestedMin: 0, suggestedMax: 100, ticks: { display: false } } },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // 滑块交互
+        document.getElementById('param-res').oninput = function() {
+            const val = (this.value / 100).toFixed(2);
+            document.getElementById('res-val').innerText = val + 'm';
+            // 模拟数据变动
+            const newData = dynamicChart.data.datasets[0].data.map(d => Math.min(100, Math.max(0, d + (Math.random() - 0.5) * 10)));
+            dynamicChart.data.datasets[0].data = newData;
+            dynamicChart.update('none');
+        };
+
+        // 4. Tab 切换逻辑
+        const tabData = [
+            "获取原始点云序列，执行坐标归一化与 VFE 初始映射。",
+            "在 64 维特征空间中注入高斯协方差统计量，提取物理朝向先验。",
+            "利用 Mamba-2 对偶算子执行全局特征建模，并在物体边缘自适应调节步长。"
+        ];
+        function switchTab(idx) {
+            document.querySelectorAll('.tab-btn').forEach((b, i) => {
+                b.classList.toggle('active', i === idx);
+            });
+            const content = document.getElementById('tab-content');
+            content.classList.remove('animate-fade');
+            void content.offsetWidth; // 触发回流重置动画
+            content.innerText = tabData[idx];
+            content.classList.add('animate-fade');
+        }
+
+        // 初始化
+        window.onload = () => {
+            initThree();
+            // 处理视窗调整
+            window.onresize = () => {
+                const container = document.getElementById('three-viewport');
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            };
+        };
+    </script>
 </body>
 </html>
