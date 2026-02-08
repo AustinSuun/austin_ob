@@ -5,7 +5,16 @@ import { isFolderPath } from "./quartz/util/path"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [Component.Navbar(), Component.ReadingProgress()],
+  header: [
+    Component.Navbar(), 
+    Component.Flex({
+      components: [
+        { Component: Component.Search() },
+        { Component: Component.Darkmode() },
+      ]
+    }),
+    Component.ReadingProgress(),
+  ],
   afterBody: [
     Component.ConditionalRender({
       component: Component.PageList({
@@ -60,16 +69,6 @@ export const defaultContentPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
-      ],
-    }),
     Component.Explorer({
       folderClickBehavior: "collapse",
       filterFn: (node) => node.slugSegment !== "games",
@@ -90,15 +89,6 @@ export const defaultListPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-      ],
-    }),
     Component.Explorer({
       folderClickBehavior: "collapse",
       filterFn: (node) => node.slugSegment !== "games",

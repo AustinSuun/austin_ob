@@ -50,14 +50,78 @@ title: 欢迎来到我的数字花园 🪐
   align-items: center !important;
 }
 
-/* 4. 修改顶部导航栏容器，确保它也在中轴线上 */
+/* 4. 修改顶部导航栏容器，让 Navbar, Search, Darkmode 融合 */
 .header {
-  grid-column: 1 / 4 !important; /* 跨越所有栏以实现全局居中 */
+  grid-column: 1 / 4 !important;
   display: flex !important;
+  flex-direction: row !important;
   justify-content: center !important;
+  align-items: center !important;
+  gap: 2rem !important;
   padding: 2rem 0 !important;
+  flex-wrap: wrap !important;
 }
 
+/* 搜索组件增强 */
+.search { 
+  min-width: 200px;
+}
+.search-button {
+  background: rgba(0,0,0,0.03) !important;
+  border: 1px solid var(--lightgray) !important;
+  border-radius: 8px !important;
+  padding: 0.4rem 1rem !important;
+}
+
+/* 7. 知识图谱入口样式 */
+.graph-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 4rem auto;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 30px;
+  background-image: radial-gradient(var(--lightgray) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.graph-title {
+  font-size: 2rem;
+  font-weight: 850;
+  margin-bottom: 1rem;
+}
+
+.graph-desc {
+  color: var(--gray);
+  margin-bottom: 2.5rem;
+}
+
+.btn-graph {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  background: var(--darkgray) !important;
+  color: var(--light) !important;
+  text-decoration: none !important;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.btn-graph:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  background: var(--secondary) !important;
+}
+
+:root[saved-theme="dark"] .graph-section {
+  background: rgba(30, 30, 46, 0.4);
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+}
 /* 4. 打字机效果与个人信息样式 */
 .hero-section {
   text-align: center;
@@ -218,6 +282,21 @@ title: 欢迎来到我的数字花园 🪐
   width: 100%;
 }
 .social-link { color: var(--gray) !important; text-decoration: none !important; font-size: 0.9rem; }
+
+/* 6. 花园统计样式 */
+.garden-stats {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--gray);
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+  display: flex !important;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 2s ease-out;
+}
+.stat-divider { opacity: 0.3; }
 </style>
 
 <div class="hero-section">
@@ -243,6 +322,58 @@ title: 欢迎来到我的数字花园 🪐
 📅 查看时间轴
 </a>
 </div>
+
+<div class="garden-stats" id="stats-container">
+  <!-- 动态加载统计数据 -->
+  <span>正在盘点花园资产...</span>
+</div>
+
+<div class="graph-section">
+  <div class="graph-title">🕸️ 知识星系</div>
+  <div class="graph-desc">探索笔记之间的关联特性，可视化您的知识版图。</div>
+  <a href="javascript:void(0)" class="btn-graph" onclick="document.querySelector('.search-button')?.click(); setTimeout(()=>document.querySelector('#graph-icon')?.click(), 100)">
+    🔮 进入全屏图谱
+  </a>
+</div>
+
+<script>
+async function loadGardenStats() {
+  const container = document.getElementById('stats-container');
+  if (!container) return;
+  
+  try {
+    // 尝试从根路径获取，兼容不同的部署环境
+    const response = await fetch('static/contentIndex.json');
+    if (!response.ok) throw new Error('Fetch failed');
+    const data = await response.json();
+    
+    // 使用标准 function 避开可能的字符转义问题
+    const keys = Object.keys(data);
+    let count = 0;
+    for (var i = 0; i < keys.length; i++) {
+      var slug = keys[i];
+      if (slug !== 'index' && slug.indexOf('templates') === -1) {
+        count++;
+      }
+    }
+    
+    container.innerHTML = '<span>已整理 <b>' + count + '</b> 篇笔记</span>' +
+                          '<span class="stat-divider">|</span>' +
+                          '<span>稳定运行 <b>365+</b> 天</span>' +
+                          '<span class="stat-divider">|</span>' +
+                          '<span>思想与代码共舞</span>';
+  } catch (e) {
+    console.error('Stats load error:', e);
+    // 降级显示
+    container.innerHTML = '<span>每一天，都在构建知识的星系</span>';
+  }
+}
+
+// Quartz 4 使用 SPA 导航，监听 nav 事件
+document.addEventListener("nav", loadGardenStats);
+// 初始加载也执行一次
+loadGardenStats();
+</script>
 </div>
 
 <div class="grid-cards">
