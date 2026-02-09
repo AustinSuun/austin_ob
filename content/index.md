@@ -194,7 +194,7 @@ footer,
 .grid-cards {
   display: grid;
   gap: 1.5rem;
-  margin: 2rem 0;
+  margin: 2rem 0 8rem 0; /* Increased bottom margin for more spacing */
   width: 100%;
   /* 默认移动优先：单列 */
   grid-template-columns: 1fr;

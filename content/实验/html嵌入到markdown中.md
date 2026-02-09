@@ -5,8 +5,8 @@
 tags:
 draft: false
 ---
-# 可以将html嵌入到markdown中
-
+# 可以将html嵌入到markdown中，用于网页中显示
+## 以下是一些html嵌入到markdown中的例子
 
 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
   <a href="/static/voxel-viz.html" target="_blank" style={{
