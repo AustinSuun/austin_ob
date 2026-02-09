@@ -31,6 +31,8 @@ import BackToTop from "./BackToTop"
 
 import GravityParticles from "./GravityParticles"
 
+import TagCloud from "./TagCloud"
+
 export {
   ArticleTitle,
   Content,
@@ -45,6 +47,7 @@ export {
   TableOfContents,
   Explorer,
   TagList,
+  TagCloud,
   Graph,
   Backlinks,
   Search,

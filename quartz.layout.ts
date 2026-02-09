@@ -104,5 +104,5 @@ export const defaultListPageLayout: PageLayout = {
       filterFn: (node) => node.slugSegment !== "games",
     }),
   ],
-  right: [],
+  right: [Component.TagCloud()],
 }
