@@ -60,6 +60,18 @@ npx quartz build --serve
 npx quartz sync
 ```
 
+## 🎨 Obsidian 深度集成
+
+本项目提供了与 Quartz 网页风格高度一致的 Obsidian 主题样式，让您的本地写作体验与网页浏览体验无缝衔接。
+
+### 启用同款样式
+1. 样式文件已自动生成于：`.obsidian/snippets/austin-theme.css`
+2. 打开 Obsidian **设置** > **外观** (Appearance)。
+3. 在 **CSS 代码片段** (CSS snippets) 区域，点击刷新按钮。
+4. 找到 `austin-theme` 并启用开关。
+
+现在，您的 Obsidian 将拥有与网页版一致的字体、配色和排版。
+
 ## 📄 许可证
 
 本项目内容遵循 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 协议。

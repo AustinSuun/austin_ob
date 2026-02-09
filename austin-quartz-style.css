@@ -1,0 +1,170 @@
+/* Austin's Quartz Style for Obsidian */
+
+/* Define Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap');
+
+:root {
+  --font-text: 'Inter', sans-serif;
+  --font-monospace: 'JetBrains Mono', monospace;
+}
+
+/* =========================================
+   DARK MODE STYLES
+   ========================================= */
+.theme-dark {
+  /* Background with SVG Pattern */
+  --background-primary: #1e1e2e;
+  --background-secondary: #181825;
+}
+
+.theme-dark .workspace-leaf-content {
+  background-color: #1e1e2e;
+  background-image: radial-gradient(circle at top left, #2b2b40, transparent 40%),
+                    radial-gradient(circle at bottom right, #232330, transparent 40%),
+                    url("data:image/svg+xml,%3Csvg width='800' height='800' viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ccc' stroke-width='1' opacity='0.03'%3E%3Cpath d='M100 100 L200 100 L200 200 L100 200 Z M130 130 L170 130 L170 170 L130 170 Z M100 100 L130 130 M200 100 L170 130 M200 200 L170 170 M100 200 L130 170' /%3E%3Cpath d='M600 250 L650 350 L550 350 Z M600 250 L600 350' transform='rotate(25 600 300)' /%3E%3Cpath d='M50 600 Q 150 550, 250 600' stroke-dasharray='8,8' /%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: auto, auto, 800px 800px;
+}
+
+/* Gradient Headers (Only in Preview Mode to avoid editing issues) */
+.theme-dark .markdown-preview-view h1,
+.theme-dark .markdown-preview-view h2,
+.theme-dark .markdown-preview-view h3 {
+  background: linear-gradient(to right, #38bdf8, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 15px rgba(192, 132, 252, 0.3);
+  display: inline-block;
+}
+
+/* Solid Headers for H4-H6 */
+.theme-dark .markdown-preview-view h4,
+.theme-dark .markdown-preview-view h5,
+.theme-dark .markdown-preview-view h6 {
+  color: #b4befe;
+}
+
+/* Bold & Italic */
+.theme-dark strong {
+  color: #64b5f6; /* Bright Blue */
+  font-weight: 700;
+}
+.theme-dark em {
+  font-family: var(--font-text);
+  color: #aaa;
+  font-style: italic;
+}
+
+/* =========================================
+   LIGHT MODE STYLES
+   ========================================= */
+.theme-light {
+  --background-primary: #fbfbf9;
+}
+
+.theme-light .workspace-leaf-content {
+  background-color: #fbfbf9;
+  background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23999' stroke-width='1' opacity='0.04'%3E%3Cpath d='M100 100 L200 100 L200 200 L100 200 Z M130 130 L170 130 L170 170 L130 170 Z M100 100 L130 130 M200 100 L170 130 M200 200 L170 170 M100 200 L130 170' /%3E%3Cpath d='M600 250 L650 350 L550 350 Z M600 250 L600 350' transform='rotate(25 600 300)' /%3E%3Cpath d='M50 600 Q 150 550, 250 600' stroke-dasharray='8,8' /%3E%3C/g%3E%3C/svg%3E");
+  background-size: 800px 800px;
+}
+
+.theme-light .markdown-preview-view h1,
+.theme-light .markdown-preview-view h2,
+.theme-light .markdown-preview-view h3 {
+  background: linear-gradient(to right, #0EA5E9, #8B5CF6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+  display: inline-block;
+}
+
+.theme-light strong {
+  color: #0d47a1; /* Deep Navy */
+}
+
+/* =========================================
+   COMMON STYLES (Preview & Editor)
+   ========================================= */
+
+/* Typography */
+.markdown-source-view, .markdown-preview-view {
+  font-family: var(--font-text);
+  line-height: 1.8;
+  font-size: 16px; 
+}
+
+/* Lists */
+ul > li::marker {
+  color: #448aff; /* Blue bullets */
+  font-weight: bold;
+}
+ol > li::marker {
+  color: #b0c4de; /* Purple numbers */
+  font-weight: bold;
+}
+
+/* Inline Code */
+.cm-s-obsidian span.cm-inline-code,
+.markdown-preview-view code {
+  color: #e01e5a !important; /* Vivid Red/Pink */
+  background-color: rgba(121, 40, 202, 0.15) !important; /* Purple Tint */
+  border-radius: 6px;
+  padding: 0.2em 0.4em;
+  font-family: var(--font-monospace);
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #448aff !important;
+  background-color: rgba(0, 124, 240, 0.05); /* Faint blue bg */
+  border-radius: 0 8px 8px 0;
+  padding: 0.8rem 1rem !important;
+  font-style: italic;
+}
+
+/* Tags */
+a.tag {
+  background-color: transparent !important;
+  border: 1px solid #999;
+  border-radius: 3px;
+  color: var(--text-muted) !important;
+  font-size: 0.8em;
+}
+
+/* Links */
+a {
+  color: #448aff !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+a:hover {
+  text-decoration: underline !important;
+}
+
+/* Callouts (Obsidian Specific) */
+.callout {
+  border-radius: 6px;
+  background-color: rgba(125, 125, 125, 0.05);
+  border: 1px solid rgba(125, 125, 125, 0.1);
+}
+.callout[data-callout="note"] { border-left-color: #007CF0; }
+.callout[data-callout="important"] { border-left-color: #7928CA; }
+.callout[data-callout="warning"] { border-left-color: #ff9f0a; }
+
+/* Scrollbars - Hide for cleaner look (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.5);
+}
