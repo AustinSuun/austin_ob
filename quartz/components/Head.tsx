@@ -9,8 +9,6 @@ import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
 import typingScript from "./scripts/typingAnimation.inline"
 // @ts-ignore
 import lightboxScript from "./scripts/imageLightbox.inline"
-// @ts-ignore
-import busuanziScript from "./scripts/busuanzi.inline"
 export default (() => {
   const Head: QuartzComponent = ({
     cfg,
@@ -104,10 +102,11 @@ export default (() => {
             return resource
           }
         })}
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="53e6319a-4b94-498c-ac1a-96ab652483aa"></script>
       </head>
     )
   }
 
-  Head.afterDOMLoaded = [typingScript, lightboxScript, busuanziScript].flat()
+  Head.afterDOMLoaded = [typingScript, lightboxScript].flat()
   return Head
 }) satisfies QuartzComponentConstructor

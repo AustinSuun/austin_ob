@@ -42,12 +42,6 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
         segments.push(<span>{displayedTime}</span>)
       }
 
-      segments.push(
-        <span id="busuanzi_container_page_pv" style="display:none">
-          🔥 阅读量 <span id="busuanzi_value_page_pv"></span>
-        </span>,
-      )
-
       // Check for content freshness
       if (fileData.dates?.modified) {
         const modifiedDate = fileData.dates.modified
