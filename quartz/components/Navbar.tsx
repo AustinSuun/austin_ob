@@ -1,4 +1,4 @@
-import { pathToRoot } from "../util/path"
+import { FullSlug, pathToRoot, resolveRelative } from "../util/path"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
 // @ts-ignore
@@ -10,8 +10,8 @@ export default (() => {
     return (
       <div class={`navbar-links ${displayClass ?? ""}`}>
         <a href={baseDir} class="nav-btn">🏠 首页</a>
-        <a href={`${baseDir}/Timeline`} class="nav-btn">⏳ 时间线</a>
-        <a href={`${baseDir}/tags`} class="nav-btn">🏷️ 标签</a>
+        <a href={resolveRelative(fileData.slug!, "Timeline" as FullSlug)} class="nav-btn">⏳ 时间线</a>
+        <a href={resolveRelative(fileData.slug!, "tags" as FullSlug)} class="nav-btn">🏷️ 标签</a>
         <a href="#" class="nav-btn random-btn" data-base-dir={baseDir}>🎲 漫步</a>
       </div>
     )
