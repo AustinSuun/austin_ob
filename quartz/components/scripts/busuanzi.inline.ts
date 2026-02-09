@@ -7,7 +7,7 @@ const loadBusuanzi = () => {
   }
 
   const script = document.createElement("script")
-  script.src = "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+  script.src = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
   script.id = scriptId
   script.async = true
   script.referrerPolicy = "no-referrer-when-downgrade" 

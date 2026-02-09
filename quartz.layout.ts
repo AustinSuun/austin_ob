@@ -33,6 +33,8 @@ export const sharedPageComponents: SharedLayout = {
           repoId: "R_kgDOOfhChw",
           category: "Announcements",
           categoryId: "DIC_kwDOOfhCh84C1_5r",
+          mapping: "pathname",
+          strict: true,
         }
       }),
       condition: (page) => !isFolderPath(page.fileData.slug!) && page.fileData.slug !== "index",
