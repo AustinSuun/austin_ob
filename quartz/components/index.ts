@@ -28,10 +28,12 @@ import PageList from "./PageList"
 import EmojiRestorer from "./EmojiRestorer"
 import ReadingProgress from "./ReadingProgress"
 import BackToTop from "./BackToTop"
+import PageNav from "./PageNav"
 
 import GravityParticles from "./GravityParticles"
 
 import TagCloud from "./TagCloud"
+import MathFix from "./MathFix"
 
 export {
   ArticleTitle,
@@ -64,5 +66,7 @@ export {
   PageList,
   ReadingProgress,
   BackToTop,
+  PageNav,
   GravityParticles,
+  MathFix,
 }

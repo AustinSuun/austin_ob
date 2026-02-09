@@ -83,13 +83,13 @@ WinMamba则针对窗口式Transformer的缺陷进行了改进。传统的窗口�
 
 下表对比了当前主流Mamba类检测模型在各基准数据集上的性能表现。可以看出，基于Mamba的模型在保持高精度的同时，通常具备更快的推理速度。
 
-|**模型名称**|**数据集**|**核心指标 (mAP/NDS)**|**运行频率 (FPS)**|**显存占用 (GB)**|
-|---|---|---|---|---|
-|Voxel Mamba|Waymo|79.6 mAPH (L1)|25.4|~8.4|
-|UniMamba|nuScenes|74.0 NDS|22.1|~7.2|
-|VDM-Mamba|Waymo|74.7 mAPH (L2)|-|-|
-|PCM-Tiny|S3DIS|79.6 mIoU|35.0+|~4.8|
-|3DET-Mamba|ScanNet|70.4 AP@0.25|-|-|
+| **模型名称**    | **数据集**  | **核心指标 (mAP/NDS)** | **运行频率 (FPS)** | **显存占用 (GB)** |
+| ----------- | -------- | ------------------ | -------------- | ------------- |
+| Voxel Mamba | Waymo    | 79.6 mAPH (L1)     | 25.4           | ~8.4          |
+| UniMamba    | nuScenes | 74.0 NDS           | 22.1           | ~7.2          |
+| VDM-Mamba   | Waymo    | 74.7 mAPH (L2)     | -              | -             |
+| PCM-Tiny    | S3DIS    | 79.6 mIoU          | 35.0+          | ~4.8          |
+| 3DET-Mamba  | ScanNet  | 70.4 AP@0.25       | -              | -             |
 
 ## 针对RTX 3090 24G显存环境的极限训练优化方案
 

@@ -24,6 +24,7 @@
 - **Bi-directional Links**: 像神经元一样的双向链接，构建紧密的知识图谱。
 - **Full-text Search**: 基于 WASM 的毫秒级全文检索。
 - **Academic Support**: 完美支持 LaTeX 数学公式渲染、代码高亮与引用预览。
+  - **Smart Math Centering**: 独家开发的智能脚本，自动检测文档中的纯公式段落并实施完美居中，彻底解决移动端与复杂布局下的公式错位问题。
 - **Timeline View**: 动态时间轴，按时间线性回顾思维轨迹。
 
 ### 💬 互动与反馈
@@ -35,7 +36,7 @@
 
 - **🎓 学术课程**: 强化学习、算法设计与分析笔记。
 - **🔬 论文研读**: 3D 点云、目标检测领域的包括 *OpenPCDet*, *MMDet3D* 等前沿论文解析。
-- **🧪 实验档案**: 从从理论到代码复现的完整记录。
+- **🧪 实验档案**: 从理论到代码复现的完整记录。
 - **🛠️ 工具环境**: Linux 运维、Quartz 搭建与效率工具指南。
 
 ## 🚀 快速开始
@@ -60,17 +61,24 @@ npx quartz build --serve
 npx quartz sync
 ```
 
-## 🎨 Obsidian 深度集成
+## 🎨 Obsidian 深度集成 (Austin Theme)
 
-本项目提供了与 Quartz 网页风格高度一致的 Obsidian 主题样式，让您的本地写作体验与网页浏览体验无缝衔接。
+本项目提供了与 Quartz 网页风格 **1:1 复刻** 的 Obsidian 主题样式，让您的本地写作体验与网页浏览体验无缝衔接。
+
+### ✨ 同步特性
+- **Typography & Fonts**: 统一使用 `思源黑体 CN` 与 `Inter` 字体组合，阅读体验高度一致。
+- **Gradient Headings**: 本地完美还原 H1 的渐变色标题与 H2 的品牌色光感标题。
+- **Smart Tables**: 自动适配亮/暗模式的 LobeHub 风格表格样式（简约边框、清晰对齐）。
+- **Inline Code Style**: 统一的浅灰色背景行内代码样式，拒绝突兀的默认配色。
+- **Math Formulae**: 针对 Obsidian 预览模式优化的数学公式居中显示。
 
 ### 启用同款样式
-1. 样式文件已自动生成于：`.obsidian/snippets/austin-theme.css`
+1. 样式文件源：`austin-quartz-style.css` (会自动部署到 `.obsidian/snippets/austin-theme.css`)
 2. 打开 Obsidian **设置** > **外观** (Appearance)。
 3. 在 **CSS 代码片段** (CSS snippets) 区域，点击刷新按钮。
 4. 找到 `austin-theme` 并启用开关。
 
-现在，您的 Obsidian 将拥有与网页版一致的字体、配色和排版。
+现在，您的 Obsidian 将拥有与网页版完全一致的 **字体、配色、表格与排版**。
 
 ## 📄 许可证
 

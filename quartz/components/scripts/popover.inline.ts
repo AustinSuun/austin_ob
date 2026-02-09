@@ -146,6 +146,11 @@ window.addEventListener("mouseover", (e) => {
     const target = e.target as HTMLElement
     const link = target.closest("a.internal") as HTMLAnchorElement
     
+    // Disable popovers for tags (ensure matches article tags and tag cloud)
+    if (link && (link.classList.contains("tag-link") || link.classList.contains("tag-cloud-item") || link.pathname.includes("/tags/"))) {
+        return
+    }
+    
     // If we are not over an internal link, or we moved to a different link
     if (!link || link !== lastHoveredLink) {
         // If we were tracking a link, and now we are not over it (or over a different one)

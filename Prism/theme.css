@@ -271,3 +271,63 @@ body { --list-marker-color: #448aff !important; }
 .markdown-preview-view div:has(> table) {
   overflow-x: auto !important;
 }
+
+/* =========================================
+   7. FILE EXPLORER RAINBOW LINES (Obsidian)
+   ========================================= */
+
+/* Base style for folder children container */
+.nav-folder-children {
+  border-left: 2px solid rgba(150, 150, 150, 0.2); 
+  padding-left: 12px; /* Indentation width */
+  margin-left: 4px;   /* Position adjustment */
+  transition: border-left-color 0.2s ease, border-left-width 0.1s;
+}
+
+/* Hover effect */
+.nav-folder-children:hover {
+  border-left-width: 3px;
+}
+
+/* Rainbow Colors for Nested Levels */
+
+/* Level 1: Red */
+.nav-folder.mod-root > .nav-folder-children {
+  border-left-color: rgba(255, 59, 48, 0.6) !important;
+}
+
+/* Level 2: Orange */
+.nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-children {
+  border-left-color: rgba(255, 149, 0, 0.6) !important;
+}
+
+/* Level 3: Yellow */
+.nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-children > .nav-folder > .nav-folder-children {
+  border-left-color: rgba(255, 204, 0, 0.6) !important;
+}
+
+/* Level 4: Green */
+.nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-children > .nav-folder > .nav-folder-children > .nav-folder > .nav-folder-children {
+  border-left-color: rgba(52, 199, 89, 0.6) !important;
+}
+
+/* Level 5: Blue */
+.nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-children > .nav-folder > .nav-folder-children > .nav-folder > .nav-folder-children > .nav-folder > .nav-folder-children {
+  border-left-color: rgba(0, 122, 255, 0.6) !important;
+}
+
+/* Level 6: Purple (Deep Nesting) */
+.nav-folder.mod-root > .nav-folder-children > .nav-folder > .nav-folder-children > .nav-folder > .nav-folder-children > .nav-folder > .nav-folder-children > .nav-folder > .nav-folder-children > .nav-folder > .nav-folder-children {
+  border-left-color: rgba(175, 82, 222, 0.6) !important;
+}
+
+/* Item Spacing & Hover */
+.nav-file-title, .nav-folder-title {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  border-radius: 4px;
+}
+
+.nav-file-title:hover, .nav-folder-title:hover {
+  background-color: var(--background-modifier-hover);
+}

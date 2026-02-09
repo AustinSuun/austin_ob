@@ -38,6 +38,8 @@ export const sharedPageComponents: SharedLayout = {
       condition: (page) => !isFolderPath(page.fileData.slug!) && page.fileData.slug !== "index",
     }),
     Component.BackToTop(),
+    Component.PageNav(),
+    Component.MathFix(),
   ],
   footer: Component.Footer({
     links: {

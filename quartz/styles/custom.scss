@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
 @use "./base.scss";
 
 // put your custom CSS here!
@@ -11,12 +12,9 @@
 }
 
 // Dark Mode Headers
-:root[saved-theme="dark"] h1, 
-:root[saved-theme="dark"] h2,
-:root[saved-theme="dark"] h3,
 :root[saved-theme="dark"] .page-title {
   color: #b4befe; // Default Fallback Color
-  display: inline-block;
+  display: block;
   
   // Apply gradient ONLY to the text span
   .gradient-text {
@@ -174,7 +172,8 @@ button#explorer,
 
 // 2. Base Modern Typography & Background (Clean & Professional)
 body {
-  font-family: var(--headerFont) !important;
+  // Broad academic font stack for maximum compatibility
+  font-family: "Source Han Sans CN", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", var(--bodyFont), sans-serif !important;
   color: var(--dark) !important;
   
   background-color: var(--light);
@@ -228,6 +227,7 @@ body {
     box-shadow: none; // Remove heavy shadow for cleanliness
     margin: 1rem 0 !important;
     padding: 0.8rem 1rem !important; // Tighter padding
+    font-family: "Source Han Sans CN", var(--bodyFont) !important; // Academic Font
 }
 
 // Dark Mode adjustments for Callouts
@@ -300,7 +300,7 @@ h1.article-title, .page-title {
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
-    display: inline-block;
+    display: block;
 }
 
 // Academic Text Accents - High Visibility (User request: Make bold obvious)
@@ -464,19 +464,21 @@ pre code {
     color: inherit !important;
     padding: 0 !important;
     border-radius: 0 !important;
+    border: none !important; // Remove the inner "red box" border
 }
 
 // Make Code Blocks (the container) have a clear background
 pre {
     background-color: #f6f8fa !important; // Visible GitHub-style Gray
-    border: 1px solid #e1e4e8 !important;
+    border: 1px solid #e1e4e8 !important; // Clean outer border
     border-radius: 8px !important;
-    padding: 1rem !important; // Comfortable padding
+    padding: 1.5rem !important; // Better vertical/horizontal breathing room
     overflow-x: auto !important;
     overflow-y: hidden !important;   // Prevent vertical scrollbar
     box-sizing: border-box !important; // Ensure padding doesn't cause overflow
     width: 100% !important;
     max-width: 100% !important;
+    margin: 1.5rem 0 !important;    // Space above and below
 }
 
 :root[saved-theme="dark"] code {
@@ -492,45 +494,95 @@ pre {
     border: 1px solid #30363d !important;
 }
 
-// Blockquote: Theme Border
-blockquote {
-    border-left: 4px solid var(--secondary) !important; // Blue border
-    background: rgba(0, 124, 240, 0.05); // Very faint blue bg
-    border-radius: 0 8px 8px 0;
-    
-    // Fix: Symmetric padding for perfect vertical alignment
-    padding: 0.8rem 1rem !important; 
-    font-style: italic;
+// Ensure no other block-level code styles interfere
+.code-block, div.code-block {
+    border: none !important;
+}
 
-    // Fix: Reset ALL margins for paragraphs inside to rely solely on padding
+// Blockquote: Theme Border
+// Blockquote: Refined Academic Citations
+blockquote {
+    border-left: 3px solid var(--secondary) !important; // Cleaner blue border
+    background: rgba(0, 124, 240, 0.03) !important;    // Softer blue bg
+    border-radius: 0 6px 6px 0;
+    padding: 1.2rem 1.5rem !important; 
+    margin: 2rem 0 !important;
+    font-family: "Source Han Sans CN", var(--bodyFont) !important; // Explicit CJK font
+    color: var(--darkgray) !important;
+    font-style: normal; // Academic style often prefers clean text over forced italics
+
+    // Fix: Paragraph alignment inside
     & > p {
         margin: 0 !important;
+        font-size: 1.1rem !important;
+        line-height: 1.7 !important;
     }
     
-    // Fix: Only add spacing between multiple paragraphs
     & > p + p {
-        margin-top: 0.8rem !important;
+        margin-top: 1rem !important;
     }
 
-    // Ensure no other elements ruin the symmetry
-    & > *:first-child { margin-top: 0 !important; }
-    & > *:last-child { margin-bottom: 0 !important; }
+    // Dark Mode adjustments for Blockquotes
+    :root[saved-theme="dark"] & {
+        background: rgba(255, 255, 255, 0.03) !important;
+        border-left-color: var(--secondary) !important;
+        color: #d1d1d6 !important;
+    }
 }
 
 
 
 
-// 3. Clean & Readable Tweaks
-// Remove table borders for cleaner look
-table, tr, td, th {
-  border-color: var(--lightgray) !important;
+// 13. Academic Table Styling (Minimal Reference Style)
+table {
+    width: 100% !important;
+    margin: 2.5rem 0 !important;
+    border-collapse: collapse !important;
+    font-family: "Source Han Sans CN", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", var(--bodyFont), sans-serif !important;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    border-top: none !important;
+    border-bottom: none !important;
+
+    // Aggressive vertical border removal
+    &, tr, td, th {
+        border-right: none !important;
+        border-left: none !important;
+        box-shadow: none !important;
+    }
+
+    th {
+        padding: 1.2rem 1rem !important; // More generous padding
+        background: transparent !important;
+        border-bottom: 1px solid var(--lightgray) !important;
+        font-weight: 700;
+        text-align: left;
+        color: var(--secondary) !important; // Blue headers from reference
+    }
+
+    td {
+        padding: 1rem 1rem !important;
+        border-bottom: 1px solid var(--lightgray) !important;
+        vertical-align: middle; // Better for mixed content like formulas
+    }
+
+    tr:last-child td {
+        border-bottom: none !important;
+    }
+
+    // Dark Mode Table Adjustments
+    :root[saved-theme="dark"] & {
+        border-top-color: var(--lightgray) !important;
+        border-bottom-color: var(--lightgray) !important;
+        
+        th {
+            border-bottom-color: var(--lightgray) !important;
+            color: var(--secondary) !important;
+        }
+    }
 }
 
 // 2. Element cleanup
-// Remove Code Block borders but keep background
-pre {
-  border: none !important;
-}
 
 // Search bar: Floating look
 .search-container {
@@ -1130,4 +1182,74 @@ a.internal {
             opacity: 1;
         }
     }
+}
+
+// --- 19. Math Formula Centering (Grid Ultimate Fix) ---
+// Target Katex Display Mode with Grid - The most robust centering
+.katex-display {
+    display: grid !important;
+    place-items: center !important;
+    width: 100% !important;
+    margin: 1.5rem 0 !important;
+    padding: 0.5rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+// Ensure internal elements respect the grid
+.katex-display > .katex {
+    display: inline-block !important;
+    text-align: center !important;
+}
+
+// Paragraph wrapper detection
+p:has(.katex-display) {
+    display: grid !important;
+    place-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+// Target MathJax (if used)
+mjx-container[display="true"],
+.MathJax_Display {
+    display: grid !important;
+    place-items: center !important;
+    margin: 1em auto !important;
+    width: 100% !important;
+}
+// --- 11. Warm Typographic Navigation (下一节) ---
+article p.warm-next-nav {
+    margin-top: 5rem !important; // Clear conceptual separation
+    margin-bottom: 2rem !important;
+    font-size: 1.25rem !important; // Overall larger presence
+    line-height: 1.6;
+    
+    strong {
+      color: #f59e0b !important; // Warm Amber
+      font-weight: 800;
+      margin-right: 0.6rem;
+      display: inline; // Ensure it stays inline
+    }
+
+    a.internal {
+      color: var(--secondary) !important; // Keep link in theme color for harmony
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: #f59e0b !important; // Glow warm on hover
+        text-decoration: underline !important;
+      }
+      
+      &::before { display: none !important; }
+    }
+}
+
+// Fallback for generic math display classes
+.math-display {
+    display: grid !important;
+    place-items: center !important;
+    width: 100% !important;
 }
