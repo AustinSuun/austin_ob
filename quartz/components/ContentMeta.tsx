@@ -55,7 +55,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
           (Date.now() - modifiedDate.getTime()) / (1000 * 60 * 60 * 24),
         )
         
-        if (daysSinceUpdate > 180) {
+        if (daysSinceUpdate > 365) {
           segments.push(
             <span class="content-freshness-warning" title={`最后更新于 ${daysSinceUpdate} 天前`}>
               ⚠️ 内容可能已过时
