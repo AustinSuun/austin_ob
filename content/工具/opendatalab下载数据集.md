@@ -3,7 +3,7 @@
 作者:
   - Austin
 tags:
-draft: true
+draft: false
 ---
 > [!简短介绍]
 > OpenDataLab 是由上海人工智能实验室（Shanghai AI Lab）打造的 **AI 数据集“中央大仓库”**，它把各种散落在海外、难下的顶会数据集都进行了标准化整理，让你能通过一行命令实现极速搬运，堪称炼丹师们的“数据集直达特快”。
