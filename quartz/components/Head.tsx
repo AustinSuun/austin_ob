@@ -9,6 +9,8 @@ import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
 import typingScript from "./scripts/typingAnimation.inline"
 // @ts-ignore
 import lightboxScript from "./scripts/imageLightbox.inline"
+// @ts-ignore
+import iframeResizeScript from "./scripts/iframeResize.inline"
 export default (() => {
   const Head: QuartzComponent = ({
     cfg,
@@ -107,6 +109,6 @@ export default (() => {
     )
   }
 
-  Head.afterDOMLoaded = [typingScript, lightboxScript].flat()
+  Head.afterDOMLoaded = [typingScript, lightboxScript, iframeResizeScript].flat()
   return Head
 }) satisfies QuartzComponentConstructor

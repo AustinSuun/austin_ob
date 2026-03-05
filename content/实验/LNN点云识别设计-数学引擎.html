@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { background-color: rgb(251, 251, 249); font-family: 'Times New Roman', serif; display: flex; justify-content: center; padding: 20px; margin: 0; color: #2d3436; }
+        .lab-card { width: 750px; background: white; padding: 40px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .formula-section { margin-bottom: 35px; position: relative; }
+        .formula-title { font-family: sans-serif; font-size: 14px; font-weight: bold; color: #5c7cfa; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #edf2ff; display: inline-block; }
+        
+        .main-formula { font-size: 22px; text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin: 10px 0; color: #1a1a1a; }
+        .variable-map { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 13px; font-family: sans-serif; color: #636e72; }
+        .var { font-family: "Times New Roman", italic; color: #e64980; font-weight: bold; }
+        
+        .visual-cue { height: 4px; width: 100%; background: linear-gradient(90deg, #5c7cfa, #845ef7, #20c997); border-radius: 2px; margin-top: 10px; }
+        .highlight { background: #fff9db; padding: 2px 5px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="lab-card">
+        <h2 style="text-align:center; font-family:sans-serif; margin-bottom:10px;">LV-Net 数学引擎架构图</h2>
+        <p style="text-align:center; font-family:sans-serif; font-size:14px; color:#666; margin-bottom:40px;">从物理位移到神经演化的全映射</p>
+
+        <!-- Section 1 -->
+        <div class="formula-section">
+            <div class="formula-title">Step 1: 空间驱动力映射</div>
+            <div class="main-formula">
+                <i>t</i> = σ( ⟨Δ<i>p</i>, <b>u</b>⟩ · <b>v</b> )
+            </div>
+            <div class="variable-map">
+                <div><span class="var">Δp</span>: 3D 物理位移 (空间种子)</div>
+                <div><span class="var">u</span>: 演化主轴 (寻找最敏感几何方向)</div>
+                <div><span class="var">v</span>: 通道调制 (定义哪些特征受位移影响)</div>
+                <div><span class="var">t</span>: 演化步长 (CfC 核心驱动力)</div>
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="formula-section">
+            <div class="formula-title">Step 2: CfC 状态转换闭式解</div>
+            <div class="main-formula">
+                <i>h</i><sub>out</sub> = <i>h</i><sub>base</sub> ⊙ (1−<i>t</i>) + tanh(<i>h</i><sub>geo</sub>) ⊙ <i>t</i>
+            </div>
+            <p style="font-size:12px; font-family:sans-serif; line-height:1.6;">
+                该公式模拟了特征随位移变化的<span class="highlight">连续轨迹</span>。当位移趋近于0时，保持原始语义；当位移增加时，非线性几何分量开始占主导，实现"脑补"。
+            </p>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="formula-section">
+            <div class="formula-title">Step 3: 自加权积分聚合</div>
+            <div class="main-formula" style="font-size: 18px;">
+                <i>F</i><sub>voxel</sub> = ∑ ( <i>h</i><sub>out, i</sub> · ‖<i>t</i><sub>i</sub>‖ ) / ∑ ‖<i>t</i><sub>i</sub>‖
+            </div>
+            <p style="font-size:12px; font-family:sans-serif; color:#666;">
+                利用演化强度 <span class="var">‖t‖</span> 作为权重。演化越剧烈的点（通常是边缘）对最终体素特征的贡献越大。
+            </p>
+        </div>
+
+        <div class="visual-cue"></div>
+        <p style="font-size:11px; font-family:sans-serif; color:#adb5bd; margin-top:15px; text-align:right;">
+            LV-Net Theoretical Framework v1.0 | ECCV 2026 Ready
+        </p>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            if (window.parent !== window) {
+                window.parent.postMessage({ type: 'iframe-resize', height: document.body.scrollHeight }, '*');
+            }
+        });
+    </script>
+</body>
+</html>

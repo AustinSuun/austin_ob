@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { background-color: rgb(251, 251, 249); font-family: 'Segoe UI', system-ui, sans-serif; display: flex; justify-content: center; padding: 20px; margin: 0; color: #2d3436; }
+        .container { width: 750px; background: white; padding: 30px; border-radius: 12px; border: 1px solid #e1e4e8; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .section-title { font-size: 16px; font-weight: bold; color: #1a1a1a; margin-bottom: 20px; border-left: 4px solid #5c7cfa; padding-left: 10px; }
+        
+        .scaling-flow { display: flex; justify-content: space-between; align-items: center; margin: 30px 0; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .voxel-group { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; }
+        .v-small { width: 20px; height: 20px; background: #d0ebff; border: 1px solid #74c0fc; }
+        .v-large { width: 44px; height: 44px; background: #74c0fc; border: 2px solid #339af0; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 10px; text-align: center; }
+        
+        .decoder-box { border: 2px dashed #845ef7; padding: 20px; border-radius: 8px; margin-top: 20px; position: relative; }
+        .focus-tag { position: absolute; top: -12px; right: 20px; background: #845ef7; color: white; padding: 2px 10px; border-radius: 10px; font-size: 10px; }
+        
+        .arrow { font-size: 24px; color: #adb5bd; }
+        .info-text { font-size: 12px; color: #666; margin-top: 10px; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3 style="text-align:center; margin-bottom:30px;">LV-Net：跨尺度几何连续性保持方案</h3>
+
+        <!-- Downsampling Section -->
+        <div class="section-title">1. 液态下采样 (Liquid Aggregation)</div>
+        <div class="scaling-flow">
+            <div style="text-align:center;">
+                <div class="voxel-group">
+                    <div class="v-small"></div><div class="v-small"></div>
+                    <div class="v-small"></div><div class="v-small"></div>
+                </div>
+                <div class="info-text">高分辨率体素</div>
+            </div>
+            <div class="arrow">➔</div>
+            <div style="text-align:center; flex:1; padding: 0 20px;">
+                <div style="font-size:11px; color:#5c7cfa; font-weight:bold;">RLB 动量演化</div>
+                <div style="height:2px; background:#5c7cfa; width:100%; margin:5px 0;"></div>
+                <div style="font-size:10px; color:#666;">基于相对位移算特征流</div>
+            </div>
+            <div class="arrow">➔</div>
+            <div style="text-align:center;">
+                <div class="v-large">Liquid<br>Voxel</div>
+                <div class="info-text">低分辨率(含动量)</div>
+            </div>
+        </div>
+
+        <!-- Decoder Section -->
+        <div class="section-title">2. 解码器几何复位 (Geometric Restoration)</div>
+        <div class="decoder-box">
+            <div class="focus-tag">Liquid Refinement (Focusing)</div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div style="width:120px; text-align:center;">
+                    <div style="height:40px; background:#f3f0ff; border:1px solid #845ef7; border-radius:4px; font-size:10px; display:flex; align-items:center; justify-content:center;">模糊的上采样特征</div>
+                    <div class="info-text">基于索引回放</div>
+                </div>
+                <div style="font-size:20px; color:#845ef7;">＋</div>
+                <div style="width:120px; text-align:center;">
+                    <div style="height:40px; border:2px solid #fd7e14; border-radius:4px; font-size:10px; display:flex; align-items:center; justify-content:center; color:#fd7e14; font-weight:bold;">原始偏移 Δp</div>
+                    <div class="info-text">从 Metadata 栈弹出</div>
+                </div>
+                <div style="font-size:20px; color:#845ef7;">＝</div>
+                <div style="width:120px; text-align:center;">
+                    <div style="height:40px; background:#845ef7; color:white; border-radius:4px; font-size:10px; display:flex; align-items:center; justify-content:center; font-weight:bold;">锐利的几何特征</div>
+                    <div class="info-text">几何对焦完成</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:30px; padding:15px; background:#f8f9fa; border-radius:8px; border-left:4px solid #adb5bd; font-size:12px; line-height:1.6;">
+            <strong>技术要点：</strong> LV-Net 证明了在下采样严重的情况下，只要<b>原始偏移量</b>能通过栈结构传递到解码器，LNN 就可以利用这些"几何残影"重新计算出亚体素精度的边缘，从而显著提升检测框在物体边界上的定位精度。
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            if (window.parent !== window) {
+                window.parent.postMessage({ type: 'iframe-resize', height: document.body.scrollHeight }, '*');
+            }
+        });
+    </script>
+</body>
+</html>

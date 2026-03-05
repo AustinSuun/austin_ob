@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { background-color: rgb(251, 251, 249); font-family: 'Segoe UI', system-ui, sans-serif; display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .canvas { width: 750px; background: white; padding: 40px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .flow-container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .data-box { border: 1px solid #dee2e6; padding: 12px; border-radius: 6px; font-size: 13px; background: #f8f9fa; width: 300px; text-align: center; }
+        .process-box { border: 2px solid #5c7cfa; background: #edf2ff; padding: 15px; border-radius: 8px; width: 400px; text-align: center; font-weight: bold; position: relative; }
+        .arrow { font-size: 20px; color: #adb5bd; }
+        .split-container { display: flex; gap: 20px; width: 100%; justify-content: center; margin-top: 10px; }
+        .output-card { flex: 1; border: 1px solid #20c997; background: #e3faf3; padding: 10px; border-radius: 6px; font-size: 11px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        <h3 style="text-align:center; color:#1a1a1a; margin-bottom:30px;">VFE 几何数据提供者：处理与透传流程</h3>
+        <div class="flow-container">
+            <div class="data-box">
+                <strong>原始点云输入</strong><br>
+                <span style="font-size:11px; color:#666;">(x, y, z, r) [M, 4]</span>
+            </div>
+            <div class="arrow">↓</div>
+            <div class="process-box" style="border-color: #fd7e14; background: #fff4e6;">
+                1. 输入增强 (Augmentation)
+                <p style="font-size:11px; font-weight:normal; margin-top:5px;">计算 6D 偏移：Δp_mean + Δp_geo</p>
+            </div>
+            <div class="arrow">↓</div>
+            <div class="process-box">
+                2. 基础语义编码 (Base Encoding)
+                <p style="font-size:11px; font-weight:normal; margin-top:5px;">映射原始属性与偏移至 64 维空间</p>
+            </div>
+            <div class="arrow">↓</div>
+            <div class="process-box" style="border-color: #20c997; background: #e3faf3;">
+                3. 均值聚合 (Mean Pooling)
+                <p style="font-size:11px; font-weight:normal; margin-top:5px;">将点级特征坍缩为体素"底色"</p>
+            </div>
+            <div class="arrow">↓</div>
+            <div class="split-container">
+                <div class="output-card">
+                    <strong style="color:#099268;">特征底色 [N, 64]</strong><br>
+                    传给 SpConv
+                </div>
+                <div class="output-card" style="border-color:#845ef7; background:#f3f0ff;">
+                    <strong style="color:#5f3dc4;">几何种子 [M, 3]</strong><br>
+                    透传给 Stage 1 RLB
+                </div>
+                <div class="output-card" style="border-color:#adb5bd; background:#f8f9fa;">
+                    <strong style="color:#495057;">索引映射 [M]</strong><br>
+                    保持对应关系
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:30px; padding:15px; background:#fff9db; border-radius:8px; border-left:4px solid #fcc419; font-size:13px; line-height:1.6;">
+            <strong>核心价值：</strong> 这种"轻量处理、精准透传"的设计，解决了 VFE 计算过于臃肿的问题。它让 VFE 专注于<strong>感知</strong>，而让骨干网络专注于<strong>演化</strong>，确保了亚体素精度能一路护送到最深层的计算中。
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            if (window.parent !== window) {
+                window.parent.postMessage({ type: 'iframe-resize', height: document.body.scrollHeight }, '*');
+            }
+        });
+    </script>
+</body>
+</html>
+

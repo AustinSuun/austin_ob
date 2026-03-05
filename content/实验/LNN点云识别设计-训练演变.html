@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { background-color: rgb(251, 251, 249); font-family: 'Inter', -apple-system, system-ui, sans-serif; display: flex; justify-content: center; padding: 20px; margin: 0; color: #2d3436; }
+        .canvas { width: 750px; padding: 40px; border-radius: 12px; border: 1px solid #eee; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h3 { margin-bottom: 10px; }
+        .header p { font-size: 13px; color: #666; }
+
+        .stats-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .stat-box { flex: 1; text-align: center; }
+        .stat-label { font-size: 12px; color: #888; }
+        .stat-value { font-size: 24px; font-weight: bold; }
+        .stat-epoch { color: #5c7cfa; }
+        .stat-alpha { color: #20c997; }
+
+        .progress-area { flex: 2; padding: 0 20px; }
+        .progress-bar { height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #5c7cfa, #20c997); border-radius: 4px; transition: width 0.1s linear; }
+        .progress-labels { display: flex; justify-content: space-between; font-size: 10px; margin-top: 5px; color: #adb5bd; }
+
+        .content-row { display: flex; gap: 20px; }
+        .grid-panel { flex: 1; background: #fff; padding: 20px; border-radius: 10px; border: 1px solid #eee; }
+        .grid-title { font-weight: bold; font-size: 14px; margin-bottom: 15px; }
+        .voxel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .voxel-cell { height: 40px; background: #f8f9fa; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+        .voxel-dot { width: 6px; height: 6px; border-radius: 50%; transition: all 0.1s linear; }
+
+        .insight-panel { flex: 1; padding: 10px; }
+        .insight-card { padding: 15px; border-radius: 8px; border-left: 4px solid #adb5bd; background: #f8f9fa; transition: all 0.3s ease; }
+        .insight-card.active { border-left-color: #5c7cfa; background: #edf2ff; }
+        .insight-title { font-size: 14px; font-weight: bold; }
+        .insight-desc { font-size: 12px; color: #666; margin-top: 10px; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        <div class="header">
+            <h3>LV-Net 训练演变：Zero-gamma 策略可视化</h3>
+            <p>观察随着 Epoch 增加，液态分支 (α) 如何平滑介入特征精修</p>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-box">
+                <div class="stat-label">当前 Epoch</div>
+                <div class="stat-value stat-epoch" id="epochDisplay">0 / 100</div>
+            </div>
+            <div class="progress-area">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+                </div>
+                <div class="progress-labels">
+                    <span>Warm-up (α=0)</span>
+                    <span>Liquid Integration (α↑)</span>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">残差系数 α</div>
+                <div class="stat-value stat-alpha" id="alphaDisplay">0.00</div>
+            </div>
+        </div>
+
+        <div class="content-row">
+            <div class="grid-panel">
+                <div class="grid-title">亚体素特征场 (Visualized)</div>
+                <div class="voxel-grid" id="voxelGrid"></div>
+            </div>
+            <div class="insight-panel">
+                <div class="insight-card" id="insightCard">
+                    <div class="insight-title" id="insightTitle">状态: 静态卷积学习</div>
+                    <p class="insight-desc" id="insightDesc">此时液态分支关闭。模型正在建立稳健的体素级语义底色，不处理亚体素偏移。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 初始化 16 个体素格子
+        const grid = document.getElementById('voxelGrid');
+        for (let i = 0; i < 16; i++) {
+            const cell = document.createElement('div');
+            cell.className = 'voxel-cell';
+            const dot = document.createElement('div');
+            dot.className = 'voxel-dot';
+            dot.id = 'dot' + i;
+            cell.appendChild(dot);
+            grid.appendChild(cell);
+        }
+
+        let epoch = 0;
+        const epochEl = document.getElementById('epochDisplay');
+        const alphaEl = document.getElementById('alphaDisplay');
+        const progressEl = document.getElementById('progressFill');
+        const insightCard = document.getElementById('insightCard');
+        const insightTitle = document.getElementById('insightTitle');
+        const insightDesc = document.getElementById('insightDesc');
+
+        function update() {
+            epoch = (epoch + 1) % 101;
+            const alpha = epoch < 30 ? 0 : (epoch - 30) / 70;
+            const dotOpacity = 0.3 + alpha * 0.7;
+
+            epochEl.textContent = epoch + ' / 100';
+            alphaEl.textContent = alpha.toFixed(2);
+            progressEl.style.width = epoch + '%';
+
+            // 更新体素点
+            for (let i = 0; i < 16; i++) {
+                const dot = document.getElementById('dot' + i);
+                dot.style.background = epoch < 30 ? '#adb5bd' : '#5c7cfa';
+                dot.style.opacity = dotOpacity;
+                dot.style.boxShadow = epoch > 30 ? '0 0 ' + (alpha * 15) + 'px #5c7cfa' : 'none';
+                const tx = Math.sin(i + epoch / 5) * alpha * 10;
+                const ty = Math.cos(i + epoch / 5) * alpha * 10;
+                dot.style.transform = 'translate(' + tx + 'px, ' + ty + 'px)';
+            }
+
+            // 更新状态卡片
+            if (epoch < 30) {
+                insightCard.className = 'insight-card';
+                insightTitle.textContent = '状态: 静态卷积学习';
+                insightDesc.textContent = '此时液态分支关闭。模型正在建立稳健的体素级语义底色，不处理亚体素偏移。';
+            } else {
+                insightCard.className = 'insight-card active';
+                insightTitle.textContent = '状态: 动态演化精修';
+                insightDesc.textContent = '此时 α 逐渐增大。模型开始根据 Δp 解算 CfC 轨迹，体素内的点开始产生差异化演化，特征边界变得清晰。';
+            }
+        }
+
+        setInterval(update, 100);
+
+        // 高度自适应
+        window.addEventListener('load', function() {
+            if (window.parent !== window) {
+                window.parent.postMessage({ type: 'iframe-resize', height: document.body.scrollHeight }, '*');
+            }
+        });
+    </script>
+</body>
+</html>

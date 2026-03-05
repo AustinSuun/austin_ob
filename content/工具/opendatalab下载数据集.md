@@ -29,8 +29,10 @@ openxlab dataset download --dataset-repo OpenDataLab/KITTI_Object --source-p
 
 1. 先登录
 ```bash
-pip install openxlab #安装
-pip install -U openxlab #版本升级
+# 1. 安装 openxlab
+python -m pip install openxlab
+# 2. 如果需要升级版本（这一步可以跳过，如果你刚装完就是最新版）
+python -m pip install -U openxlab
 openxlab login # 进行登录，输入对应的AK/SK，可在[个人中心](https://opendatalab.com/datasets/#)添加AK/SK
 ```
 
@@ -67,4 +69,39 @@ unzip data_object_calib.zip -d kitti/ && rm data_object_calib.zip
 
 # 3. 处理标签
 unzip data_object_label_2.zip -d kitti/ && rm data_object_label_2.zip
+```
+
+
+
+
+# Kaggle
+
+```
+export KAGGLE_API_TOKEN=KGAT_445948c25dce5da40b3a5fbe08c633ee
+
+kaggle competitions list
+```
+
+
+
+# 解压测试集图片
+7 z e image_testing. Zip -o./kitti/testing/image_2 'testing/image_2/*' -y
+
+# 解压训练集点云分卷 (1-3)
+7 z e velodyne_training_1. Zip -o./kitti/training/velodyne 'training/velodyne/*' -y
+7 z e velodyne_training_2. Zip -o./kitti/training/velodyne 'training/velodyne/*' -y
+7 z e velodyne_training_3. Zip -o./kitti/training/velodyne 'training/velodyne/*' -y
+
+# 解压测试集点云分卷 (1-3)
+7 z e velodyne_testing_1. Zip -o./kitti/testing/velodyne 'testing/velodyne/*' -y
+7 z e velodyne_testing_2. Zip -o./kitti/testing/velodyne 'testing/velodyne/*' -y
+7 z e velodyne_testing_3. Zip -o./kitti/testing/velodyne 'testing/velodyne/*' -y
+
+
+```
+# 解压所有 training 分卷到同一个目录
+7z e 'velodyne_training_*.zip' -o./kitti/training/velodyne -y
+
+# 解压所有 testing 分卷到同一个目录
+7z e 'velodyne_testing_*.zip' -o./kitti/testing/velodyne -y
 ```

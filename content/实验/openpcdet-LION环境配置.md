@@ -84,3 +84,10 @@ headdim=48,
 
 ).to("cuda")
 ```
+
+
+# 安装 openpcdet
+
+```
+pip install -e . -i https://mirrors.aliyun.com/pypi/simple/
+```
