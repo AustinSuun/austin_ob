@@ -57,5 +57,6 @@ cc-switch 是一个跨平台的 GUI/CLI 工具，用于管理 Claude Code 的配
   ```
 - **Windows / Linux**: 前往 [Releases](https://github.com/farion1231/cc-switch/releases) 下载 `.exe` 或 `.AppImage`。
 
-配置参考
+使用中转 api配置参考一下连接
+
 [[ClaudeCode配置指南]]
