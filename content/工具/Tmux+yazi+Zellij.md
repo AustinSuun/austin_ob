@@ -203,8 +203,58 @@ tags:
 
 # Zellij
 安装
-
 ```
 snap install zellij --classic
 ```
+
+既然你在开发 **HybridMamba** 这种需要长时间跑实验、监控 GPU 的项目，**Zellij** 绝对是比 tmux 更现代、更友好的选择（它是用 Rust 写的，天然契合高性能工具的直觉）。
+以下是关于 Zellij **会话（Session）** 管理的核心操作：
+
+---
+### 1. 开启新会话 (Start)
+在终端直接输入 `zellij` 即可进入。但为了以后方便重连，建议**命名会话**：
+- **创建命名会话：**
+    ```
+    zellij -s hybrid_mamba_train
+    ```
+    _这样即使你断开了 SSH，后台的训练脚本依然会运行。_
+- **使用特定布局打开：**
+    如果你想一打开就分好屏（比如左边写代码，右边看 `nvidia-smi`），可以使用：
+    ```
+    zellij --layout welcome
+    ```
+---
+### 2. 离开会话 (Detach)
+如果你想让程序在后台运行，自己先退出 Zellij：
+- **快捷键：** `Ctrl + o`（进入 Session 模式），然后按 `d` (Detach)。
+- **注意：** 不要直接按 `exit` 或者 `Ctrl + d`（那会直接杀掉当前窗口的所有进程）。
+---
+### 3. 查看与再次连接 (List & Attach)
+当你重新登录服务器，想回到之前的实验进度时：
+- **查看当前运行中的所有会话：**
+    ```
+    zellij list-sessions
+    # 简写
+    zellij ls
+    ```
+- **重新连接到指定会话：**
+    ```
+    zellij attach hybrid_mamba_train
+    ```
+- **快速连接最近的一个会话：**
+    ```
+    zellij attach
+    ```
+---
+### 4. 技巧：如果会话已经“挂起”了怎么办？
+有时候因为网络波动，会话显示 `(EXITED)` 但还没完全关掉，或者你想强制接管：
+- **强制连接（即使已有其他客户端在线）：**
+    ```
+    zellij attach -f <name>
+    ```
+---
+### 5. 给 Austin 的进阶建议（针对点云实验监控）
+在 Zellij 里，你可以利用其底部的状态栏提示进行操作。针对你的开发流，我推荐记住这两个组合：
+1. **新建窗口（Tab）：** `Ctrl + t` -> `n`。你可以一个 Tab 跑 **Claude Code**，一个 Tab 跑 **OpenPCDet** 训练。
+2. **分屏（Pane）：** `Ctrl + p` -> `r` (右分屏) 或 `d` (下分屏)。方便你一边改 `Mamba` 的配置文件，一边观察输出 log。
 
