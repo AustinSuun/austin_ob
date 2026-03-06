@@ -35,6 +35,10 @@ claude --version
 
 ## 2. 配置第三方 API (如 codeflow.asia)
 
+```
+https://codeflow.asia/register?aff=rPGm
+```
+
 如果你需要使用第三方中转服务，请按照以下步骤手动配置：
 
 ### ① 配置文件 settings.json
