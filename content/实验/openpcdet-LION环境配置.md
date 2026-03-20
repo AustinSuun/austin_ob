@@ -34,6 +34,13 @@ pip install cumm-cu118  spconv-cu118
 ```
 
 # Mamba 2.2
+对于旧版本一定要下载 mamba 2.2，torch>=2.4 时安装 2.3 版本
+```
+# 推荐安装组合
+pip install causal-conv1d==1.4.0 mamba-ssm==2.2.2 -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
 ```
 pip install  --no-build-isolation  mamba-ssm[causal-conv1d]
 ```
