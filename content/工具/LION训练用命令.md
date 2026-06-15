@@ -60,7 +60,7 @@ CUDA_VISIBLE_DEVICES=0 python train.py \
 
 # TensorBoard
 ```
-ssh -L 6006:localhost:6006 qdu@10.244.7.19
+ssh -L 6006:localhost:6006 <user>@<server_ip>
 ```
 
 ```

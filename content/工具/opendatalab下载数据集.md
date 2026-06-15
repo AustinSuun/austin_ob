@@ -77,7 +77,7 @@ unzip data_object_label_2.zip -d kitti/ && rm data_object_label_2.zip
 # Kaggle
 
 ```
-export KAGGLE_API_TOKEN=KGAT_445948c25dce5da40b3a5fbe08c633ee
+export KAGGLE_API_TOKEN=<your_kaggle_api_token>
 
 kaggle competitions list
 ```

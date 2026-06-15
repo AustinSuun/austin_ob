@@ -53,7 +53,7 @@ Port 22
 PermitRootLogin no
 PasswordAuthentication yes
 PubkeyAuthentication yes
-AllowUsers qdu
+AllowUsers <user>
 ```
 
 ### 3. 重启 SSH 服务应用配置
@@ -66,16 +66,16 @@ sudo systemctl restart ssh
 ### 1. 生成 SSH 密钥对
 ```bash
 # 在客户端电脑生成密钥
-ssh-keygen -t ed25519 -C "qdu@campus"
+ssh-keygen -t ed25519 -C "<user>@campus"
 
 # 或者使用 RSA
-ssh-keygen -t rsa -b 4096 -C "qdu@campus"
+ssh-keygen -t rsa -b 4096 -C "<user>@campus"
 ```
 
 ### 2. 将公钥复制到服务器
 ```bash
 # 方法一：使用 ssh-copy-id（如果知道IP）
-ssh-copy-id qdu@10.x.x.x
+ssh-copy-id <user>@<server_ip>
 
 # 方法二：手动复制
 cat ~/.ssh/id_ed25519.pub
@@ -87,22 +87,22 @@ cat ~/.ssh/id_ed25519.pub
 ### 1. 本地测试连接
 ```bash
 # 从本机连接自己测试
-ssh qdu@localhost
+ssh <user>@localhost
 
 # 或者使用环回地址
-ssh qdu@127.0.0.1
+ssh <user>@127.0.0.1
 ```
 
 ### 2. 从局域网其他设备连接
 现在其他设备可以通过以下方式连接你的电脑：
 ```bash
-ssh qdu@10.x.x.x
+ssh <user>@<server_ip>
 ```
 
 
 安装完成后，从另一台电脑测试：
 ```bash
-ssh qdu@10.244.7.19
+ssh <user>@<server_ip>
 ```
 
 **总结**：先运行安装命令 `sudo apt install openssh-server`，然后启动服务，就可以在校园网内通过 SSH 连接你的电脑了！
