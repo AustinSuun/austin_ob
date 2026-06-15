@@ -75,7 +75,7 @@ ssh-keygen -t rsa -b 4096 -C "qdu@campus"
 ### 2. 将公钥复制到服务器
 ```bash
 # 方法一：使用 ssh-copy-id（如果知道IP）
-ssh-copy-id qdu@10.244.7.19
+ssh-copy-id qdu@10.x.x.x
 
 # 方法二：手动复制
 cat ~/.ssh/id_ed25519.pub
@@ -96,7 +96,7 @@ ssh qdu@127.0.0.1
 ### 2. 从局域网其他设备连接
 现在其他设备可以通过以下方式连接你的电脑：
 ```bash
-ssh qdu@10.244.7.19
+ssh qdu@10.x.x.x
 ```
 
 
