@@ -104,6 +104,10 @@ have resulted in soaring prices
 
 ### Language Enhancement
 
+#### Ex1
+
+accaacbacabcaaa
+
 #### Ex2
 
 to to in to of to on in of to
